@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7315AD3-0689-435F-AEA4-7B31C166FFAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JXGIS.Common.BaseLib</RootNamespace>
+    <AssemblyName>JXGIS.Common.BaseLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="React.Core">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\React.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="React.Web">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\React.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bundles\BabelBundle.cs" />
+    <Compile Include="Bundles\BabelTransform.cs" />
+    <Compile Include="Bundles\ImportedFilePathResolver.cs" />
+    <Compile Include="ComDbContext.cs" />
+    <Compile Include="EFDbContext.cs" />
+    <Compile Include="HtmlTableToExcel.cs" />
+    <Compile Include="JsonConverter\CustomDateTimeConverter.cs" />
+    <Compile Include="JsonConverter\CustomDecimalConverter.cs" />
+    <Compile Include="JsonConverter\CustomDoubleConverter.cs" />
+    <Compile Include="JsonConverter\CustomerSerialize.cs" />
+    <Compile Include="PredicateBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSACryptoService.cs" />
+    <Compile Include="SystemUtility.cs" />
+    <Compile Include="Utilities\EntityUtils.cs" />
+    <Compile Include="Utilities\NetHelper.cs" />
+    <Compile Include="Utilities\ReturnObject.cs" />
+    <Compile Include="Utilities\ServiceUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\JXGIS.Common.Entity\JXGIS.Common.Entity.csproj">
+      <Project>{4c5247e6-87c1-46c3-ae9e-104657ab5404}</Project>
+      <Name>JXGIS.Common.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

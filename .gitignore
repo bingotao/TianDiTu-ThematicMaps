@@ -3,3 +3,6 @@
 ################################################################################
 
 /JXGIS.Common.BaseLib/obj/Debug
+/JXGIS.Common.Entity/obj/Debug
+/JXGIS.Common.StaticLib/obj/Debug
+/JXGIS.TianDiTuThematicMaps.Business/obj/Debug

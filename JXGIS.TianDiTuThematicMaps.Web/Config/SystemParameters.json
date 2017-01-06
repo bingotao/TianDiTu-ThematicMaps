@@ -1,0 +1,4 @@
+﻿{
+  "Title": "天地图·专题应用",
+  "DbConStr": "Server=127.0.0.1;Database=TianDiTuThematicMapsDB;User Id=thematicmaps;Password=@abcd1234;"
+}
