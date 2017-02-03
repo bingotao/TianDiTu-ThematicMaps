@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterBlank.cshtml";
+}
+
+@Styles.Render("~/education/css")
+@Scripts.Render("~/education/js")
+@Html.React("EduIndex", new { MapConfig = ViewBag.MapConfig })
+@Html.ReactInitJavaScript()

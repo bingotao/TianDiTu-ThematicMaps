@@ -1,0 +1,59 @@
+﻿@import "~/Extends/default.less";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+.edu-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    @header-height: 70px;
+
+    .edu-header {
+        height: @header-height;
+        background: url(/Reference/images/education-header.jpg);
+        box-shadow: @box-shadow-base;
+        z-index: 999;
+        position: relative;
+        border-bottom: 1px solid @border-color-split;
+    }
+
+    .edu-map {
+        position: relative;
+        width: 100%;
+        height: calc(~"100% - @{header-height}");
+        overflow: hidden;
+    }
+}
+
+/* 学校icon样式 */
+
+
+/*
+@x-xq: rgb(252, 85, 85);
+
+.school-icon.x-xq {
+    border-radius: 0;
+    background-color: tint(@x-xq,50%);
+    border-color: @x-xq;
+}
+
+@c-xq: rgb(62, 78, 255);
+
+.school-icon.c-xq {
+    border-radius: 0;
+    background-color: tint(@c-xq,50%);
+    border-color: @c-xq;
+}
+*/

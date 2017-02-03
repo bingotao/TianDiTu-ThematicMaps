@@ -90,7 +90,7 @@ var __events__ = {
                 var l = listeners[i];
                 if (l.ctx !== context) { continue; }
                 if (l.fn === fn) {
-                    l.fn = e=> { return false };
+                    l.fn = function () { return false };
                     typeListeners.count--;
 
                     if (this._isFiring) {

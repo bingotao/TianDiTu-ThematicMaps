@@ -24,7 +24,11 @@ namespace JXGIS.TianDiTuThematicMaps.Web
             //	.SetLoadBabel(false)
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 
-            
+            ReactSiteConfiguration.Configuration
+                .AddScript("~/Reference/antd/antd.min.js")
+                .AddScript("~/Extends/Components/Education/EduMap/EduMap.jsx")
+                .AddScript("~/Extends/Components/Education/EduNav/EduNav.jsx")
+                .AddScript("~/Views/Education/js/Index.jsx");
         }
     }
 }

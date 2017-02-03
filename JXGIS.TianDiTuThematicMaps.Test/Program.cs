@@ -1,4 +1,5 @@
 ﻿using JXGIS.Common.BaseLib;
+using JXGIS.TianDiTuThematicMaps.Business;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,8 @@ namespace JXGIS.Common.Test
     {
         static void Main(string[] args)
         {
-
-
+            var s = LayerUtility.GetSchoolLayers();
+            var ss = Newtonsoft.Json.JsonConvert.SerializeObject(s);
         }
     }
 }

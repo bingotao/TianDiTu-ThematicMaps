@@ -11,6 +11,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web
     {
         private static string _refPath = "~/Reference/";
         private static string _viewPath = "~/Views/";
+        private static string _cmpPath = "~/Extends/Components/";
 
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -35,6 +36,15 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 "~/Extends/CommonJS/commonTool.js",
                 "~/Extends/CommonJS/geoLocation.js"
                 ));
+            #endregion
+
+            #region 教育专题
+            bundles.Add(new BabelBundle("~/education/js")
+                .IncludeDirectory(_cmpPath + "Education", "*.jsx", true)
+                .Include(_viewPath + "Education/js/Index.jsx"));
+            bundles.Add(new LessBundle("~/education/css")
+                .IncludeDirectory(_cmpPath + "Education", "*.less", true)
+                .Include(_viewPath + "Education/css/Index.less"));
             #endregion
         }
     }

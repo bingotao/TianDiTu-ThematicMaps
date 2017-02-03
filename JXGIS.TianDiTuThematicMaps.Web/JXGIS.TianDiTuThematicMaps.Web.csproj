@@ -61,9 +61,10 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Code\ReactDotNetFrame\JXGIS.Common.StaticLib\Lib\EntityFramework.dll</HintPath>
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="JavaScriptEngineSwitcher.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
@@ -169,6 +170,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extends\CommonJS\jsExtends.js" />
+    <Content Include="Extends\Components\Education\EduMap\EduMap.jsx" />
+    <Content Include="Extends\Components\Education\EduNav\EduNav.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
@@ -181,6 +185,8 @@
     <Content Include="Reference\ctfont\iconfont.js" />
     <Content Include="Reference\ctfont\iconfont.svg" />
     <Content Include="Reference\html2canvas.min.js" />
+    <Content Include="Reference\images\education-header.jpg" />
+    <Content Include="Reference\images\travel-header.jpg" />
     <Content Include="Reference\jquery-1.12.4.min.js" />
     <Content Include="Reference\jquery-3.1.1.min.js" />
     <Content Include="Reference\leaflet-plugins\contextmenu\leaflet.contextmenu.min.css" />
@@ -208,6 +214,7 @@
     <Content Include="Reference\react\react-dom.min.js" />
     <Content Include="Reference\react\react.min.js" />
     <Content Include="Reference\store.min.js" />
+    <Content Include="Views\Education\js\Index.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -217,6 +224,7 @@
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\ConfigActionFilter.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,6 +239,10 @@
     <Content Include="Views\Test\css\Index.less" />
     <Content Include="Extends\default.less" />
     <Content Include="Config\SystemParameters.json" />
+    <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Education\css\Index.less" />
+    <Content Include="Extends\Components\Education\EduMap\EduMap.less" />
+    <Content Include="Extends\Components\Education\EduNav\EduNav.less" />
     <Content Include="Reference\ctfont\iconfont.eot" />
     <Content Include="Reference\ctfont\iconfont.ttf" />
     <Content Include="Reference\ctfont\iconfont.woff" />
@@ -243,8 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Extends\Components\" />
-    <Folder Include="Reference\images\" />
     <Folder Include="Reference\leaflet-plugins\miniMap\images\" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +265,10 @@
     <ProjectReference Include="..\JXGIS.Common.Entity\JXGIS.Common.Entity.csproj">
       <Project>{4c5247e6-87c1-46c3-ae9e-104657ab5404}</Project>
       <Name>JXGIS.Common.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JXGIS.TianDiTuThematicMaps.Business\JXGIS.TianDiTuThematicMaps.Business.csproj">
+      <Project>{464a4fc0-bfd7-4d25-a6ce-b06d04d84f75}</Project>
+      <Name>JXGIS.TianDiTuThematicMaps.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,27 @@
+﻿{
+  "Title": "天地图·专题应用",
+  "DbConStr": "Server=127.0.0.1;Database=BroadcastDB;User Id=broadcast;Password=@abcd1234;",
+  "Map": {
+    "InitPosition": {
+      "Zoom": 13,
+      "X": 120.75013160705568,
+      "Y": 30.76366907304589
+    },
+    "ShowBaseLayer": {
+      "Type": "vec",
+      "ShowAnno": true
+    }
+  },
+  "Education": {
+    "Title": "天地图·嘉兴·教育专题",
+    "KeyWords": "天地图,嘉兴,教育",
+    "Description": "",
+    "Favicon": ""
+  },
+  "Driving": {
+    "Title": "天地图·嘉兴·自驾专题",
+    "KeyWords": "天地图,嘉兴,自驾,出行",
+    "Description": "",
+    "Favicon": ""
+  }
+}

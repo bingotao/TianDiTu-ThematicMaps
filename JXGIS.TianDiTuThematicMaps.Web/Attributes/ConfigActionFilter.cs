@@ -17,6 +17,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 var viewBag = filterContext.Controller.ViewBag;
                 viewBag.Title = SystemUtility.Config.Title.ToString();
                 viewBag.BaseUrl = SystemUtility.BaseUrl;
+                viewBag.MapConfig = SystemUtility.Config.Map;
             }
             catch
             {

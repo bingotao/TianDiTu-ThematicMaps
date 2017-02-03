@@ -1,4 +1,60 @@
 ﻿{
   "Title": "天地图·专题应用",
-  "DbConStr": "Server=127.0.0.1;Database=TianDiTuThematicMapsDB;User Id=thematicmaps;Password=@abcd1234;"
+  "DbConStr": "Server=127.0.0.1;Database=BroadcastDB;User Id=broadcast;Password=@abcd1234;",
+  "Map": {
+    "InitPosition": {
+      "Zoom": 13,
+      "X": 120.75013160705568,
+      "Y": 30.76366907304589
+    },
+    "ShowBaseLayer": {
+      "Type": "vec",
+      "ShowAnno": true
+    },
+    "SchoolTipLevel": 16,
+    "Layers": {
+      "y": {
+        "on": true,
+        "text": "幼"
+      },
+      "x": {
+        "on": true,
+        "text": "小"
+      },
+      "c": {
+        "on": true,
+        "text": "初"
+      },
+      "g": {
+        "on": true,
+        "text": "高"
+      },
+      "z": {
+        "on": true,
+        "text": "职"
+      },
+      "t": {
+        "on": true,
+        "text": "特"
+      },
+      "d": {
+        "on": true,
+        "text": "大"
+      },
+      "x_xq": { "on": false },
+      "c_xq": { "on": false }
+    }
+  },
+  "Education": {
+    "Title": "天地图·嘉兴·教育专题",
+    "KeyWords": "天地图,嘉兴,教育",
+    "Description": "",
+    "Favicon": ""
+  },
+  "Driving": {
+    "Title": "天地图·嘉兴·自驾专题",
+    "KeyWords": "天地图,嘉兴,自驾,出行",
+    "Description": "",
+    "Favicon": ""
+  }
 }

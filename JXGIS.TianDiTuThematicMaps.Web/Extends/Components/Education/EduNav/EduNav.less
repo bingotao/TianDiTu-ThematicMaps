@@ -1,0 +1,413 @@
+﻿@import "~/Extends/default.less";
+
+@all: rgb(252, 85, 85);
+@y: rgb(168,168,0);
+@x: rgb(255,85,0);
+@c: rgb(168,0,133);
+@g: rgb(0,77,168);
+@z: rgb(77,116,0);
+@t: rgb(197,0,255);
+@d: rgb(133,0,168);
+@x-xq: rgb(252, 85, 85);
+@c-xq: rgb(62, 78, 255);
+
+.edu-trans {
+    transition: 0.3s ease;
+}
+
+.edu-nav {
+    position: absolute;
+    z-index: 999;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+
+    .edu-navs {
+        background-color: white;
+        box-shadow: @box-shadow-base;
+        padding: 7px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border: 1px solid @border-color-split;
+
+        > div {
+            width: 60px;
+            border-radius: 5px;
+            padding: 3px;
+            text-align: center;
+            cursor: pointer;
+            color: @primary-color;
+            .edu-trans;
+            font-size: 14px;
+            letter-spacing: 2px;
+
+            .iconfont {
+                display: block;
+                height: 36px;
+                width: 44px;
+                line-height: 38px;
+                margin: 0 auto;
+                text-align: center;
+                font-size: 40px;
+            }
+        }
+
+        > div.ct-split {
+            padding: 0;
+            margin: 5px 0;
+            border-top: 1px dotted @border-color-base;
+        }
+
+        > div:hover {
+            color: white;
+            background-color: @primary-color;
+        }
+
+        > div.active {
+            color: white;
+            background-color: @primary-color;
+        }
+    }
+
+    @left: 82px;
+
+    .edu-nav-quicksearch {
+        width: 300px;
+        border: 1px solid @primary-color;
+        position: absolute;
+        top: 0;
+        left: @left;
+        z-index: -1;
+        border-radius: 3px;
+        overflow: hidden;
+
+        input {
+            border: 0;
+            height: 36px;
+            padding: 5px 10px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .anticon-search {
+            position: absolute;
+            height: 100%;
+            background: @primary-color;
+            right: 0;
+            top: 0;
+            text-align: center;
+            width: 40px;
+            line-height: 36px;
+            font-size: 22px;
+            text-indent: 2px;
+            color: white;
+        }
+    }
+
+    .edu-nav-panel {
+
+        > div {
+            position: absolute;
+            background-color: white;
+            left: @left;
+            top: 0;
+            width: 300px;
+            border-radius: 3px;
+            padding: 5px;
+            bottom: 10px;
+            display: none;
+            border: 1px solid @border-color-split;
+            box-shadow: @box-shadow-base;
+
+            .anticon-close-square {
+                position: absolute;
+                top: 10px;
+                right: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                color: tint(@text-color,40%);
+                .edu-trans;
+            }
+
+            .anticon-close-square:hover {
+                color: @primary-color;
+            }
+
+            .edu-nav-panel-header {
+                padding: 5px 10px;
+                border-bottom: 2px solid @primary-color;
+                color: @primary-color;
+                font-size: 16px;
+                letter-spacing: 3px;
+            }
+
+            .edu-nav-panel-container {
+                margin-top: 7px;
+                position: relative;
+                height: calc(~"100% - 40px");
+            }
+        }
+
+        .edu-layers {
+            width: 260px;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin: 0 auto;
+
+            .edu-layergroup {
+                h3 {
+                    width: calc(~'100% - 20px');
+                    margin: 20px auto 5px;
+                    color: @primary-color;
+                    font-size: 15px;
+                    background-color: #f7f7f7;
+                    padding: 5px 20px;
+                    letter-spacing: 5px;
+                    transform: skewX(-20deg);
+                    border-bottom-right-radius: 8px;
+                    border-top-left-radius: 8px;
+                }
+
+                div {
+                    width: 200px;
+                    margin: 0 auto;
+                    padding: 5px 10px;
+                    font-size: 15px;
+                    display: flex;
+                    align-items: center;
+                    letter-spacing: 2px;
+
+                    .edu-layer-title {
+                        position: relative;
+                        display: inline-block;
+                        padding: 0 10px;
+                        width: 120px;
+                        text-align: center;
+                    }
+                }
+
+                .edu-icon {
+                    display: inline-block;
+                    height: 22px;
+                    width: 22px;
+                    text-align: center;
+                    line-height: 16px;
+                    font-size: 12px;
+                    border-radius: 50%;
+                    border: 2px solid;
+                    color: white;
+                    text-indent: 2px;
+                }
+
+
+
+                .edu-icon.y {
+                    background-color: @y;
+                    border-color: tint(@y,50%);
+                }
+
+
+
+                .edu-icon.x {
+                    background-color: @x;
+                    border-color: tint(@x,50%);
+                }
+
+
+
+                .edu-icon.c {
+                    background-color: @c;
+                    border-color: tint(@c,50%);
+                }
+
+
+
+                .edu-icon.g {
+                    background-color: @g;
+                    border-color: tint(@g,50%);
+                }
+
+
+
+                .edu-icon.z {
+                    background-color: @z;
+                    border-color: tint(@z,50%);
+                }
+
+
+
+                .edu-icon.t {
+                    background-color: @t;
+                    border-color: tint(@t,50%);
+                }
+
+
+
+                .edu-icon.d {
+                    background-color: @d;
+                    border-color: tint(@d,50%);
+                }
+
+
+
+                .edu-icon.x-xq {
+                    border-radius: 0;
+                    background-color: tint(@x-xq,50%);
+                    border-color: @x-xq;
+                }
+
+
+
+                .edu-icon.c-xq {
+                    border-radius: 0;
+                    background-color: tint(@c-xq,50%);
+                    border-color: @c-xq;
+                }
+            }
+        }
+
+        .edu-search-school {
+            padding: 5px;
+
+            .edu-search-filter {
+                position: absolute;
+                width: 60px;
+                left: -5px;
+                top: 50px;
+
+                > div {
+                    position: relative;
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 5px 0;
+                    font-size: 14px;
+                    border-top: 1px solid @border-color-split;
+                    .edu-trans;
+                }
+
+                > div:last-child {
+                    border-bottom: 1px solid @border-color-split;
+                }
+
+                > div.active, > div:hover {
+                    background-color: tint(@primary-color,10%);
+                    color: white;
+                }
+            }
+
+            .edu-search-results {
+                position: absolute;
+                left: 55px;
+                top: 50px;
+                bottom: 0;
+                right: -5px;
+                border-left: 1px solid @border-color-split;
+                border-top: 1px solid @border-color-split;
+            }
+        }
+
+        .edu-search-schoolarea {
+            padding: 5px;
+
+            .edu-search-results {
+                position: absolute;
+                top: 50px;
+                bottom: 3px;
+                left: 0;
+                right: 0;
+                border-top: 1px solid @border-color-split;
+                overflow-x: hidden;
+                overflow-y: visible;
+            }
+        }
+
+        > div.active {
+            display: block;
+        }
+    }
+
+    .edu-search-group {
+        width: 270px;
+        margin: 0 auto;
+
+        .ant-input-suffix {
+            line-height: 38px;
+
+            .anticon-search {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.ct-badge {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    font-size: 12px;
+    color: white;
+    padding: 0 5px;
+    border-radius: 3px 0 0 3px;
+    /*transform: translateY(-50%);*/
+    z-index: 9;
+    opacity: 0.7;
+    background-color: tint(@green,10%);
+    /*.edu-trans;*/
+}
+
+.edu-search-filter > div:hover .ct-badge, .edu-search-filter > div.active .ct-badge {
+    opacity: 1;
+}
+
+/*.ct-badge-all {
+    background-color: @all;
+}
+
+.ct-badge-y {
+    background-color: @y;
+}
+
+.ct-badge-x {
+    background-color: @x;
+}
+
+.ct-badge-c {
+    background-color: @c;
+}
+
+.ct-badge-g {
+    background-color: @g;
+}
+
+.ct-badge-z {
+    background-color: @z;
+}
+
+.ct-badge-t {
+    background-color: @t;
+}
+
+.ct-badge-d {
+    background-color: @d;
+}*/
+
+/*leaflet*/
+.leaflet-control-scale-line {
+    color: black;
+    border-color: black;
+    background-color: rgba(255, 255, 255, 0);
+    height: 10px;
+    line-height: 0;
+    overflow: visible;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+
+.leaflet-bottom.leaflet-left .leaflet-control-scale.leaflet-control {
+    left: 10px;
+    bottom: 5px;
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JXGIS.Common.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace JXGIS.Common.BaseLib
             modelBuilder.HasDefaultSchema("dbo");
         }
 
+        public DbSet<EduSchool> EduSchool { get; set; }
     }
 }

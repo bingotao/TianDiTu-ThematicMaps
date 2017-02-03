@@ -1,24 +1,19 @@
-﻿@blue-6: #108ee9;
-@purple-6: #7265E6;
-@cyan-6: #00A2AE;
-@green-6: #00A854;
-@pink-6: #f5317f;
-@red-6: #F04134;
-@orange-6: #F56A00;
-@yellow-6: #ffbf00;
-
-// Prefix
-@ant-prefix             : ant;
+﻿@blue: #108ee9;
+@purple: #7265E6;
+@cyan: #00A2AE;
+@green: #00A854;
+@pink: #f5317f;
+@red: #F04134;
+@orange: #F56A00;
+@yellow: #ffbf00;
 
 // Color
-@primary-color          : @blue-6;
-@success-color          : @green-6;
-@error-color            : @red-6;
-@highlight-color        : @red-6;
-@warning-color          : @yellow-6;
+@primary-color          : @blue;
+@success-color          : @green;
+@error-color            : @red;
+@highlight-color        : @red;
+@warning-color          : @yellow;
 @normal-color           : #d9d9d9;
-
-@primary-6: @primary-color;                                 // don't use, use @primary-color
 
 // ------ Base & Require ------
 @body-background        : #fff;
@@ -34,16 +29,6 @@
 @line-height-base       : 1.5;
 @border-radius-base     : 4px;
 @border-radius-sm       : 2px;
-
-// ICONFONT
-@iconfont-css-prefix    : anticon;
-@icon-url               : "https://at.alicdn.com/t/font_r5u29ls31bgldi";
-
-// LINK
-@link-color             : @primary-color;
-@link-hover-color       : @primary-6;
-@link-active-color      : @primary-6;
-@link-hover-decoration  : none;
 
 // Animation
 @ease-out            : cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -80,36 +65,6 @@
 @shadow-1-right         : 1px 0 6px @shadow-color;
 @shadow-2               : 0 2px 8px @shadow-color;
 
-// Buttons
-@btn-font-weight        : 500;
-@btn-border-radius-base : @border-radius-base;
-@btn-border-radius-sm   : @border-radius-sm;
-
-@btn-primary-color      : #fff;
-@btn-primary-bg         : @primary-color;
-@btn-group-border       : @primary-6;
-
-@btn-default-color      : @text-color;
-@btn-default-bg         : @background-color-base;
-@btn-default-border     : @border-color-base;
-
-@btn-ghost-color        : @text-color;
-@btn-ghost-bg           : transparent;
-@btn-ghost-border       : @border-color-base;
-
-@btn-disable-color      : @disabled-color;
-@btn-disable-bg         : @background-color-base;
-@btn-disable-border     : @border-color-base;
-
-@btn-padding-base       : 4px 15px;
-@btn-font-size-lg       : @font-size-lg;
-@btn-padding-lg         : 4px 15px 5px 15px;
-@btn-padding-sm         : 1px 7px;
-
-@btn-circle-size        : 28px;
-@btn-circle-size-lg     : 32px;
-@btn-circle-size-sm     : 22px;
-
 // Media queries breakpoints
 // Extra small screen / phone
 @screen-xs              : 480px;
@@ -135,85 +90,7 @@
 @grid-columns           : 24;
 @grid-gutter-width      : 0;
 
-// Layout
-@layout-body-background    : #ececec;
-@layout-header-background  : @heading-color;
-@layout-header-height      : 64px;
-@layout-header-padding     : 0 50px;
-@layout-footer-padding     : 24px 50px;
-@layout-sider-background   : @heading-color;
-@layout-content-margin     : 24px;
-@layout-trigger-height     : 48px;
-
-// z-index list
-@zindex-affix           : 10;
-@zindex-back-top        : 10;
-@zindex-modal-mask      : 1000;
-@zindex-modal           : 1000;
-@zindex-notification    : 1010;
-@zindex-message         : 1010;
-@zindex-popover         : 1030;
-@zindex-picker          : 1050;
-@zindex-dropdown        : 1050;
-@zindex-tooltip         : 1060;
-
 // Animation
 @animation-duration-slow: .3s; // Modal
 @animation-duration-base: .2s;
 @animation-duration-fast: .1s; // Tooltip
-
-// Form
-// ---
-@label-required-color        : @highlight-color;
-@label-color                 : @text-color;
-@form-item-margin-bottom     : 24px;
-
-// Input
-// ---
-@input-height-base           : 28px;
-@input-height-lg             : 32px;
-@input-height-sm             : 22px;
-@input-padding-horizontal    : 7px;
-@input-padding-vertical-base : 4px;
-@input-padding-vertical-sm   : 1px;
-@input-padding-vertical-lg   : 6px;
-@input-placeholder-color     : #ccc;
-@input-color                 : @text-color;
-@input-border-color          : @border-color-base;
-@input-bg                    : #fff;
-@input-hover-border-color    : @primary-color;
-@input-disabled-bg           : @background-color-base;
-
-// Tooltip
-// ---
-//* Tooltip max width
-@tooltip-max-width: 250px;
-//** Tooltip text color
-@tooltip-color: #fff;
-//** Tooltip background color
-@tooltip-bg: rgba(64, 64, 64, .85);
-//** Tooltip arrow width
-@tooltip-arrow-width: 5px;
-//** Tooltip distance with trigger
-@tooltip-distance: @tooltip-arrow-width - 1 + 4;
-//** Tooltip arrow color
-@tooltip-arrow-color: @tooltip-bg;
-
-// Popover
-// ---
-//** Popover body background color
-@popover-bg: #fff;
-//** Popover maximum width
-@popover-min-width: 177px;
-//** Popover arrow width
-@popover-arrow-width: 4px;
-//** Popover arrow color
-@popover-arrow-color: @popover-bg;
-//** Popover outer arrow width
-@popover-arrow-outer-width: (@popover-arrow-width + 1);
-//** Popover outer arrow color
-@popover-arrow-outer-color: fadeout(@border-color-base, 30%);
-
-// Progress
-// --
-@process-default-color: @primary-color;
