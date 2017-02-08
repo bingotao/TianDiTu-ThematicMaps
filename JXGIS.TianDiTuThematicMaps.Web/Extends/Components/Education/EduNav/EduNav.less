@@ -295,30 +295,53 @@
                     color: white;
                 }
             }
+        }
 
-            .edu-search-results {
-                position: absolute;
-                left: 55px;
-                top: 50px;
-                bottom: 0;
-                right: -5px;
-                border-left: 1px solid @border-color-split;
+
+        .edu-search-results {
+            position: absolute;
+            left: 55px;
+            top: 50px;
+            bottom: 0;
+            right: -5px;
+            border-left: 1px solid @border-color-split;
+            border-top: 1px solid @border-color-split;
+
+            .edu-results-rows {
+                height: e('calc(100% - 40px)');
+                overflow-x: hidden;
+                overflow-y: scroll;
+                margin: 5px;
+                margin-right: 2px;
+            }
+
+            .edu-results-pagination {
+                height: 30px;
+                text-align: center;
+                vertical-align: middle;
                 border-top: 1px solid @border-color-split;
+
+                .ant-pagination {
+                    transform: translateY(4px);
+                    display: inline-block;
+                }
             }
         }
+
+
 
         .edu-search-schoolarea {
             padding: 5px;
 
             .edu-search-results {
                 position: absolute;
-                top: 50px;
+                top: 45px;
                 bottom: 3px;
                 left: 0;
                 right: 0;
                 border-top: 1px solid @border-color-split;
-                overflow-x: hidden;
-                overflow-y: visible;
+                border-left: 0;
+                overflow: hidden;
             }
         }
 

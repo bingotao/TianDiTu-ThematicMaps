@@ -16,8 +16,9 @@ namespace JXGIS.Common.Test
     {
         static void Main(string[] args)
         {
-            var s = LayerUtility.GetSchoolLayers();
-            var ss = Newtonsoft.Json.JsonConvert.SerializeObject(s);
+            //var s = LayerUtility.GetSchoolLayers();
+            //var ss = Newtonsoft.Json.JsonConvert.SerializeObject(s);
+            SchoolSearchUtils.GetSchools("小学", "g", 1, 10);
         }
     }
 }

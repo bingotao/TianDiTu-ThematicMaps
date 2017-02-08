@@ -3,7 +3,8 @@
         super(props);
 
         this.opts = {
-            mapConfig: props.mapConfig
+            mapConfig: props.mapConfig,
+            eduConfig: props.eduConfig
         };
 
     }
@@ -28,6 +29,7 @@
         //init map
         map = L.map(this.refs.mapDOM, {
             attributionControl: false,
+            zoomControl: false,
             center: [
                 mapConfig.InitPosition.Y,
                 mapConfig.InitPosition.X
@@ -42,7 +44,12 @@
         });
         map.on('zoomend', this.changeSchoolTip.bind(this));
 
-        map.zoomControl.setPosition('bottomright');
+        L.control.zoom({
+            position: 'topright',
+            zoomInTitle: '放大',
+            zoomOutTitle: '缩小'
+        }).addTo(map);
+
         L.control.scale({ imperial: false }).addTo(map);
         this.map = map;
         var showBaseLayer = mapConfig.ShowBaseLayer;
@@ -52,7 +59,7 @@
     changeSchoolTip(e) {
         var zoom = this.map.getZoom();
         var cls = "schooltip-on";
-        zoom >= (this.opts.mapConfig.SchoolTipLevel || 16) ?
+        zoom >= (this.opts.eduConfig.SchoolTipLevel || 16) ?
         this.$map.addClass(cls) : this.$map.removeClass(cls);
     }
 
@@ -81,7 +88,7 @@
     }
 
     addLayers(layers) {
-        var layerCfg = this.opts.mapConfig.Layers;
+        var layerCfg = this.opts.eduConfig.Layers;
         for(let layer of layers) {
             var cfg = layerCfg[layer.SType];
             if (cfg) {
@@ -101,9 +108,26 @@
                         }
                     }
                 }).addTo(this.map);
+
+                if (layer.SType === "x_xq" || layer.SType === "c_xq") {
+                    //绑定学区popup
+                } else {
+                    //绑定学校popup
+                    var popup = EduSchoolPopup.getPopup();
+                    cfg.layer
+                       .bindPopup(popup)
+                       .on('popupopen', function (e) {
+                           this.setSchoolPopupContent(e.layer.feature.properties);
+                       }.bind(this));
+                }
+
                 cfg.on ? this.turnLayerOn(layer.SType) : this.turnLayerOff(layer.SType);
             }
         }
+    }
+
+    setSchoolPopupContent(content) {
+        EduSchoolPopup.getPopupContent().setContent(content);
     }
 
     turnLayer(type, on) {
@@ -122,11 +146,17 @@
         this.$map = $('#map');
         this.initMap();
         this.initLayers();
+
+        this.refs.rLayerToggle.on('change', function (e) {
+            var bVec = e.data.vec;
+            this.showBaseLayer(bVec ? 'vec' : 'img', true);
+        }.bind(this));
     }
 
     render() {
         return (
         <div className="edu-map">
+            <EduBaseLayerToggle ref='rLayerToggle' vec={this.opts.mapConfig.ShowBaseLayer.Type == 'vec'} />
             <div id="map" ref="mapDOM"></div>
         </div>);
     }

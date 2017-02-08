@@ -15,6 +15,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         public ActionResult Index()
         {
             var eduConfig = SystemUtility.Config.Education;
+            ViewBag.EducationConfig = eduConfig;
             ViewBag.Title = eduConfig.Title;
             ViewBag.KeyWords = eduConfig.KeyWords;
             ViewBag.Description = eduConfig.Description;

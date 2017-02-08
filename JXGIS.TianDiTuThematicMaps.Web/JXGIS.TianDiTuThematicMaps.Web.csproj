@@ -171,8 +171,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extends\CommonJS\jsExtends.js" />
+    <Content Include="Extends\Components\Education\EduBaseLayerToggle\EduBaseLayerToggle.jsx" />
     <Content Include="Extends\Components\Education\EduMap\EduMap.jsx" />
     <Content Include="Extends\Components\Education\EduNav\EduNav.jsx" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolDistrictPopup.jsx" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
@@ -246,6 +249,9 @@
     <Content Include="Reference\ctfont\iconfont.eot" />
     <Content Include="Reference\ctfont\iconfont.ttf" />
     <Content Include="Reference\ctfont\iconfont.woff" />
+    <Content Include="Extends\Components\Education\EduBaseLayerToggle\EduBaseLayerToggle.less" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.less" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolDistrictPopup.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

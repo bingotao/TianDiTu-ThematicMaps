@@ -10,7 +10,13 @@
     "ShowBaseLayer": {
       "Type": "vec",
       "ShowAnno": true
-    },
+    }
+  },
+  "Education": {
+    "Title": "天地图·嘉兴·教育专题",
+    "KeyWords": "天地图,嘉兴,教育",
+    "Description": "",
+    "Favicon": "",
     "SchoolTipLevel": 16,
     "Layers": {
       "y": {
@@ -44,12 +50,6 @@
       "x_xq": { "on": false },
       "c_xq": { "on": false }
     }
-  },
-  "Education": {
-    "Title": "天地图·嘉兴·教育专题",
-    "KeyWords": "天地图,嘉兴,教育",
-    "Description": "",
-    "Favicon": ""
   },
   "Driving": {
     "Title": "天地图·嘉兴·自驾专题",

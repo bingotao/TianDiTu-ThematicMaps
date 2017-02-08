@@ -25,8 +25,12 @@ namespace JXGIS.TianDiTuThematicMaps.Business
                                              {
                                                  properties = new EduSchool
                                                  {
+                                                     ID = c.ID,
                                                      Name = c.Name,
                                                      SchoolType = c.SchoolType,
+                                                     County = c.County,
+                                                     Street = c.Street,
+                                                     Email = c.Email,
                                                      ShortName = c.ShortName,
                                                      SType = c.SType,
                                                      Address = c.Address,

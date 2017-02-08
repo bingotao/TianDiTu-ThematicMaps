@@ -32,8 +32,8 @@ class EduIndex extends React.Component {
         return (
         <div className="edu-main">
             <EduHeader ref="eduHeader" />
-            <EduMap ref="eduMap" mapConfig={this.props.MapConfig} />
-            <EduNav ref="eduNav" mapConfig={this.props.MapConfig} />
+            <EduMap ref="eduMap" mapConfig={this.props.MapConfig} eduConfig={this.props.EducationConfig} />
+            <EduNav ref="eduNav" mapConfig={this.props.MapConfig} eduConfig={this.props.EducationConfig} />
         </div>);
     }
 }

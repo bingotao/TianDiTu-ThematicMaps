@@ -95,4 +95,10 @@
         line-height: 36px;
     }
 
+.leaflet-popup-content-wrapper {
+    border-radius: 3px;
+}
 
+.leaflet-popup-content {
+    margin: 20px 10px 10px 10px;
+}

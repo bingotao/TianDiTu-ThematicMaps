@@ -4,41 +4,34 @@
         this.state = {
             kdt: {
                 on: false,
-                layers: props.mapConfig.Layers
+                layers: props.eduConfig.Layers
             },
             sxx: {
+                searchText: '',
                 on: false,
                 filters: {
                     all: {
-                        count: 211,
                         on: true
                     },
                     y: {
-                        count: 10,
                         on: false
                     },
                     x: {
-                        count: 22,
                         on: false
                     },
                     c: {
-                        count: 31,
                         on: false
                     },
                     g: {
-                        count: 2,
                         on: false
                     },
                     z: {
-                        count: 7,
                         on: false
                     },
                     t: {
-                        count: 1,
                         on: false
                     },
                     d: {
-                        count: 8,
                         on: false
                     }
                 }
@@ -50,6 +43,7 @@
                 on: false
             }
         };
+
     }
 
     select(target, callback) {
@@ -149,16 +143,23 @@
                         <div className="edu-search-school">
                             <antd.Input.Search ref="schoolSearch" size="large" className="edu-search-group" placeholder="请输入学校名称..." />
                             <div className="edu-search-filter">
-                                <div className={s.sxx.filters.all.on?aCls:ept} onClick={e=>this.schoolFilter('all')}>全部{s.sxx.filters.all.count ? <span className="ct-badge ct-badge-all">{s.sxx.filters.all.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.y.on ? aCls : ept} onClick={e=>this.schoolFilter('y')}>幼儿园{s.sxx.filters.y.count ? <span className="ct-badge ct-badge-y">{s.sxx.filters.y.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.x.on ? aCls : ept} onClick={e=>this.schoolFilter('x')}>小学{s.sxx.filters.x.count ? <span className="ct-badge ct-badge-x">{s.sxx.filters.x.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.c.on ? aCls : ept} onClick={e=>this.schoolFilter('c')}>初中{s.sxx.filters.c.count ? <span className="ct-badge ct-badge-c">{s.sxx.filters.c.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.g.on ? aCls : ept} onClick={e=>this.schoolFilter('g')}>高中{s.sxx.filters.g.count ? <span className="ct-badge ct-badge-g">{s.sxx.filters.g.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.z.on ? aCls : ept} onClick={e=>this.schoolFilter('z')}>职高{s.sxx.filters.z.count ? <span className="ct-badge ct-badge-z">{s.sxx.filters.z.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.t.on ? aCls : ept} onClick={e=>this.schoolFilter('t')}>特殊<br />教育{s.sxx.filters.t.count ? <span className="ct-badge ct-badge-t">{s.sxx.filters.t.count}</span> : ept}</div>
-                                <div className={s.sxx.filters.d.on ? aCls : ept} onClick={e=>this.schoolFilter('d')}>高等<br />院校{s.sxx.filters.d.count ? <span className="ct-badge ct-badge-d">{s.sxx.filters.d.count}</span> : ept}</div>
+                                <div className={s.sxx.filters.all.on?aCls:ept} onClick={e=>this.schoolFilter('all')}>全部</div>
+                                <div className={s.sxx.filters.y.on ? aCls : ept} onClick={e=>this.schoolFilter('y')}>幼儿园</div>
+                                <div className={s.sxx.filters.x.on ? aCls : ept} onClick={e=>this.schoolFilter('x')}>小学</div>
+                                <div className={s.sxx.filters.c.on ? aCls : ept} onClick={e=>this.schoolFilter('c')}>初中</div>
+                                <div className={s.sxx.filters.g.on ? aCls : ept} onClick={e=>this.schoolFilter('g')}>高中</div>
+                                <div className={s.sxx.filters.z.on ? aCls : ept} onClick={e=>this.schoolFilter('z')}>职高</div>
+                                <div className={s.sxx.filters.t.on ? aCls : ept} onClick={e=>this.schoolFilter('t')}>特殊<br />教育</div>
+                                <div className={s.sxx.filters.d.on ? aCls : ept} onClick={e=>this.schoolFilter('d')}>高等<br />院校</div>
                             </div>
-                            <div className="edu-search-results"></div>
+                            <div className="edu-search-results">
+                                <div className="edu-results-rows">
+
+                                </div>
+                                <div className="edu-results-pagination">
+                                    <antd.Pagination simple defaultCurrent={1} total={5000} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,10 +169,19 @@
                         查学区
                     </h3>
                     <div className="edu-nav-panel-container">
-                        <div className="edu-search-schoolarea">
-                            <antd.Input.Search ref="schoolSearchArea" size="large" className="edu-search-group" placeholder="请输入学校或小区名称..." />
-                            <div className="edu-search-results"></div>
-                        </div>
+                        <antd.Spin tip='加载中...'>
+                            <div className="edu-search-schoolarea">
+                                <antd.Input.Search ref="schoolSearchArea" size="large" className="edu-search-group" placeholder="请输入学校或小区名称..." />
+                                <div className="edu-search-results">
+                                    <div className="edu-results-rows">
+
+                                    </div>
+                                    <div className="edu-results-pagination">
+                                        <antd.Pagination simple defaultCurrent={1} total={5000} />
+                                    </div>
+                                </div>
+                            </div>
+                        </antd.Spin>
                     </div>
                 </div>
                 <div className={s.qtzt.on ? aCls : ept}>
