@@ -5,77 +5,55 @@
 
     h3 {
         color: @primary-color;
-        padding-bottom: 5px;
+        padding-bottom: 2px;
+        margin-bottom: 5px;
         font-size: 16px;
         position: relative;
+        border-bottom: 2px solid;
 
         span {
-            position: absolute;
-            right: 0;
-            bottom: 5px;
-            font-size: 12px;
-            color: white;
-            margin-left: 10px;
-            padding: 2px 5px;
-            border-radius: 5px;
-        }
-
-        @y: rgb(168,168,0);
-        @x: rgb(255,85,0);
-        @c: rgb(168,0,133);
-        @g: rgb(0,77,168);
-        @z: rgb(77,116,0);
-        @t: rgb(197,0,255);
-        @d: rgb(133,0,168);
-
-        .badge_y {
-            background-color: @y;
-        }
-
-        .badge_x {
-            background-color: @x;
-        }
-
-        .badge_c {
-            background-color: @c;
-        }
-
-        .badge_g {
-            background-color: @g;
-        }
-
-        .badge_ z {
-            background-color: @z;
-        }
-
-        .badge_t {
-            background-color: @t;
-        }
-
-        .badge_d {
-            background-color: @d;
+            display: inline-block !important;
+            transform: translateY(-2px);
+            margin-right: 5px;
         }
     }
 
-    table {
-        border: 1px solid @border-color-split;
-        border-collapse: collapse;
+    > div {
+        font-size: 14px;
+        display: flex;
+        line-height: 22px;
 
-        th, td {
-            border: 1px solid @border-color-split;
-            font-size: 14px;
-            padding: 5px;
+        i {
+            margin-top: 5px;
+            margin-left: 5px;
+            color: #888;
         }
 
-        th {
-            text-align: center;
+        span {
+            margin-left: 5px;
+
+            a {
+                color: @primary-color;
+            }
         }
     }
 
-    > a {
-        display: block;
+    > div:last-child {
         text-align: center;
-        padding-top: 10px;
-        letter-spacing: 2px;
+        border-top: 1px solid @primary-color;
+        margin-top: 5px;
+        line-height: 10px;
+        padding-top: 8px;
+        width: 100%;
+        display: inline-block;
+
+        a {
+            color: @primary-color;
+            display: inline-block;
+            text-align: center;
+            width: 80px;
+            letter-spacing: 4px;
+            font-size: 12px;
+        }
     }
 }

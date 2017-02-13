@@ -57,7 +57,7 @@ class A extends React.Component {
 
         this.events = props.events;
 
-       
+
     }
 
     render() {
@@ -83,16 +83,43 @@ class A extends React.Component {
     }
 }
 
-ReactDOM.render(<A events={{
-        onClick: function (data, e) {
-            console.log(data);
-        },
-        onBtnClick: function (data, e) {
-            console.log(data);
-            e.stopPropagation();
-        },
-        onItemClick: function (data, e) {
-            console.log(data);
-        }
+//ReactDOM.render(<A events={{
+//        onClick: function (data, e) {
+//            console.log(data);
+//        },
+//        onBtnClick: function (data, e) {
+//            console.log(data);
+//            e.stopPropagation();
+//        },
+//        onItemClick: function (data, e) {
+//            console.log(data);
+//        }
+//    }
+//} />, document.getElementById('app'));
+
+
+class C extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'chentao',
+            schools: {
+                xx: 'ds',
+                highSchool: 'guangde'
+            }
+        };
     }
-} />, document.getElementById('app'));
+
+    render() {
+        var s = this.state;
+        return (
+        <div>
+            {s.name}<br />
+            {s.schools.xx}<br />
+            {s.schools.highSchool}
+        </div>
+        );
+    }
+}
+
+c = ReactDOM.render(<C />, document.getElementById('app'));

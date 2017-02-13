@@ -20,3 +20,4 @@ E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.TianDiTuTh
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.TianDiTuThematicMaps.Test\obj\Debug\JXGIS.Common.Test.pdb
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.TianDiTuThematicMaps.Test\bin\Debug\Config\SystemParameters.json
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.TianDiTuThematicMaps.Test\bin\Debug\EntityFramework.SqlServer.dll
+E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.TianDiTuThematicMaps.Test\bin\Debug\GeoJSON4EntityFramework.dll

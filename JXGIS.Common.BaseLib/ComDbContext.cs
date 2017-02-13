@@ -19,7 +19,7 @@ namespace JXGIS.Common.BaseLib
 
         public ComDbContext()
         {
-            this._connectionString = SystemUtility.Config.DbConStr;
+            this._connectionString = SystemUtils.Config.DbConStr;
             this._DBAdapter = new SqlDataAdapter();
             this._connection = new SqlConnection(this._connectionString);
 

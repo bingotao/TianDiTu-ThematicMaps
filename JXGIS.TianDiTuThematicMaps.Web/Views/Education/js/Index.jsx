@@ -23,8 +23,11 @@ class EduIndex extends React.Component {
         eduNav = this.refs.eduNav;
 
         eduNav.on('layerChange', function (e) {
-            //console.log(e);
             eduMap.turnLayer(e.data.layerType, e.data.visible);
+        });
+
+        eduNav.on('schoolItemClick', function (e) {
+            eduMap.showSchoolPopup(e.data);
         });
     }
 

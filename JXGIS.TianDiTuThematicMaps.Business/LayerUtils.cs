@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace JXGIS.TianDiTuThematicMaps.Business
 {
-    public class LayerUtility
+    public class LayerUtils
     {
         public static List<SchoolLayer> GetSchoolLayers()
         {
-            var schools = SystemUtility.EFDbContext.EduSchool.ToList();
+            var schools = SystemUtils.EFDbContext.EduSchool.ToList();
 
             var schoolLayer = from s in schools
                               group s by new { s.SchoolType, s.SType } into g
@@ -47,6 +47,17 @@ namespace JXGIS.TianDiTuThematicMaps.Business
             return schoolLayer.ToList();
         }
 
-
+        public static List<SchoolAreaLayer> GetSchoolAreaLayers()
+        {
+            var schoolAreas = SystemUtils.EFDbContext.EduSchoolArea.ToList();
+            var layers = (from sa in schoolAreas
+                          group sa by sa.SType into g
+                          select new SchoolAreaLayer()
+                          {
+                              SType = g.Key,
+                              SchoolAreas = g.ToList()
+                          }).ToList();
+            return layers;
+        }
     }
 }

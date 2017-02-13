@@ -81,11 +81,11 @@
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSACryptoService.cs" />
-    <Compile Include="SystemUtility.cs" />
+    <Compile Include="SystemUtils.cs" />
     <Compile Include="Utilities\EntityUtils.cs" />
     <Compile Include="Utilities\NetHelper.cs" />
     <Compile Include="Utilities\ReturnObject.cs" />
-    <Compile Include="Utilities\ServiceUtilities.cs" />
+    <Compile Include="Utilities\ServiceUtils.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

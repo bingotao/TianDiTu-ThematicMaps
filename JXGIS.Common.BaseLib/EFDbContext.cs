@@ -11,7 +11,7 @@ namespace JXGIS.Common.BaseLib
     public class EFDbContext : DbContext
     {
 
-        public EFDbContext() : base((string)SystemUtility.Config.DbConStr)
+        public EFDbContext() : base((string)SystemUtils.Config.DbConStr)
         {
             this.Database.Initialize(false);
         }
@@ -23,5 +23,7 @@ namespace JXGIS.Common.BaseLib
         }
 
         public DbSet<EduSchool> EduSchool { get; set; }
+
+        public DbSet<EduSchoolArea> EduSchoolArea { get; set; }
     }
 }

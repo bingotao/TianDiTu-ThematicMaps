@@ -8,7 +8,7 @@ using System.Web;
 
 namespace JXGIS.Common.BaseLib
 {
-    public static class SystemUtility
+    public static class SystemUtils
     {
         private static readonly object _lockObject1 = new object();
         private static readonly object _lockObject2 = new object();
@@ -51,10 +51,10 @@ namespace JXGIS.Common.BaseLib
         {
             get
             {
-                if (SystemUtility._ComDbContext == null)
+                if (SystemUtils._ComDbContext == null)
                     lock (_lockObject2)
-                        SystemUtility._ComDbContext = new ComDbContext();
-                return SystemUtility._ComDbContext;
+                        SystemUtils._ComDbContext = new ComDbContext();
+                return SystemUtils._ComDbContext;
             }
         }
 
@@ -62,10 +62,10 @@ namespace JXGIS.Common.BaseLib
         {
             get
             {
-                if (SystemUtility._EFDbContext == null)
+                if (SystemUtils._EFDbContext == null)
                     lock (_lockObject3)
-                        SystemUtility._EFDbContext = new EFDbContext();
-                return SystemUtility._EFDbContext;
+                        SystemUtils._EFDbContext = new EFDbContext();
+                return SystemUtils._EFDbContext;
             }
         }
     }

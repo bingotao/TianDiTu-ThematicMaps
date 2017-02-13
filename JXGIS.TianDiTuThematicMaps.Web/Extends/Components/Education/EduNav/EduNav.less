@@ -310,7 +310,7 @@
             .edu-results-rows {
                 height: e('calc(100% - 40px)');
                 overflow-x: hidden;
-                overflow-y: scroll;
+                overflow-y: auto;
                 margin: 5px;
                 margin-right: 2px;
             }
@@ -328,7 +328,43 @@
             }
         }
 
+        .edu-school {
+            /*background-color: #f7f7f7;*/
+            padding: 5px 10px;
+            margin: 5px 5px 3px 0;
+            border: 1px solid @border-color-split;
+            border-radius: 3px;
+            transition: 0.3s ease;
+            cursor: pointer;
 
+            .edu-school-header {
+                font-size: 15px;
+                color: @primary-color;
+
+                .school-icon {
+                    display: inline-block;
+                    margin-right: 5px;
+                    transform: translateY(-2px);
+                }
+            }
+
+            .edu-school-content {
+                display: flex;
+
+                > span {
+                    margin-left: 5px;
+                }
+
+                > i {
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        .edu-school:hover {
+            box-shadow: @box-shadow-base;
+            transform: translateY(-3px);
+        }
 
         .edu-search-schoolarea {
             padding: 5px;

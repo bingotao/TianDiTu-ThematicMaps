@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GeoJSON4EntityFramework">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\GeoJSON4EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\JXGIS.Common.StaticLib\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -52,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\EduSchool.cs" />
+    <Compile Include="Domain\EduSchoolArea.cs" />
     <Compile Include="Extend\Layer.cs" />
+    <Compile Include="Extend\SchoolAreaLayer.cs" />
     <Compile Include="Extend\SchoolLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

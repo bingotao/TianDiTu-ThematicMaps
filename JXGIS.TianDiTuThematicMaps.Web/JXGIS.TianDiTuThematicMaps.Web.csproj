@@ -198,6 +198,7 @@
     <Content Include="Reference\leaflet-plugins\draw\leaflet.draw-src.js" />
     <Content Include="Reference\leaflet-plugins\draw\leaflet.draw.css" />
     <Content Include="Reference\leaflet-plugins\draw\leaflet.draw.js" />
+    <Content Include="Reference\leaflet-plugins\esri\esri-leaflet.js" />
     <Content Include="Reference\leaflet-plugins\fullScreen\Control.FullScreen.css" />
     <Content Include="Reference\leaflet-plugins\fullScreen\Control.FullScreen.js" />
     <Content Include="Reference\leaflet-plugins\fullScreen\icon-fullscreen-2x.png" />

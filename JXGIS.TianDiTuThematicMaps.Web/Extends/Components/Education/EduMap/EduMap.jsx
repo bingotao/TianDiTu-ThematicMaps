@@ -38,7 +38,7 @@
                 opts.baseLayers.vec.base,
                 opts.baseLayers.vec.anno,
                 opts.baseLayers.img.base,
-                opts.baseLayers.img.anno,
+                opts.baseLayers.img.anno
             ],
             zoom: mapConfig.InitPosition.Zoom
         });
@@ -87,6 +87,22 @@
         }.bind(this));
     }
 
+    getSchoolIcon(stype, always) {
+        if (always) {
+            return L.divIcon({ className: "school-icon always " + stype, iconSize: [22, 22] });
+        }
+
+        if (!this.schoolIcons) {
+            this.schoolIcons = {};
+        }
+
+        if (!this.schoolIcons[stype]) {
+            this.schoolIcons[stype] = L.divIcon({ className: "school-icon " + stype, iconSize: [22, 22] });
+        }
+
+        return this.schoolIcons[stype];
+    }
+
     addLayers(layers) {
         var layerCfg = this.opts.eduConfig.Layers;
         for(let layer of layers) {
@@ -98,7 +114,7 @@
                         if (sType === "x_xq" || sType === "c_xq") {
                             // 学区样式
                         } else {
-                            var icon = L.divIcon({ className: "school-icon " + sType, iconSize: [22, 22] });
+                            var icon = this.getSchoolIcon(sType);
                             layer.setIcon(icon).bindTooltip(
                                 '<span class="schoolname-tip ' + sType + '-tip-on">' + (ft.properties.ShortName || ft.properties.Name) + '</span>',
                                 {
@@ -106,7 +122,7 @@
                                     permanent: true
                                 });
                         }
-                    }
+                    }.bind(this)
                 }).addTo(this.map);
 
                 if (layer.SType === "x_xq" || layer.SType === "c_xq") {
@@ -151,6 +167,23 @@
             var bVec = e.data.vec;
             this.showBaseLayer(bVec ? 'vec' : 'img', true);
         }.bind(this));
+    }
+
+    showSchoolPopup(school) {
+        var map = this.map;
+        var center = [school.Lat, school.Lng];
+        map.setView(center);
+        var marker = L.marker(center, { icon: this.getSchoolIcon(school.SType, true), zIndexOffset: 999999 }).addTo(map);
+        if (this.schoolMarker) {
+            this.schoolMarker.remove();
+        }
+        this.schoolMarker = marker;
+        //marker.on('popupclose', function () {
+        //    this.remove();
+        //}.bind(marker));
+        EduSchoolPopup.getPopupContent().setContent(school);
+        var popup = EduSchoolPopup.getPopup();
+        marker.bindPopup(popup).openPopup();
     }
 
     render() {

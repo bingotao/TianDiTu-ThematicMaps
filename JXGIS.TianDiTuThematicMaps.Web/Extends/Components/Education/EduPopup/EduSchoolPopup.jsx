@@ -10,27 +10,21 @@
 
     render() {
         var s = this.state;
+        var p = s.SType === 'x' || s.SType === 'c' ? <a href='#'>显示学区</a> : null;
         return (
             <div className="schoolpopup">
                 <h3>
+                    <span className={'school-icon ' + s.SType }></span>
                     {s.Name}
-                    <span className={'badge_' + s.SType }>{s.SchoolType}</span>
                 </h3>
-                <table>
-                    <tr>
-                        <th style={{ width: '80px' }}>地址</th>
-                        <td style={{ width: '220px' }}>{s.Address}</td>
-                    </tr>
-                    <tr>
-                        <th>电话</th>
-                        <td>{s.Telephone}</td>
-                    </tr>
-                    <tr>
-                        <th>网站</th>
-                        <td>{s.Website ? <a href={s.Website.startsWith('http') ? s.Website : ('http://' + s.Website)} target="_blank">{s.Website}</a> : '暂无'}</td>
-                    </tr>
-                </table>
-                <a href={"SchoolPage?id="+s.ID} target="_blank">查看详情</a>
+                <div><antd.Icon type="environment-o" /><span>{s.Address}</span></div>
+                <div><antd.Icon type="phone" /><span>{s.Telephone}</span></div>
+                <div><antd.Icon type="link" /><span>{s.Website ? <a href={s.Website.startsWith('http') ? s.Website : ('http://' + s.Website)} target="_blank">{s.Website}</a> : '暂无'}</span></div>
+                <div><antd.Icon type="mail" /><span>{s.Email || '暂无'}</span></div>
+                <div>
+                    <a href={"SchoolPage?id="+s.ID} target="_blank">查看详情</a>
+                    {p}
+                </div>
             </div>);
     }
 }
@@ -47,7 +41,7 @@ EduSchoolPopup.getPopupContent = function () {
 EduSchoolPopup.getPopup = function () {
     if (!EduSchoolPopup.popup) {
         var popupContent = EduSchoolPopup.getPopupContent();
-        EduSchoolPopup.popup = L.popup().setContent(popupContent.dom);
+        EduSchoolPopup.popup = L.popup({ offset: [0, -5] }).setContent(popupContent.dom);
     }
     return EduSchoolPopup.popup;
 }

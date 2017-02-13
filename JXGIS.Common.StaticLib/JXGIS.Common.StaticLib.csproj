@@ -48,6 +48,7 @@
     <Content Include="Lib\dotless.Core.dll" />
     <Content Include="Lib\EntityFramework.dll" />
     <Content Include="Lib\EntityFramework.SqlServer.dll" />
+    <Content Include="Lib\GeoJSON4EntityFramework.dll" />
     <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Lib\Oracle.ManagedDataAccess.dll" />
     <Content Include="Lib\Oracle.ManagedDataAccess.EntityFramework.dll" />

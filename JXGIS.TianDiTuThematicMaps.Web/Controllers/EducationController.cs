@@ -14,7 +14,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         // GET: Education
         public ActionResult Index()
         {
-            var eduConfig = SystemUtility.Config.Education;
+            var eduConfig = SystemUtils.Config.Education;
             ViewBag.EducationConfig = eduConfig;
             ViewBag.Title = eduConfig.Title;
             ViewBag.KeyWords = eduConfig.KeyWords;
@@ -30,7 +30,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             try
             {
                 var layers = new List<Layer>();
-                var schoolLayers = LayerUtility.GetSchoolLayers();
+                var schoolLayers = LayerUtils.GetSchoolLayers();
                 layers.AddRange(schoolLayers);
                 ro = new ReturnObject(layers);
             }
@@ -41,5 +41,31 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             string sRt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
             return Json(sRt);
         }
+
+        [HttpPost]
+        public ActionResult GetSchools(SchoolSearchCondition condition)
+        {
+            ReturnObject ro = null;
+            try
+            {
+                var result = SchoolSearchUtils.GetSchools(condition.SearchText, condition.SType, condition.PageSize, condition.PageNumber);
+                ro = new ReturnObject(result);
+            }
+            catch (Exception ex)
+            {
+                ro = new ReturnObject(ex);
+            }
+
+            var sRt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
+            return Json(sRt);
+        }
+    }
+
+    public class SchoolSearchCondition
+    {
+        public string SearchText { get; set; }
+        public int PageSize { get; set; }
+        public int PageNumber { get; set; }
+        public string SType { get; set; }
     }
 }
