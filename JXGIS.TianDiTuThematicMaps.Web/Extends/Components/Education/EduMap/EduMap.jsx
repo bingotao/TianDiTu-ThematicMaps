@@ -54,6 +54,22 @@
         this.map = map;
         var showBaseLayer = mapConfig.ShowBaseLayer;
         this.showBaseLayer(showBaseLayer.Type, showBaseLayer.ShowAnno);
+
+        this.icons = {
+            residence: L.divIcon({ className: "residence-icon iconfont icon-xiaoqu1", iconSize: [26, 26] }),
+            x_xq: {
+                color: '#ff5500',
+                weight: 2,
+                opacity: 0.6,
+                fillOpacity: 0.1
+            },
+            c_xq: {
+                color: '#a80085',
+                weight: 2,
+                opacity: 0.6,
+                fillOpacity: 0.1
+            }
+        };
     }
 
     changeSchoolTip(e) {
@@ -108,25 +124,37 @@
         for(let layer of layers) {
             var cfg = layerCfg[layer.SType];
             if (cfg) {
-                cfg.layer = L.geoJSON(layer.Schools, {
+                cfg.layer = L.geoJSON(layer.List, {
                     onEachFeature: function (ft, layer) {
                         var sType = ft.properties.SType;
-                        if (sType === "x_xq" || sType === "c_xq") {
-                            // 学区样式
-                        } else {
-                            var icon = this.getSchoolIcon(sType);
-                            layer.setIcon(icon).bindTooltip(
-                                '<span class="schoolname-tip ' + sType + '-tip-on">' + (ft.properties.ShortName || ft.properties.Name) + '</span>',
-                                {
-                                    direction: "right",
-                                    permanent: true
-                                });
+
+                        switch (sType) {
+                            case "x_xq":
+                            case "c_xq":
+                                layer.setStyle(this.icons[sType]);
+                                break;
+                            default:
+                                var icon = this.getSchoolIcon(sType);
+                                layer.setIcon(icon).bindTooltip(
+                                    '<span class="schoolname-tip ' + sType + '-tip-on">' + (ft.properties.ShortName || ft.properties.Name) + '</span>',
+                                    {
+                                        direction: "right",
+                                        permanent: true
+                                    });
+
                         }
                     }.bind(this)
-                }).addTo(this.map);
+                });
 
                 if (layer.SType === "x_xq" || layer.SType === "c_xq") {
                     //绑定学区popup
+                    var popup = EduSchoolAreaPopup.getPopup();
+                    cfg.layer
+                       .bindPopup(popup)
+                       .on('popupopen', function (e) {
+                           EduSchoolAreaPopup.setContent(e.layer.feature.properties);
+                       }.bind(this));
+
                 } else {
                     //绑定学校popup
                     var popup = EduSchoolPopup.getPopup();
@@ -147,15 +175,17 @@
     }
 
     turnLayer(type, on) {
-        on ? this.$map.addClass(type + '-on') : this.$map.removeClass(type + '-on');
+        on ? this.turnLayerOn(type) : this.turnLayerOff(type);
     }
 
     turnLayerOn(type) {
         this.$map.addClass(type + '-on');
+        eduMap.opts.eduConfig.Layers[type].layer.addTo(this.map);
     }
 
     turnLayerOff(type) {
         this.$map.removeClass(type + '-on');
+        eduMap.opts.eduConfig.Layers[type].layer.remove();
     }
 
     componentDidMount() {
@@ -170,19 +200,26 @@
     }
 
     showSchoolPopup(school) {
-        var map = this.map;
-        var center = [school.Lat, school.Lng];
+        var map = this.map,
+            center = [school.Lat, school.Lng];
         map.setView(center);
         var marker = L.marker(center, { icon: this.getSchoolIcon(school.SType, true), zIndexOffset: 999999 }).addTo(map);
-        if (this.schoolMarker) {
-            this.schoolMarker.remove();
-        }
-        this.schoolMarker = marker;
-        //marker.on('popupclose', function () {
-        //    this.remove();
-        //}.bind(marker));
+        !EduSchoolPopup.marker || EduSchoolPopup.marker.remove();
+        EduSchoolPopup.marker = marker;
         EduSchoolPopup.getPopupContent().setContent(school);
         var popup = EduSchoolPopup.getPopup();
+        marker.bindPopup(popup).openPopup();
+    }
+
+    showResidencePopup(residence) {
+        var map = this.map,
+            center = [parseFloat(residence.y), parseFloat(residence.x)];
+        map.setView(center);
+        var marker = L.marker(center, { icon: this.icons.residence, zIndexOffset: 999999 }).addTo(map);
+        !ResidencePopup.marker || ResidencePopup.marker.remove();
+        ResidencePopup.marker = marker;
+        ResidencePopup.setContent(residence);
+        var popup = ResidencePopup.getPopup();
         marker.bindPopup(popup).openPopup();
     }
 

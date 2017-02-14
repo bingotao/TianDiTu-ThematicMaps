@@ -28,8 +28,13 @@ namespace JXGIS.Common.Test
             //a = polygon.Serialize(true);
 
 
-            var layers = LayerUtils.GetSchoolAreaLayers();
+            //var layers = LayerUtils.GetSchoolAreaLayers();
+            //var s = POIUtils.GetPOI(new POICondition() { Key = "小区", Type = "100202", PageIndex = 1, PageStep = 20 });
+            var g = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", 120.729934294, 30.73954));
 
+            var l = (from area in SystemUtils.EFDbContext.EduSchoolArea
+                     where area.Geometry.Intersects(g)
+                     select area).ToList();
         }
     }
 }

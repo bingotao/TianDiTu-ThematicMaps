@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\JXGIS.Common.StaticLib\Lib\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GeoJSON4EntityFramework, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\GeoJSON4EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="JavaScriptEngineSwitcher.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c608b2a8cc9e4472, processorArchitecture=MSIL">
       <HintPath>..\packages\JavaScriptEngineSwitcher.Core.2.0.0\lib\net40-client\JavaScriptEngineSwitcher.Core.dll</HintPath>
       <Private>True</Private>
@@ -174,8 +178,9 @@
     <Content Include="Extends\Components\Education\EduBaseLayerToggle\EduBaseLayerToggle.jsx" />
     <Content Include="Extends\Components\Education\EduMap\EduMap.jsx" />
     <Content Include="Extends\Components\Education\EduNav\EduNav.jsx" />
-    <Content Include="Extends\Components\Education\EduPopup\EduSchoolDistrictPopup.jsx" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolAreaPopup.jsx" />
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.jsx" />
+    <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
@@ -252,7 +257,8 @@
     <Content Include="Reference\ctfont\iconfont.woff" />
     <Content Include="Extends\Components\Education\EduBaseLayerToggle\EduBaseLayerToggle.less" />
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.less" />
-    <Content Include="Extends\Components\Education\EduPopup\EduSchoolDistrictPopup.less" />
+    <Content Include="Extends\Components\Education\EduPopup\EduSchoolAreaPopup.less" />
+    <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

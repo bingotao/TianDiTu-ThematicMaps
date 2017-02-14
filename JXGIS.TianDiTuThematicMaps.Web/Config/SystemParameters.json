@@ -10,7 +10,19 @@
     "ShowBaseLayer": {
       "Type": "vec",
       "ShowAnno": true
-    }
+    },
+    "ThematicMaps": [
+      {
+        "name": "嘉兴市教育地图",
+        "url": "#",
+        "icon": "icon-xuequ"
+      },
+      {
+        "name": "嘉兴市汽车生活地图",
+        "url": "#",
+        "icon": "icon-qiche-copy"
+      }
+    ]
   },
   "Education": {
     "Title": "天地图·嘉兴·教育专题",

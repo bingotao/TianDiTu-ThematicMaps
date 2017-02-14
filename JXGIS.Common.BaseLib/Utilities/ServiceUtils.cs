@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JXGIS.Common.BaseLib
 {
-    public class ServiceUtilities
+    public class ServiceUtils
     {
         /// <summary>
         /// Post方法

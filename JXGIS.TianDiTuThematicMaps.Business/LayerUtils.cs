@@ -20,29 +20,29 @@ namespace JXGIS.TianDiTuThematicMaps.Business
                               {
                                   Type = g.Key.SchoolType,
                                   SType = g.Key.SType,
-                                  Schools = (from c in g
-                                             select new School
-                                             {
-                                                 properties = new EduSchool
-                                                 {
-                                                     ID = c.ID,
-                                                     Name = c.Name,
-                                                     SchoolType = c.SchoolType,
-                                                     County = c.County,
-                                                     Street = c.Street,
-                                                     Email = c.Email,
-                                                     ShortName = c.ShortName,
-                                                     SType = c.SType,
-                                                     Address = c.Address,
-                                                     Telephone = c.Telephone,
-                                                     Website = c.Website,
-                                                     Geometry = c.Geometry
-                                                 },
-                                                 geometry = new SchoolGeo
-                                                 {
-                                                     coordinates = new double[] { c.Lng, c.Lat }
-                                                 }
-                                             }).ToList()
+                                  List = (from c in g
+                                          select new School
+                                          {
+                                              properties = new EduSchool
+                                              {
+                                                  ID = c.ID,
+                                                  Name = c.Name,
+                                                  SchoolType = c.SchoolType,
+                                                  County = c.County,
+                                                  Street = c.Street,
+                                                  Email = c.Email,
+                                                  ShortName = c.ShortName,
+                                                  SType = c.SType,
+                                                  Address = c.Address,
+                                                  Telephone = c.Telephone,
+                                                  Website = c.Website,
+                                                  Geometry = c.Geometry
+                                              },
+                                              geometry = new SchoolGeo
+                                              {
+                                                  coordinates = new double[] { c.Lng, c.Lat }
+                                              }
+                                          }).ToList()
                               };
             return schoolLayer.ToList();
         }
@@ -55,7 +55,20 @@ namespace JXGIS.TianDiTuThematicMaps.Business
                           select new SchoolAreaLayer()
                           {
                               SType = g.Key,
-                              SchoolAreas = g.ToList()
+                              List = (from c in g
+                                      select new SchoolArea()
+                                      {
+                                          properties = new EduSchoolArea()
+                                          {
+                                              ID = c.ID,
+                                              SType = c.SType,
+                                              Name = c.Name,
+                                              Area = c.Area,
+                                              Districts = c.Districts
+                                          },
+                                          geometry = c.GeoJson
+                                      }
+                                      ).ToList()
                           }).ToList();
             return layers;
         }

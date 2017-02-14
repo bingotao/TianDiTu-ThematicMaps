@@ -53,15 +53,15 @@
     text-indent: 0;
 }
 
-#map .school-icon {
+/*#map .school-icon {
     display: none;
-}
+}*/
 
 #map .always.school-icon {
     display: block !important;
 }
 
-#map.y-on .y,
+/*#map.y-on .y,
 #map.x-on .x,
 #map.c-on .c,
 #map.g-on .g,
@@ -69,7 +69,7 @@
 #map.t-on .t,
 #map.d-on .d {
     display: block;
-}
+}*/
 
 @y: rgb(168,168,0);
 @x: rgb(255,85,0);
@@ -152,4 +152,14 @@
 
 .school-icon.d::after {
     content: '大';
+}
+
+.residence-icon {
+    @color: #fe2020;
+
+    background-color: @color;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid tint(@color,50%);
 }

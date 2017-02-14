@@ -9,6 +9,12 @@
             stype: 'all'
         };
 
+        this.residenceSearch = {
+            pageNumber: 1,
+            pageSize: 20,
+            searchText: ''
+        };
+
         this.state = {
             kdt: {
                 on: false,
@@ -16,7 +22,7 @@
             },
             sxx: {
                 current: 1,
-                total: 20,
+                total: 0,
                 searchResults: [],
                 on: false,
                 filters: {
@@ -47,7 +53,10 @@
                 }
             },
             cxq: {
-                on: false
+                on: false,
+                current: 1,
+                total: 3,
+                searchResults: []
             },
             qtzt: {
                 on: false
@@ -141,15 +150,53 @@
         }.bind(this), 'json');
     }
 
-    componentDidMount() {
-        //首次查询
-        this.searchSchool();
+    residenceSearchTextChange(text) {
+        this.residenceSearch.searchText = text;
+        this.residenceSearch.pageNumber = 1;
+        var s = this.state;
+        s.cxq.current = 1;
+        this.setState(s, this.searchResidence.bind(this));
     }
+
+    residencePaginationChange(pageNumber) {
+        this.residenceSearch.pageNumber = pageNumber;
+        var s = this.state;
+        s.cxq.current = pageNumber;
+        this.setState(s, this.searchResidence.bind(this));
+    }
+
+    residenceItemClick(residence) {
+        this.fire('residenceItemClick', residence, false);
+    }
+
+    searchResidence() {
+        $.post('GetResidence', this.residenceSearch, function (rt) {
+            if (rt.ErrorMessage) {
+                antd.message.error(rt.ErrorMessage);
+            } else {
+                var data = JSON.parse(rt.Data);
+                var records = data.records;
+                var total = parseInt(data.counts);
+
+                var s = this.state;
+                s.cxq.total = total;
+                s.cxq.searchResults = records;
+                this.setState(s);
+                this.refs.residencePanel.scrollTop = 0;
+            }
+        }.bind(this), 'json');
+    }
+
+    //componentDidMount() {
+    //    //首次查询
+    //    this.searchSchool();
+    //}
 
     render() {
         var aCls = "active";
         var ept = "";
         var s = this.state;
+        var p = this.props;
         var sLayers = s.kdt.layers;
 
         var schools = s.sxx.searchResults;
@@ -158,15 +205,37 @@
             return <EduSchoolItem school={school} onClick={this.schoolItemClick.bind(this) } />;
         }.bind(this));
 
+        var residences = s.cxq.searchResults;
+
+        var cResidences = residences.map(function (residence, i) {
+            return <ResidenceItem index={i + 1} residence={residence} onClick={this.residenceItemClick.bind(this) } />;
+        }.bind(this));
+
+        var cThematicMaps = this.props.mapConfig.ThematicMaps.map(function (map) {
+            return <div className="thematicmap"><span className={"iconfont " + map.icon }></span><a href={map.url} target="_blank">{map.name}</a></div>
+        });
+
         return (
         <div className="edu-nav">
             <div className="edu-navs">
-                <div onClick={e=>this.select("sxx", function () { this.refs.schoolSearch.input.focus() }.bind(this))} className={s.sxx.on ? aCls : ept}>
+                <div onClick={e=>this.select("sxx", function () {
+                        this.refs.schoolSearch.input.focus();
+                        if (!s.sxx.first) {
+                            s.sxx.first = true;
+                            this.searchSchool();
+                        }
+                    }.bind(this))} className={s.sxx.on ? aCls : ept}>
                     <span className="iconfont icon-sousuo-sousuo"></span>
                     搜学校
                 </div>
                 <div className="ct-split"></div>
-                <div onClick={e=>this.select("cxq", function () { this.refs.schoolSearchArea.input.focus() }.bind(this))} className={s.cxq.on ? aCls : ept}>
+                <div onClick={e=>this.select("cxq", function () {
+                        this.refs.schoolSearchArea.input.focus();
+                        if (!s.cxq.first) {
+                            s.cxq.first = true;
+                            this.searchResidence();
+                        }
+                    }.bind(this))} className={s.cxq.on ? aCls : ept}>
                     <span className="iconfont icon-xuequ"></span>
                     查学区
                 </div>
@@ -182,7 +251,15 @@
                 </div>
             </div>
             <div className="edu-nav-quicksearch">
-                <input type="text" onFocus={e=> { this.select('sxx', function () { this.refs.schoolSearch.input.focus(); }.bind(this)); }} placeholder="请输入学校名称..." />
+                <input type="text" onFocus={e=> {
+                        this.select('sxx', function () {
+                            this.refs.schoolSearch.input.focus();
+                            if (!s.sxx.first) {
+                                s.sxx.first = true;
+                                this.searchSchool();
+                            }
+                        }.bind(this));
+                    }} placeholder="请输入学校名称..." />
                 <antd.Icon type="search" />
             </div>
             <div className="edu-nav-panel">
@@ -233,7 +310,7 @@
                                     {cSchools}
                                 </div>
                                 <div className="edu-results-pagination">
-                                    <antd.Pagination current={s.sxx.current} onChange={e=>this.schoolPaginationChange(e)} ref='Pagination' simple defaultCurrent={1} total={s.sxx.total} />
+                                    <antd.Pagination current={s.sxx.current} onChange={e=>this.schoolPaginationChange(e)} simple defaultCurrent={1} total={s.sxx.total} />
                                 </div>
                             </div>
                         </div>
@@ -246,13 +323,13 @@
                     </h3>
                     <div className="edu-nav-panel-container">
                          <div className="edu-search-schoolarea">
-                              <antd.Input.Search ref="schoolSearchArea" size="large" className="edu-search-group" placeholder="请输入学校或小区名称..." />
+                              <antd.Input.Search onSearch={value => this.residenceSearchTextChange(value)} ref="schoolSearchArea" size="large" className="edu-search-group" placeholder="请输入小区名称..." />
                               <div className="edu-search-results">
-                                  <div className="edu-results-rows">
-
+                                  <div ref="residencePanel" className="edu-results-rows">
+                                      {cResidences}
                                   </div>
                                   <div className="edu-results-pagination">
-                                      <antd.Pagination simple defaultCurrent={1} total={5000} />
+                                      <antd.Pagination current={s.cxq.current} onChange={e=>this.residencePaginationChange(e)} simple defaultCurrent={1} total={s.cxq.total} />
                                   </div>
                               </div>
                          </div>
@@ -263,7 +340,9 @@
                     <h3 className="edu-nav-panel-header">
                         看专题
                     </h3>
-                    <div className="edu-nav-panel-container"></div>
+                    <div className="edu-nav-panel-container">
+                        <div className="thematicmaps">{cThematicMaps}</div>
+                    </div>
                 </div>
             </div>
         </div>);
@@ -295,6 +374,24 @@ class EduSchoolItem extends React.Component {
             <div className="edu-school-content"><antd.Icon type="environment-o" /><span>{sch.Address}</span></div>
                 <div className="edu-school-content"><antd.Icon type="phone" /><span>{sch.Telephone}</span></div>
             <div className="edu-school-content"><antd.Icon type="link" /><span>{cLink}</span></div>
+        </div>);
+    }
+}
+
+class ResidenceItem extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        var p = this.props;
+        var r = p.residence;
+        return (
+        <div className="residence" onClick={e=>p.onClick(r)}>
+            <div className="residence-name"><span className="residence-index">{p.index}</span>{r.name}</div>
+            <div className="residence-address">
+                <antd.Icon type="environment-o" /><span>{r.address}</span>
+            </div>
         </div>);
     }
 }

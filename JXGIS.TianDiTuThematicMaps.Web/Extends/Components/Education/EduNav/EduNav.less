@@ -8,8 +8,8 @@
 @z: rgb(77,116,0);
 @t: rgb(197,0,255);
 @d: rgb(133,0,168);
-@x-xq: rgb(252, 85, 85);
-@c-xq: rgb(62, 78, 255);
+@x-xq: #ff5500;
+@c-xq: #a80085;
 
 .edu-trans {
     transition: 0.3s ease;
@@ -328,6 +328,49 @@
             }
         }
 
+        .residence {
+            padding: 5px 10px;
+            margin: 5px 5px 3px 0;
+            border: 1px solid @border-color-split;
+            border-radius: 3px;
+            transition: 0.3s ease;
+            cursor: pointer;
+
+            .residence-name {
+                font-size: 16px;
+                color: @primary-color;
+
+                .residence-index {
+                    display: inline-block;
+                    text-align: center;
+                    margin-top: -4px;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    width: 30px;
+                    padding: 0 5px;
+                    /*color: white;
+                    background-color: @primary-color;*/
+                    color: @primary-color;
+                    background-color: #f4f4f4;
+                    border-radius: 3px;
+                    font-family: 'Times New Roman';
+                    transition: 0.3s ease;
+                }
+            }
+
+            .residence-address {
+                font-size: 14px;
+                display: flex;
+                margin-top: 5px;
+
+                i {
+                    display: inline-block;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
         .edu-school {
             /*background-color: #f7f7f7;*/
             padding: 5px 10px;
@@ -361,9 +404,19 @@
             }
         }
 
-        .edu-school:hover {
-            box-shadow: @box-shadow-base;
+        .edu-school:hover, .residence:hover {
+            /*box-shadow: @box-shadow-base;*/
+            box-shadow: 1px 2px 6px tint(@primary-color,50%);
+            border-color: tint(@primary-color,50%);
             transform: translateY(-3px);
+        }
+
+        .residence:hover {
+
+            .residence-index {
+                color: white;
+                background-color: @primary-color;
+            }
         }
 
         .edu-search-schoolarea {

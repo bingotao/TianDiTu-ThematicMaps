@@ -31,7 +31,9 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             {
                 var layers = new List<Layer>();
                 var schoolLayers = LayerUtils.GetSchoolLayers();
+                var schoolAreaLayers = LayerUtils.GetSchoolAreaLayers();
                 layers.AddRange(schoolLayers);
+                layers.AddRange(schoolAreaLayers);
                 ro = new ReturnObject(layers);
             }
             catch (Exception ex)
@@ -58,6 +60,86 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
 
             var sRt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
             return Json(sRt);
+        }
+
+
+        public ActionResult GetResidence(string searchText, int pageNumber, int pageSize)
+        {
+            ReturnObject ro = null;
+            try
+            {
+                string s = POIUtils.GetPOI(new POICondition() { Key = searchText, Type = "100202", PageIndex = pageNumber, PageStep = pageSize });
+                ro = new ReturnObject();
+                ro.Data = s;
+            }
+            catch (Exception ex)
+            {
+                ro = new ReturnObject(ex);
+            }
+            return Json(ro);
+        }
+
+        public ActionResult GetSchoolArea(double lat, double lng)
+        {
+            ReturnObject ro = null;
+            try
+            {
+                var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", lng, lat));
+                var schoolAreas =
+                    (from sa in SystemUtils.EFDbContext.EduSchoolArea
+                     where sa.Geometry.Intersects(point)
+                     select new SchoolArea()
+                     {
+                         properties = new EduSchoolArea()
+                         {
+                             ID = sa.ID,
+                             Area = sa.Area,
+                             SchoolID = sa.SchoolID,
+                             SType = sa.SType,
+                             Districts = sa.Districts,
+                             Name = sa.Name
+                         },
+                         geometry = sa.GeoJson
+                     }).ToList();
+                ro = schoolAreas.Count == 0 ? new ReturnObject("未找到所属学区") : new ReturnObject(schoolAreas);
+            }
+            catch (Exception ex)
+            {
+                ro = new ReturnObject(ex);
+            }
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
+            return Json(s);
+        }
+
+        public ActionResult GetSchoolArea(string schoolID)
+        {
+            ReturnObject ro = null;
+            try
+            {
+                var schoolArea =
+                    (from sa in SystemUtils.EFDbContext.EduSchoolArea
+                     where sa.SchoolID == schoolID
+                     select new SchoolArea()
+                     {
+                         properties = new EduSchoolArea()
+                         {
+                             ID = sa.ID,
+                             Area = sa.Area,
+                             SchoolID = sa.SchoolID,
+                             SType = sa.SType,
+                             Districts = sa.Districts,
+                             Name = sa.Name
+                         },
+                         geometry = sa.GeoJson
+                     }).First();
+                ro = schoolArea == null ? new ReturnObject("未找到所属学区") : new ReturnObject(schoolArea);
+            }
+            catch (Exception ex)
+            {
+                ro = new ReturnObject(ex);
+            }
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
+            return Json(s);
         }
     }
 

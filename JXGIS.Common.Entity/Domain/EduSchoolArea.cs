@@ -30,6 +30,9 @@ namespace JXGIS.Common.Entity
         [Column("SType")]
         public string SType { get; set; }
 
+        [Column("SchoolID")]
+        public string SchoolID { get; set; }
+
         [JsonIgnore]
         [Column("Geometry")]
         public DbGeography Geometry { get; set; }
@@ -39,7 +42,7 @@ namespace JXGIS.Common.Entity
         {
             get
             {
-                return GeoJsonGeometry.FromDbGeography(Geometry);
+                return Geometry == null ? null : GeoJsonGeometry.FromDbGeography(Geometry);
             }
         }
     }

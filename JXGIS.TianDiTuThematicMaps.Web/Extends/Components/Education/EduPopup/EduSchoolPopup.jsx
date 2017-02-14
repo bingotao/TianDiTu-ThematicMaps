@@ -10,7 +10,7 @@
 
     render() {
         var s = this.state;
-        var p = s.SType === 'x' || s.SType === 'c' ? <a href='#'>显示学区</a> : null;
+        var p = s.SType === 'x' || s.SType === 'c' ? <antd.Button type="primary" size="small">查看学区</antd.Button> : null;
         return (
             <div className="schoolpopup">
                 <h3>
@@ -22,7 +22,7 @@
                 <div><antd.Icon type="link" /><span>{s.Website ? <a href={s.Website.startsWith('http') ? s.Website : ('http://' + s.Website)} target="_blank">{s.Website}</a> : '暂无'}</span></div>
                 <div><antd.Icon type="mail" /><span>{s.Email || '暂无'}</span></div>
                 <div>
-                    <a href={"SchoolPage?id="+s.ID} target="_blank">查看详情</a>
+                    <antd.Button type="primary" size="small">查看详情</antd.Button>
                     {p}
                 </div>
             </div>);

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JXGIS.Common.BaseLib.Utilities
+namespace JXGIS.Common.BaseLib
 {
     public class EntityUtils
     {

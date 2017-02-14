@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace JXGIS.Common.Entity
 {
-    public class SchoolAreaLayer
+    public class SchoolAreaLayer : Layer
     {
-        public string SType { get; set; }
-
-        public List<EduSchoolArea> SchoolAreas { get; set; }
+        public List<SchoolArea> List { get; set; }
     }
 }
