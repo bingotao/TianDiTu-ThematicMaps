@@ -70,6 +70,18 @@
                 fillOpacity: 0.1
             }
         };
+
+        var graphicsLayer = L.geoJSON(null, {
+            onEachFeature: function (feature, layer) {
+                layer.setStyle(this.icons[feature.properties.SType]);
+                layer.bindPopup(EduSchoolAreaPopup.getPopup()).on('popupopen', function (e) {
+                    var props = e.target.feature.properties
+                    EduSchoolAreaPopup.setContent(props);
+
+                }.bind(this));
+            }.bind(this)
+        }).addTo(map);
+        this.graphicsLayer = graphicsLayer;
     }
 
     changeSchoolTip(e) {
@@ -197,6 +209,18 @@
             var bVec = e.data.vec;
             this.showBaseLayer(bVec ? 'vec' : 'img', true);
         }.bind(this));
+
+        this.refs.rClearBtn.on('onClick', function () {
+            this.clearMap();
+        }.bind(this));
+    }
+
+    clearMap() {
+        this.map.closePopup();
+        
+        EduSchoolPopup.clearMarker();
+        ResidencePopup.clearMarker();
+        this.graphicsLayer.clearLayers();
     }
 
     showSchoolPopup(school) {
@@ -223,10 +247,31 @@
         marker.bindPopup(popup).openPopup();
     }
 
+    showSchoolArea(schoolID, lat, lng, stype) {
+        $.post('GetSchoolArea',
+            {
+                schoolID: schoolID,
+                lat: lat,
+                lng: lng,
+                stype: stype
+            },
+            function (ro) {
+                ro = JSON.parse(ro);
+                if (ro.ErrorMessage) {
+                    antd.message.error(ro.ErrorMessage);
+                } else {
+                    var data = ro.Data;
+                    this.graphicsLayer.clearLayers().addData(data).bringToFront();
+                    this.showSchoolPopup(data[0].properties.School);
+                }
+            }.bind(this), 'json');
+    }
+
     render() {
         return (
         <div className="edu-map">
             <EduBaseLayerToggle ref='rLayerToggle' vec={this.opts.mapConfig.ShowBaseLayer.Type == 'vec'} />
+            <EduClearButton ref='rClearBtn' />
             <div id="map" ref="mapDOM"></div>
         </div>);
     }

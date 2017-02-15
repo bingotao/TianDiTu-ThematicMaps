@@ -33,6 +33,14 @@ class EduIndex extends React.Component {
         eduNav.on('residenceItemClick', function (e) {
             eduMap.showResidencePopup(e.data);
         });
+
+        EduSchoolPopup.getPopupContent().on('onShowSchoolAreaClick', function (e) {
+            eduMap.showSchoolArea(e.data.ID);
+        });
+
+        ResidencePopup.getPopupContent().on('onShowSchoolAreaClick', function (e) {
+            eduMap.showSchoolArea(null, e.data.residence.y, e.data.residence.x, e.data.type);
+        });
     }
 
     render() {

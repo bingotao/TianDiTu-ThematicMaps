@@ -2,15 +2,26 @@
     constructor(props) {
         super(props);
         this.state = {};
+
+        this.showSchoolDetail = this.showSchoolDetail.bind(this);
+        this.onShowSchoolAreaClick = this.onShowSchoolAreaClick.bind(this);
     }
 
     setContent(content) {
         this.setState(content);
     }
 
+    showSchoolDetail() {
+        window.open('SchoolDetail?id=' + this.state.ID, '_blank');
+    }
+
+    onShowSchoolAreaClick() {
+        this.fire('onShowSchoolAreaClick', this.state, false);
+    }
+
     render() {
         var s = this.state;
-        var p = s.SType === 'x' || s.SType === 'c' ? <antd.Button type="primary" size="small">查看学区</antd.Button> : null;
+        var p = s.SType === 'x' || s.SType === 'c' ? <antd.Button onClick={this.onShowSchoolAreaClick} type="primary" size="small">查看学区</antd.Button> : null;
         return (
             <div className="schoolpopup">
                 <h3>
@@ -22,7 +33,7 @@
                 <div><antd.Icon type="link" /><span>{s.Website ? <a href={s.Website.startsWith('http') ? s.Website : ('http://' + s.Website)} target="_blank">{s.Website}</a> : '暂无'}</span></div>
                 <div><antd.Icon type="mail" /><span>{s.Email || '暂无'}</span></div>
                 <div>
-                    <antd.Button type="primary" size="small">查看详情</antd.Button>
+                    <antd.Button type="primary" onClick={this.showSchoolDetail} size="small">查看详情</antd.Button>
                     {p}
                 </div>
             </div>);
@@ -44,4 +55,8 @@ EduSchoolPopup.getPopup = function () {
         EduSchoolPopup.popup = L.popup({ offset: [0, -5] }).setContent(popupContent.dom);
     }
     return EduSchoolPopup.popup;
+}
+
+EduSchoolPopup.clearMarker = function () {
+    EduSchoolPopup.marker && EduSchoolPopup.marker.remove();
 }

@@ -79,67 +79,59 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             return Json(ro);
         }
 
-        public ActionResult GetSchoolArea(double lat, double lng)
+        public ActionResult GetSchoolArea(string schoolID, string sType, double? lat, double? lng)
         {
             ReturnObject ro = null;
             try
             {
-                var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", lng, lat));
-                var schoolAreas =
-                    (from sa in SystemUtils.EFDbContext.EduSchoolArea
-                     where sa.Geometry.Intersects(point)
-                     select new SchoolArea()
-                     {
-                         properties = new EduSchoolArea()
-                         {
-                             ID = sa.ID,
-                             Area = sa.Area,
-                             SchoolID = sa.SchoolID,
-                             SType = sa.SType,
-                             Districts = sa.Districts,
-                             Name = sa.Name
-                         },
-                         geometry = sa.GeoJson
-                     }).ToList();
-                ro = schoolAreas.Count == 0 ? new ReturnObject("未找到所属学区") : new ReturnObject(schoolAreas);
-            }
-            catch (Exception ex)
-            {
-                ro = new ReturnObject(ex);
-            }
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
-            return Json(s);
-        }
+                List<EduSchoolArea> schoolAreas = null;
+                if (!string.IsNullOrEmpty(schoolID))
+                {
+                    schoolAreas = (from s in SystemUtils.EFDbContext.EduSchoolArea
+                                   where s.SchoolID == schoolID
+                                   select s).ToList();
+                }
+                else
+                {
+                    var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", lng, lat));
+                    schoolAreas =
+                        (from sa in SystemUtils.EFDbContext.EduSchoolArea
+                         where sa.Geometry.Intersects(point) && sa.SType == sType
+                         select sa).ToList();
+                }
 
-        public ActionResult GetSchoolArea(string schoolID)
-        {
-            ReturnObject ro = null;
-            try
-            {
-                var schoolArea =
-                    (from sa in SystemUtils.EFDbContext.EduSchoolArea
-                     where sa.SchoolID == schoolID
-                     select new SchoolArea()
-                     {
-                         properties = new EduSchoolArea()
-                         {
-                             ID = sa.ID,
-                             Area = sa.Area,
-                             SchoolID = sa.SchoolID,
-                             SType = sa.SType,
-                             Districts = sa.Districts,
-                             Name = sa.Name
-                         },
-                         geometry = sa.GeoJson
-                     }).First();
-                ro = schoolArea == null ? new ReturnObject("未找到所属学区") : new ReturnObject(schoolArea);
+
+                if (schoolAreas.Count == 0)
+                {
+                    ro = new ReturnObject("未找到所属学区");
+                }
+                else
+                {
+                    var fts = (from sa in schoolAreas
+                               select new
+                               {
+                                   type = "Feature",
+                                   properties = new
+                                   {
+                                       ID = sa.ID,
+                                       Area = sa.Area,
+                                       SchoolID = sa.SchoolID,
+                                       SType = sa.SType,
+                                       Districts = sa.Districts,
+                                       Name = sa.Name,
+                                       School = sa.School
+                                   },
+                                   geometry = sa.GeoJson
+                               }).ToList();
+                    ro = new ReturnObject(fts);
+                }
             }
             catch (Exception ex)
             {
                 ro = new ReturnObject(ex);
             }
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
-            return Json(s);
+            string sRt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
+            return Json(sRt);
         }
     }
 

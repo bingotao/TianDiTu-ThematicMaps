@@ -65,6 +65,13 @@
 
     }
 
+    setLayerVisibility(type, on) {
+        var s = this.state;
+        s.kdt.layers[type].on = on;
+        this.setState(s);
+        this.fire('layerChange', { layerType: type, visible: on });
+    }
+
     select(target, callback) {
         var s = this.state;
         for (var i in s) {
@@ -82,7 +89,6 @@
         fts[target].on = true;
         this.schoolTypeChange(target);
         this.setState(this.state);
-        //this.fire('onSchoolFilter', { target: target });
     }
 
     hiddenPanel() {
@@ -270,19 +276,19 @@
                         <div className="edu-layers">
                             <div className="edu-layergroup">
                                 <h3>学校</h3>
-                                <div><span className="edu-icon y">幼</span><span className="edu-layer-title">幼 儿 园</span><antd.Switch size="small" defaultChecked={sLayers.y.on} onChange={e=>this.setLayerVisible('y',e)} /></div>
-                                <div><span className="edu-icon x">小</span><span className="edu-layer-title">小 学</span><antd.Switch size="small" defaultChecked={sLayers.x.on} onChange={e=>this.setLayerVisible('x',e)} /></div>
-                                <div><span className="edu-icon c">初</span><span className="edu-layer-title">初 中</span><antd.Switch size="small" defaultChecked={sLayers.c.on} onChange={e=>this.setLayerVisible('c',e)} /></div>
-                                <div><span className="edu-icon g">高</span><span className="edu-layer-title">普通高中</span><antd.Switch size="small" defaultChecked={sLayers.g.on} onChange={e=>this.setLayerVisible('g',e)} /></div>
-                                <div><span className="edu-icon z">职</span><span className="edu-layer-title">职业高中</span><antd.Switch size="small" defaultChecked={sLayers.z.on} onChange={e=>this.setLayerVisible('z',e)} /></div>
-                                <div><span className="edu-icon t">特</span><span className="edu-layer-title">特殊教育</span><antd.Switch size="small" defaultChecked={sLayers.t.on} onChange={e=>this.setLayerVisible('t',e)} /></div>
-                                <div><span className="edu-icon d">大</span><span className="edu-layer-title">高等院校</span><antd.Switch size="small" defaultChecked={sLayers.d.on} onChange={e=>this.setLayerVisible('d',e)} /></div>
+                                <div><span className="edu-icon y">幼</span><span className="edu-layer-title">幼 儿 园</span><antd.Switch size="small" checked={sLayers.y.on} onChange={e=>this.setLayerVisibility('y',e)} /></div>
+                                <div><span className="edu-icon x">小</span><span className="edu-layer-title">小 学</span><antd.Switch size="small" checked={sLayers.x.on} onChange={e=>this.setLayerVisibility('x', e)} /></div>
+                                <div><span className="edu-icon c">初</span><span className="edu-layer-title">初 中</span><antd.Switch size="small" checked={sLayers.c.on} onChange={e=>this.setLayerVisibility('c', e)} /></div>
+                                <div><span className="edu-icon g">高</span><span className="edu-layer-title">普通高中</span><antd.Switch size="small" checked={sLayers.g.on} onChange={e=>this.setLayerVisibility('g', e)} /></div>
+                                <div><span className="edu-icon z">职</span><span className="edu-layer-title">职业高中</span><antd.Switch size="small" checked={sLayers.z.on} onChange={e=>this.setLayerVisibility('z', e)} /></div>
+                                <div><span className="edu-icon t">特</span><span className="edu-layer-title">特殊教育</span><antd.Switch size="small" checked={sLayers.t.on} onChange={e=>this.setLayerVisibility('t', e)} /></div>
+                                <div><span className="edu-icon d">大</span><span className="edu-layer-title">高等院校</span><antd.Switch size="small" checked={sLayers.d.on} onChange={e=>this.setLayerVisibility('d', e)} /></div>
                             </div>
 
                             <div className="edu-layergroup">
                                 <h3>学区</h3>
-                                <div><span className="edu-icon x-xq"></span><span className="edu-layer-title">小学学区</span><antd.Switch size="small" defaultChecked={sLayers.x_xq.on} onChange={e=>this.setLayerVisible('x_xq',e)} /></div>
-                                <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" defaultChecked={sLayers.c_xq.on} onChange={e=>this.setLayerVisible('c_xq',e)} /></div>
+                                <div><span className="edu-icon x-xq"></span><span className="edu-layer-title">小学学区</span><antd.Switch size="small" checked={sLayers.x_xq.on} onChange={e=>this.setLayerVisibility('x_xq', e)} /></div>
+                                <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" checked={sLayers.c_xq.on} onChange={e=>this.setLayerVisibility('c_xq', e)} /></div>
                             </div>
                         </div>
                     </div>

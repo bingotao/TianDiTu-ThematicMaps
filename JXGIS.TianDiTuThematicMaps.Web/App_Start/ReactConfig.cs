@@ -29,6 +29,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 .AddScript("~/Extends/Components/Education/EduMap/EduMap.jsx")
                 .AddScript("~/Extends/Components/Education/EduNav/EduNav.jsx")
                 .AddScript("~/Extends/Components/Education/EduBaseLayerToggle/EduBaseLayerToggle.jsx")
+                .AddScript("~/Extends/Components/Education/EduClearButton/EduClearButton.jsx")
                 //.AddScript("~/Extends/Components/Education/EduPopup/EduSchoolDistrictPopup.jsx")
                 //.AddScript("~/Extends/Components/Education/EduPopup/EduSchoolPopup.jsx")
                 .AddScript("~/Views/Education/js/Index.jsx");

@@ -45,5 +45,8 @@ namespace JXGIS.Common.Entity
                 return Geometry == null ? null : GeoJsonGeometry.FromDbGeography(Geometry);
             }
         }
+
+        [ForeignKey("SchoolID")]
+        public virtual EduSchool School { get; set; }
     }
 }

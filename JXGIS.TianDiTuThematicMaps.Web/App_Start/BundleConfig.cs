@@ -24,6 +24,9 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 _refPath + "ctfont/iconfont.css",
                 "~/Extends/globalStyle.css"
                 ));
+
+
+
             //全局script
             bundles.Add(new ScriptBundle("~/gScripts").Include(
                 _refPath + "jquery-1.12.4.min.js",

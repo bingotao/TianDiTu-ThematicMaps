@@ -17,6 +17,9 @@ namespace JXGIS.Common.Entity
         [Column("ID")]
         public string ID { get; set; }
 
+        [Column("SchoolID")]
+        public string SchoolID { get; set; }
+
         [Column("Name")]
         public string Name { get; set; }
 
