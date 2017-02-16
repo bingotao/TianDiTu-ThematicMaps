@@ -181,6 +181,7 @@
     <Content Include="Extends\Components\Education\EduNav\EduNav.jsx" />
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolAreaPopup.jsx" />
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.jsx" />
+    <Content Include="Extends\Base\LPopup.jsx" />
     <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
