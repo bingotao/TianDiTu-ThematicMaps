@@ -23,6 +23,19 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             return View();
         }
 
+        public ActionResult SchoolDetails(string ID)
+        {
+            EduSchool school = null;
+            try
+            {
+                school = SystemUtils.EFDbContext.EduSchool.Where(p => p.ID == ID).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+            }
+            return View(school);
+        }
+
         [HttpPost]
         public ActionResult GetLayers()
         {

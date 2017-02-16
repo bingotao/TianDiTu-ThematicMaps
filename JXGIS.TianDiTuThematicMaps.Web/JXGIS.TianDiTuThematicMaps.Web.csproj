@@ -225,6 +225,7 @@
     <Content Include="Reference\react\react.min.js" />
     <Content Include="Reference\store.min.js" />
     <Content Include="Views\Education\js\Index.jsx" />
+    <Content Include="Views\Education\js\SchoolDetails.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -261,6 +262,8 @@
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolAreaPopup.less" />
     <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.less" />
     <Content Include="Extends\Components\Education\EduClearButton\EduClearButton.less" />
+    <Content Include="Views\Education\SchoolDetails.cshtml" />
+    <Content Include="Views\Education\css\SchoolDetails.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

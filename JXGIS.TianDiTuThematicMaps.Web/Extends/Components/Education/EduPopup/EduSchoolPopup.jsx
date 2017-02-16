@@ -12,7 +12,7 @@
     }
 
     showSchoolDetail() {
-        window.open('SchoolDetail?id=' + this.state.ID, '_blank');
+        window.open('SchoolDetails?id=' + this.state.ID, '_blank');
     }
 
     onShowSchoolAreaClick() {

@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterBlank.cshtml";
+}
+
+@Styles.Render("~/Views/Education/css/SchoolDetails.less")
+@Scripts.Render("~/Views/Education/js/SchoolDetails.jsx")
+@Html.React("SchoolDetails", new { School = Model })
+@Html.ReactInitJavaScript()

@@ -1,0 +1,173 @@
+﻿@import '~/Extends/default.less';
+
+body, html {
+    background-color: tint(@primary-color,95%);
+    height: 100%;
+}
+
+.schooldetails {
+    position: absolute;
+    width: 1024px;
+    left: 50%;
+    margin-left: -500px;
+    background-color: white;
+    min-height: 100%;
+
+    #map {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background: white;
+        border: 1px solid @border-color-base;
+    }
+
+    .header {
+        height: 70px;
+        background: url(/Reference/images/education-header.jpg);
+    }
+
+    h1 {
+        text-align: center;
+        width: e('calc(100% - 50px)');
+        border-bottom: 2px solid @primary-color;
+        margin: 30px auto 10px;
+        padding-bottom: 20px;
+        color: @primary-color;
+        letter-spacing: 2px;
+    }
+
+    table {
+        padding: 10px 20px;
+
+        tr {
+            margin-top: 5px;
+        }
+
+        th {
+            text-align: right;
+            font-weight: normal;
+            color: @primary-color;
+            vertical-align: top;
+            letter-spacing: 2px;
+            padding: 5px;
+        }
+
+        th, td {
+            font-size: 16px;
+            border: 3px solid white;
+        }
+
+        td {
+            /*height: 100%;*/
+            padding: 5px 15px;
+            background-color: #f9f9f9;
+            border-radius: 3px;
+        }
+    }
+}
+
+.school-icon {
+    display: block;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+    border-radius: 50%;
+    border: 2px solid;
+    color: white;
+    text-indent: 2px;
+    font-family: @font-family;
+    text-indent: 0;
+}
+
+@y: rgb(168,168,0);
+@x: rgb(255,85,0);
+@c: rgb(168,0,133);
+@g: rgb(0,77,168);
+@z: rgb(77,116,0);
+@t: rgb(197,0,255);
+@d: rgb(133,0,168);
+
+
+.school-icon.y {
+    background-color: @y;
+    border-color: tint(@y,50%);
+}
+
+.school-icon.y::after {
+    content: '幼';
+}
+
+
+
+.school-icon.x {
+    background-color: @x;
+    border-color: tint(@x,50%);
+}
+
+.school-icon.x::after {
+    content: '小';
+}
+
+
+
+.school-icon.c {
+    background-color: @c;
+    border-color: tint(@c,50%);
+}
+
+.school-icon.c::after {
+    content: '初';
+}
+
+
+
+.school-icon.g {
+    background-color: @g;
+    border-color: tint(@g,50%);
+}
+
+.school-icon.g::after {
+    content: '高';
+}
+
+
+
+.school-icon.z {
+    background-color: @z;
+    border-color: tint(@z,50%);
+}
+
+.school-icon.z::after {
+    content: '职';
+}
+
+
+
+.school-icon.t {
+    background-color: @t;
+    border-color: tint(@t,50%);
+}
+
+.school-icon.t::after {
+    content: '特';
+}
+
+
+.school-icon.d {
+    background-color: @d;
+    border-color: tint(@d,50%);
+}
+
+.school-icon.d::after {
+    content: '大';
+}
+
+.leaflet-tooltip {
+    font-family: @font-family;
+    font-size: 14px;
+}
