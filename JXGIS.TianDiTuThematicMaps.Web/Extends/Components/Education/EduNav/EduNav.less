@@ -50,22 +50,22 @@
                 text-align: center;
                 font-size: 40px;
             }
-        }
 
-        > div.ct-split {
-            padding: 0;
-            margin: 5px 0;
-            border-top: 1px dotted @border-color-base;
-        }
+            &.ct-split {
+                padding: 0;
+                margin: 5px 0;
+                border-top: 1px dotted @border-color-base;
+            }
 
-        > div:hover {
-            color: white;
-            background-color: @primary-color;
-        }
+            &:hover {
+                color: white;
+                background-color: @primary-color;
+            }
 
-        > div.active {
-            color: white;
-            background-color: @primary-color;
+            &.active {
+                color: white;
+                background-color: @primary-color;
+            }
         }
     }
 
@@ -200,64 +200,46 @@
                     text-indent: 2px;
                 }
 
-
-
                 .edu-icon.y {
                     background-color: @y;
                     border-color: tint(@y,50%);
                 }
-
-
 
                 .edu-icon.x {
                     background-color: @x;
                     border-color: tint(@x,50%);
                 }
 
-
-
                 .edu-icon.c {
                     background-color: @c;
                     border-color: tint(@c,50%);
                 }
-
-
 
                 .edu-icon.g {
                     background-color: @g;
                     border-color: tint(@g,50%);
                 }
 
-
-
                 .edu-icon.z {
                     background-color: @z;
                     border-color: tint(@z,50%);
                 }
-
-
 
                 .edu-icon.t {
                     background-color: @t;
                     border-color: tint(@t,50%);
                 }
 
-
-
                 .edu-icon.d {
                     background-color: @d;
                     border-color: tint(@d,50%);
                 }
-
-
 
                 .edu-icon.x-xq {
                     border-radius: 0;
                     background-color: tint(@x-xq,50%);
                     border-color: @x-xq;
                 }
-
-
 
                 .edu-icon.c-xq {
                     border-radius: 0;
@@ -297,7 +279,6 @@
             }
         }
 
-
         .edu-search-results {
             position: absolute;
             left: 55px;
@@ -308,7 +289,7 @@
             border-top: 1px solid @border-color-split;
 
             .edu-results-rows {
-                height: e('calc(100% - 40px)');
+                height: calc(~"100% - 40px");
                 overflow-x: hidden;
                 overflow-y: auto;
                 margin: 5px;
@@ -348,8 +329,6 @@
                     vertical-align: middle;
                     width: 30px;
                     padding: 0 5px;
-                    /*color: white;
-                    background-color: @primary-color;*/
                     color: @primary-color;
                     background-color: #f4f4f4;
                     border-radius: 3px;
@@ -372,7 +351,6 @@
         }
 
         .edu-school {
-            /*background-color: #f7f7f7;*/
             padding: 5px 10px;
             margin: 5px 5px 3px 0;
             border: 1px solid @border-color-split;
@@ -405,7 +383,6 @@
         }
 
         .edu-school:hover, .residence:hover {
-            /*box-shadow: @box-shadow-base;*/
             box-shadow: 1px 2px 6px tint(@primary-color,50%);
             border-color: tint(@primary-color,50%);
             transform: translateY(-3px);
@@ -461,48 +438,14 @@
     color: white;
     padding: 0 5px;
     border-radius: 3px 0 0 3px;
-    /*transform: translateY(-50%);*/
     z-index: 9;
     opacity: 0.7;
     background-color: tint(@green,10%);
-    /*.edu-trans;*/
 }
 
 .edu-search-filter > div:hover .ct-badge, .edu-search-filter > div.active .ct-badge {
     opacity: 1;
 }
-
-/*.ct-badge-all {
-    background-color: @all;
-}
-
-.ct-badge-y {
-    background-color: @y;
-}
-
-.ct-badge-x {
-    background-color: @x;
-}
-
-.ct-badge-c {
-    background-color: @c;
-}
-
-.ct-badge-g {
-    background-color: @g;
-}
-
-.ct-badge-z {
-    background-color: @z;
-}
-
-.ct-badge-t {
-    background-color: @t;
-}
-
-.ct-badge-d {
-    background-color: @d;
-}*/
 
 /*leaflet*/
 .leaflet-control-scale-line {

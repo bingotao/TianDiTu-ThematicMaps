@@ -193,11 +193,6 @@
         }.bind(this), 'json');
     }
 
-    //componentDidMount() {
-    //    //首次查询
-    //    this.searchSchool();
-    //}
-
     render() {
         var aCls = "active";
         var ept = "";
@@ -271,7 +266,7 @@
             <div className="edu-nav-panel">
                 <div className={s.kdt.on ? aCls : ept}>
                     <antd.Icon onClick={this.hiddenPanel.bind(this)} type="close-square" />
-                    <h3 className="edu-nav-panel-header">览地图</h3>
+                    <h3 className="edu-nav-panel-header">看地图</h3>
                     <div className="edu-nav-panel-container">
                         <div className="edu-layers">
                             <div className="edu-layergroup">
@@ -344,7 +339,7 @@
                 <div className={s.qtzt.on ? aCls : ept}>
                     <antd.Icon onClick={this.hiddenPanel.bind(this)} type="close-square" />
                     <h3 className="edu-nav-panel-header">
-                        看专题
+                        览专题
                     </h3>
                     <div className="edu-nav-panel-container">
                         <div className="thematicmaps">{cThematicMaps}</div>

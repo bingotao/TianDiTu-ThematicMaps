@@ -43,15 +43,12 @@ html, body {
 
 .edu-explain {
     position: absolute;
-    /*width: 400px;*/
     bottom: 5px;
     right: 5px;
     z-index: 900;
     font-size: 14px;
     padding: 3px 10px;
     border-radius: 3px;
-    /*background: rgba(0,0,0,0.4);
-    color: white;*/
     color: black;
     background-color: rgba(255,255,255,0.8);
 }
@@ -71,6 +68,11 @@ html, body {
         border-bottom: 1px solid tint(@primary-color,60%);
         transition: 0.3s ease;
 
+        &:hover {
+            background-color: #eee;
+            border-bottom-color: @primary-color;
+        }
+
         span {
             margin-right: 10px;
             color: @primary-color;
@@ -79,10 +81,5 @@ html, body {
         a {
             color: #444;
         }
-    }
-
-    .thematicmap:hover {
-        background-color: #eee;
-        border-bottom-color: @primary-color;
     }
 }
