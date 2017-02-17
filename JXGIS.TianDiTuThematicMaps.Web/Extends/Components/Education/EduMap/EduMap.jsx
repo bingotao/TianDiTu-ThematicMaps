@@ -217,7 +217,7 @@
 
     clearMap() {
         this.map.closePopup();
-        
+
         EduSchoolPopup.clearMarker();
         ResidencePopup.clearMarker();
         this.graphicsLayer.clearLayers();

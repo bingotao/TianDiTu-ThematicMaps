@@ -30,12 +30,15 @@ namespace JXGIS.Common.Test
 
             //var layers = LayerUtils.GetSchoolAreaLayers();
             //var s = POIUtils.GetPOI(new POICondition() { Key = "小区", Type = "100202", PageIndex = 1, PageStep = 20 });
-            var g = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", 120.729934294, 30.73954));
+            //var g = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", 120.729934294, 30.73954));
 
-            var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", 120.729934294, 30.73954));
-            var schoolAreas =
-                (from sa in SystemUtils.EFDbContext.EduSchoolArea
-                 select sa).ToList();
+            //var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", 120.729934294, 30.73954));
+            //var schoolAreas =
+            //    (from sa in SystemUtils.EFDbContext.EduSchoolArea
+            //     select sa).ToList();
+
+            //var fts = EntityUtils.EntitiesToFeatureCollection(schoolAreas);
+            //var s = Newtonsoft.Json.JsonConvert.SerializeObject(fts);
         }
     }
 }

@@ -11,7 +11,7 @@ using alatas.GeoJSON4EntityFramework;
 
 namespace JXGIS.Common.Entity
 {
-    [Table("Edu_SchoolArea")]
+    [Table("Edu_SchoolArea1")]
     public class EduSchoolArea
     {
         [Key]
