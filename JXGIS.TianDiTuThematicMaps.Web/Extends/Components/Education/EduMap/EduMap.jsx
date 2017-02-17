@@ -77,7 +77,6 @@
                 layer.bindPopup(EduSchoolAreaPopup.getPopup()).on('popupopen', function (e) {
                     var props = e.target.feature.properties
                     EduSchoolAreaPopup.setContent(props);
-
                 }.bind(this));
             }.bind(this)
         }).addTo(map);
@@ -134,9 +133,9 @@
     addLayers(layers) {
         var layerCfg = this.opts.eduConfig.Layers;
         for(let layer of layers) {
-            var cfg = layerCfg[layer.SType];
+            var cfg = layerCfg[layer.Type];
             if (cfg) {
-                cfg.layer = L.geoJSON(layer.List, {
+                cfg.layer = L.geoJSON(layer.Features, {
                     onEachFeature: function (ft, layer) {
                         var sType = ft.properties.SType;
 
@@ -158,7 +157,7 @@
                     }.bind(this)
                 });
 
-                if (layer.SType === "x_xq" || layer.SType === "c_xq") {
+                if (layer.Type === "x_xq" || layer.Type === "c_xq") {
                     //绑定学区popup
                     var popup = EduSchoolAreaPopup.getPopup();
                     cfg.layer
@@ -177,7 +176,7 @@
                        }.bind(this));
                 }
 
-                cfg.on ? this.turnLayerOn(layer.SType) : this.turnLayerOff(layer.SType);
+                cfg.on ? this.turnLayerOn(layer.Type) : this.turnLayerOff(layer.Type);
             }
         }
     }
@@ -262,7 +261,7 @@
                 } else {
                     var data = ro.Data;
                     this.graphicsLayer.clearLayers().addData(data).bringToFront();
-                    this.showSchoolPopup(data[0].properties.School);
+                    this.showSchoolPopup(data.features[0].properties.School);
                 }
             }.bind(this), 'json');
     }

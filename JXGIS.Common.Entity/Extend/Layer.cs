@@ -1,4 +1,5 @@
-﻿using System;
+﻿using alatas.GeoJSON4EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,6 @@ namespace JXGIS.Common.Entity
     public class Layer
     {
         public string Type { get; set; }
-
-        public string SType { get; set; }
+        public FeatureCollection Features { get; set; }
     }
 }

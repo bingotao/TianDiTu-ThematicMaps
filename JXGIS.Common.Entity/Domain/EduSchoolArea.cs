@@ -11,7 +11,7 @@ using alatas.GeoJSON4EntityFramework;
 
 namespace JXGIS.Common.Entity
 {
-    [Table("Edu_SchoolArea1")]
+    [Table("Edu_SchoolArea")]
     public class EduSchoolArea
     {
         [Key]
@@ -36,15 +36,6 @@ namespace JXGIS.Common.Entity
         [JsonIgnore]
         [Column("Geometry")]
         public DbGeography Geometry { get; set; }
-
-        [NotMapped]
-        public GeoJsonGeometry GeoJson
-        {
-            get
-            {
-                return Geometry == null ? null : GeoJsonGeometry.FromDbGeography(Geometry);
-            }
-        }
 
         [ForeignKey("SchoolID")]
         public virtual EduSchool School { get; set; }

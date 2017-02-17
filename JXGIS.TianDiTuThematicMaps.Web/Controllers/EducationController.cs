@@ -120,22 +120,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 }
                 else
                 {
-                    var fts = (from sa in schoolAreas
-                               select new
-                               {
-                                   type = "Feature",
-                                   properties = new
-                                   {
-                                       ID = sa.ID,
-                                       Area = sa.Area,
-                                       SchoolID = sa.SchoolID,
-                                       SType = sa.SType,
-                                       Districts = sa.Districts,
-                                       Name = sa.Name,
-                                       School = sa.School
-                                   },
-                                   geometry = sa.GeoJson
-                               }).ToList();
+                    var fts = EntityUtils.EntitiesToFeatureCollection(schoolAreas);
                     ro = new ReturnObject(fts);
                 }
             }

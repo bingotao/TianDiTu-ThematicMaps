@@ -57,8 +57,6 @@
     <Compile Include="Domain\EduSchool.cs" />
     <Compile Include="Domain\EduSchoolArea.cs" />
     <Compile Include="Extend\Layer.cs" />
-    <Compile Include="Extend\SchoolAreaLayer.cs" />
-    <Compile Include="Extend\SchoolLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

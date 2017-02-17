@@ -120,6 +120,12 @@
         this.schoolSearch.pageNumber = 1;
         var s = this.state;
         s.sxx.current = 1;
+        this.schoolSearch.stype = 'all';
+        for (var n in s.sxx.filters) {
+            s.sxx.filters[n].on = false;
+        }
+        s.sxx.filters.all.on = true;
+
         this.setState(s);
         this.searchSchool();
     }

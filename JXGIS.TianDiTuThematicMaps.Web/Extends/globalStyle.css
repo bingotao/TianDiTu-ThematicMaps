@@ -83,22 +83,27 @@
 .leaflet-bar .leaflet-control-zoom-in:hover,
 .leaflet-bar .leaflet-control-zoom-out,
 .leaflet-bar .leaflet-control-zoom-out:hover {
-    height: 36px;
-    width: 36px;
-    line-height: 34px;
-    font-size: 22px;
+    height: 36px !important;
+    width: 36px !important;
+    line-height: 34px !important;
+    font-size: 22px !important;
 }
 
-    .leaflet-bar .leaflet-control-zoom-out,
-    .leaflet-bar .leaflet-control-zoom-out:hover {
-        text-indent: 0;
-        line-height: 36px;
-    }
+.leaflet-control-zoom {
+    border: 0 !important;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65) !important;
+}
+
+.leaflet-bar .leaflet-control-zoom-out,
+.leaflet-bar .leaflet-control-zoom-out:hover {
+    text-indent: 0 !important;
+    line-height: 36px !important;
+}
 
 .leaflet-popup-content-wrapper {
-    border-radius: 3px;
+    border-radius: 3px !important;
 }
 
 .leaflet-popup-content {
-    margin: 20px 10px 10px 10px;
+    margin: 20px 10px 10px 10px !important;
 }
