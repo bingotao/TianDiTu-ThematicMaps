@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.Entity;
 
 namespace JXGIS.Common.BaseLib
 {
-    public class EFDbContext : DbContext
+   
+    public class SQLEFDbContext : DbContext
     {
-
-        public EFDbContext() : base((string)SystemUtils.Config.DbConStr)
+        public SQLEFDbContext() : base((string)SystemUtils.Config.SQLDbConStr)
         {
             this.Database.Initialize(false);
         }

@@ -46,6 +46,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\JXGIS.Common.StaticLib\Lib\GeoJSON4EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity.EF6">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\mysql.data.entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\JXGIS.Common.StaticLib\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -77,13 +83,15 @@
     <Compile Include="Bundles\BabelBundle.cs" />
     <Compile Include="Bundles\BabelTransform.cs" />
     <Compile Include="Bundles\ImportedFilePathResolver.cs" />
-    <Compile Include="ComDbContext.cs" />
-    <Compile Include="EFDbContext.cs" />
+    <Compile Include="SQLComDbContext.cs" />
+    <Compile Include="MySQLComDbContext.cs" />
+    <Compile Include="SQLEFDbContext.cs" />
     <Compile Include="HtmlTableToExcel.cs" />
     <Compile Include="JsonConverter\CustomDateTimeConverter.cs" />
     <Compile Include="JsonConverter\CustomDecimalConverter.cs" />
     <Compile Include="JsonConverter\CustomDoubleConverter.cs" />
     <Compile Include="JsonConverter\CustomerSerialize.cs" />
+    <Compile Include="MySQLEFDbContext.cs" />
     <Compile Include="POIUtils.cs" />
     <Compile Include="PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

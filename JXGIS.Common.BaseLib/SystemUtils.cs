@@ -10,13 +10,18 @@ namespace JXGIS.Common.BaseLib
 {
     public static class SystemUtils
     {
-        private static readonly object _lockObject1 = new object();
-        private static readonly object _lockObject2 = new object();
-        private static readonly object _lockObject3 = new object();
+        private static readonly object _lockConfig = new object();
+        private static readonly object _lockSQLEFDbContext = new object();
+        private static readonly object _lockMySQLEFDbContext = new object();
+        private static readonly object _lockSQLComContext = new object();
+        private static readonly object _lockMySQLComContext = new object();
 
         private static dynamic _Config;
-        private static ComDbContext _ComDbContext;
-        private static EFDbContext _EFDbContext;
+        private static SQLEFDbContext _SQLEFDbContext;
+        private static MySQLEFDbContext _MySQLEFDbContext;
+        private static SQLComDbContext _SQLComDbContext;
+        private static MySQLComDbContext _MySQLComDbContext;
+
 
         public static string BaseUrl
         {
@@ -34,7 +39,7 @@ namespace JXGIS.Common.BaseLib
             {
                 if (_Config == null)
                 {
-                    lock (_lockObject1)
+                    lock (_lockConfig)
                     {
                         using (StreamReader sr = new StreamReader(configPath))
                         {
@@ -46,26 +51,47 @@ namespace JXGIS.Common.BaseLib
                 return _Config;
             }
         }
-
-        public static ComDbContext ComDbContext
+        public static SQLEFDbContext SQLEFDbContext
         {
             get
             {
-                if (SystemUtils._ComDbContext == null)
-                    lock (_lockObject2)
-                        SystemUtils._ComDbContext = new ComDbContext();
-                return SystemUtils._ComDbContext;
+                if (SystemUtils._SQLEFDbContext == null)
+                    lock (_lockSQLEFDbContext)
+                        SystemUtils._SQLEFDbContext = new SQLEFDbContext();
+                return SystemUtils._SQLEFDbContext;
             }
         }
 
-        public static EFDbContext EFDbContext
+        public static MySQLEFDbContext MySQLEFDbContext
         {
             get
             {
-                if (SystemUtils._EFDbContext == null)
-                    lock (_lockObject3)
-                        SystemUtils._EFDbContext = new EFDbContext();
-                return SystemUtils._EFDbContext;
+                if (SystemUtils._MySQLEFDbContext == null)
+                    lock (_lockMySQLEFDbContext)
+                        SystemUtils._MySQLEFDbContext = new MySQLEFDbContext();
+                return SystemUtils._MySQLEFDbContext;
+            }
+        }
+
+        public static SQLComDbContext SQLComDbContext
+        {
+            get
+            {
+                if (SystemUtils._SQLComDbContext == null)
+                    lock (_lockSQLComContext)
+                        SystemUtils._SQLComDbContext = new SQLComDbContext();
+                return SystemUtils._SQLComDbContext;
+            }
+        }
+
+        public static MySQLComDbContext MySQLComDbContext
+        {
+            get
+            {
+                if (SystemUtils._MySQLComDbContext == null)
+                    lock (_lockMySQLComContext)
+                        SystemUtils._MySQLComDbContext = new MySQLComDbContext();
+                return SystemUtils._MySQLComDbContext;
             }
         }
     }

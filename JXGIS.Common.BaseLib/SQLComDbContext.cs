@@ -11,21 +11,20 @@ namespace JXGIS.Common.BaseLib
     /// <summary>
     /// 数据库查询上下文
     /// </summary>
-    public class ComDbContext
+    public class SQLComDbContext
     {
         private SqlDataAdapter _DBAdapter = null;
         private string _connectionString = null;
         private SqlConnection _connection = null;
 
-        public ComDbContext()
+        public SQLComDbContext()
         {
-            this._connectionString = SystemUtils.Config.DbConStr;
+            this._connectionString = SystemUtils.Config.SQLDbConStr;
             this._DBAdapter = new SqlDataAdapter();
             this._connection = new SqlConnection(this._connectionString);
-
         }
 
-        public ComDbContext(string sConnectionString)
+        public SQLComDbContext(string sConnectionString)
         {
             this._connectionString = sConnectionString;
             this._DBAdapter = new SqlDataAdapter();
@@ -59,9 +58,9 @@ namespace JXGIS.Common.BaseLib
             return dt;
         }
 
-        public static ComDbContext Context
+        public static SQLComDbContext Context
         {
-            get { return new ComDbContext(); }
+            get { return new SQLComDbContext(); }
         }
     }
 }

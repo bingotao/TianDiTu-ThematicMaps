@@ -13,7 +13,7 @@ namespace JXGIS.TianDiTuThematicMaps.Business
     {
         public static List<Layer> GetSchoolLayers()
         {
-            var schools = SystemUtils.EFDbContext.EduSchool.ToList();
+            var schools = SystemUtils.SQLEFDbContext.EduSchool.ToList();
 
             var schoolLayer = from s in schools
                               group s by s.SType into g
@@ -27,7 +27,7 @@ namespace JXGIS.TianDiTuThematicMaps.Business
 
         public static List<Layer> GetSchoolAreaLayers()
         {
-            var schoolAreas = SystemUtils.EFDbContext.EduSchoolArea.ToList();
+            var schoolAreas = SystemUtils.SQLEFDbContext.EduSchoolArea.ToList();
             var layers = (from sa in schoolAreas
                           group sa by sa.SType into g
                           select new Layer

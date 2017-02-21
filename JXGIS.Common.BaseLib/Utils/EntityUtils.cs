@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Reflection;
@@ -142,6 +143,23 @@ namespace JXGIS.Common.BaseLib
                 dict.Add(pInfo.Name, pInfo.GetValue(entity));
             }
             return dict;
+        }
+
+        public static Dictionary<string, object> DataRowToDictionary(DataRow dataRow)
+        {
+            return DataRowToDictionary(dataRow, dataRow.Table.Columns);
+        }
+
+        public static Dictionary<string, object> DataRowToDictionary(DataRow dataRow, DataColumnCollection dataColumns)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+
+            foreach (DataColumn dc in dataColumns)
+            {
+                var oValue = dataRow[dc];
+                dic[dc.ColumnName] = oValue;
+            }
+            return dic;
         }
     }
 }

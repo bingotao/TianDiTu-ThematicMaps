@@ -39,6 +39,12 @@
     <Reference Include="GeoJSON4EntityFramework">
       <HintPath>..\JXGIS.Common.StaticLib\Lib\GeoJSON4EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity.EF6">
+      <HintPath>..\JXGIS.Common.StaticLib\Lib\mysql.data.entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\JXGIS.Common.StaticLib\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -56,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Domain\EduSchool.cs" />
     <Compile Include="Domain\EduSchoolArea.cs" />
+    <Compile Include="Domain\Test.cs" />
     <Compile Include="Extend\Layer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

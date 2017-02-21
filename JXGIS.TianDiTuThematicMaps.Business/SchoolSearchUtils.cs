@@ -14,7 +14,7 @@ namespace JXGIS.TianDiTuThematicMaps.Business
         public static SchoolSearchResult GetSchools(string searchText, string schoolType, int pageSize, int pageNumber)
         {
             if (searchText == null) searchText = string.Empty;
-            var baseSQL = (from s in SystemUtils.EFDbContext.EduSchool
+            var baseSQL = (from s in SystemUtils.SQLEFDbContext.EduSchool
                            where (s.Name.Contains(searchText)|| s.ShortName.Contains(searchText)) && (schoolType == "all" ? true : s.SType == schoolType)
                            select s);
 
@@ -31,7 +31,7 @@ namespace JXGIS.TianDiTuThematicMaps.Business
         public static SchoolSearchResult2 GetSchools2(string searchText, string schoolType, int pageSize, int pageNumber)
         {
             if (searchText == null) searchText = string.Empty;
-            var groups = (from s in SystemUtils.EFDbContext.EduSchool
+            var groups = (from s in SystemUtils.SQLEFDbContext.EduSchool
                           where s.Name.Contains(searchText)
                           group s by new { s.SchoolType, s.SType } into g
                           select new SchoolGroup
@@ -41,7 +41,7 @@ namespace JXGIS.TianDiTuThematicMaps.Business
                               Count = g.Count()
                           }).ToList();
 
-            var schools = (from s in SystemUtils.EFDbContext.EduSchool
+            var schools = (from s in SystemUtils.SQLEFDbContext.EduSchool
                            where s.Name.Contains(searchText) && (schoolType == "all" ? true : s.SType == schoolType)
                            select s).OrderBy(p => p.Name).Skip((pageSize - 1) * pageNumber).Take(pageNumber).ToList();
 

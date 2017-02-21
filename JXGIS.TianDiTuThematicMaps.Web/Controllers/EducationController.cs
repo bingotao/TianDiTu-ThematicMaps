@@ -28,7 +28,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             EduSchool school = null;
             try
             {
-                school = SystemUtils.EFDbContext.EduSchool.Where(p => p.ID == ID).FirstOrDefault();
+                school = SystemUtils.SQLEFDbContext.EduSchool.Where(p => p.ID == ID).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 List<EduSchoolArea> schoolAreas = null;
                 if (!string.IsNullOrEmpty(schoolID))
                 {
-                    schoolAreas = (from s in SystemUtils.EFDbContext.EduSchoolArea
+                    schoolAreas = (from s in SystemUtils.SQLEFDbContext.EduSchoolArea
                                    where s.SchoolID == schoolID
                                    select s).ToList();
                 }
@@ -108,7 +108,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 {
                     var point = System.Data.Entity.Spatial.DbGeography.FromText(string.Format("POINT({0} {1})", lng, lat));
                     schoolAreas =
-                        (from sa in SystemUtils.EFDbContext.EduSchoolArea
+                        (from sa in SystemUtils.SQLEFDbContext.EduSchoolArea
                          where sa.Geometry.Intersects(point) && sa.SType == sType
                          select sa).ToList();
                 }
