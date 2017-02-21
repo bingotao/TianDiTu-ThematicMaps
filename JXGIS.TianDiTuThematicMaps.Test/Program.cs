@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace JXGIS.Common.Test
 {
@@ -69,13 +70,36 @@ namespace JXGIS.Common.Test
 
             //    var dic = EntityUtils.DataRowToDictionary(dt.Rows[0]);
 
-            //    var geo = DbGeography.FromBinary(dic["Geometry"] as byte[]);
+            //    var geo = DbGeometry.FromBinary(dic["Geometry"] as byte[]);
             //}
-            MySql.Data.MySqlClient.MySqlParameter pLng = new MySql.Data.MySqlClient.MySqlParameter("@lng", 120.771042);
-            MySql.Data.MySqlClient.MySqlParameter pLat = new MySql.Data.MySqlClient.MySqlParameter("@lat", 30.740626);
+            //MySql.Data.MySqlClient.MySqlParameter pLng = new MySql.Data.MySqlClient.MySqlParameter("@lng", 120.771042);
+            //MySql.Data.MySqlClient.MySqlParameter pLat = new MySql.Data.MySqlClient.MySqlParameter("@lat", 30.740626);
 
-            var dataTable = SystemUtils.MySQLComDbContext.GetDataTable("select_schoolarea", CommandType.StoredProcedure, pLng, pLat);
+            //var dataTable = SystemUtils.MySQLComDbContext.GetDataSet("select fun()", CommandType.Text);
 
+            //var layers = LayerUtils.GetSchoolAreaLayers2();
+
+            //var s = SystemUtils.MySQLEFDbContext.Test.ToList();
+
+
+            //var txt = "POLYGON((120.72900758900005 30.755549376000033,120.72548825100012 30.755413619000024,120.7247089330001 30.755575307000072,120.72356777900006 30.75750491200006,120.72172432100001 30.757672081000067,120.72175452500005 30.75838394300007,120.7218459930001 30.760704385000054,120.72183237100012 30.761897085000044,120.72498424100002 30.76222152300005,120.727503823 30.76255475100004,120.72854422000012 30.762951987000065,120.72895626100001 30.762953414000037,120.73085964200004 30.762976265000077,120.73329568400004 30.76332361300007,120.73535621300005 30.763617375000024,120.73814449100007 30.764428422000037,120.73837121300005 30.763217670000074,120.73842896400004 30.762765324000043,120.73802953600011 30.76144223800003,120.73743801700004 30.759455010000067,120.73714012100004 30.75891275500004,120.7369971820001 30.758220642000026,120.73746517900008 30.75747485000005,120.73627999000007 30.755777488000035,120.73447235600008 30.75558261900005,120.73122099400007 30.755562867000037,120.72900758900005 30.755549376000033))";
+            //var geometry = DbGeometry.FromText(txt, 4326);
+            string s = SystemUtils.Config.MySQLDbConStr.ToString();
+            var con = new MySqlConnection(s);
+            
+            MySqlCommand cmd = new MySqlCommand(null, con);
+            con.Open();
+            cmd.CommandText = "SELECT geometry FROM edu_schoolarea";
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                var val = reader.GetMySqlGeometry(0);
+                var valWithName = reader.GetMySqlGeometry("geometry");
+                Console.WriteLine(val.ToString());
+                // output : ("POINT(47.37 -122.21)"
+                Console.WriteLine(valWithName.ToString());
+                // output("POINT(47.37 -122.21)"
+            }
         }
     }
 }

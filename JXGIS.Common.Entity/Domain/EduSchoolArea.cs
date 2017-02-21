@@ -40,4 +40,23 @@ namespace JXGIS.Common.Entity
         [ForeignKey("SchoolID")]
         public virtual EduSchool School { get; set; }
     }
+
+    public class EduSchoolArea2
+    {
+        public int ID { get; set; }
+
+        public string Name { get; set; }
+
+        public string Area { get; set; }
+
+        public string Districts { get; set; }
+
+        public string SType { get; set; }
+
+        public string SchoolID { get; set; }
+
+        public string Geometry { get; set; }
+
+        public EduSchool2 School { get; set; }
+    }
 }

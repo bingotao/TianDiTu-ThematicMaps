@@ -32,5 +32,10 @@ namespace JXGIS.Common.Entity
         [Column("SchoolID")]
         public string SchoolID { get; set; }
 
+        [Column("Geometry")]
+        public DbGeometry Geometry { get; set; }
+
+        [Column("GeometryWKT")]
+        public string GeometryWKT { get; set; }
     }
 }

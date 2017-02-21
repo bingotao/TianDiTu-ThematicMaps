@@ -43,12 +43,17 @@ namespace JXGIS.TianDiTuThematicMaps.Web
             #endregion
 
             #region 教育专题
-            bundles.Add(new BabelBundle("~/education/js")
+            bundles.Add(new BabelBundle("~/education/index/js")
                 .IncludeDirectory(_cmpPath + "Education", "*.jsx", true)
                 .Include(_viewPath + "Education/js/Index.jsx"));
-            bundles.Add(new LessBundle("~/education/css")
+            bundles.Add(new LessBundle("~/education/index/css")
                 .IncludeDirectory(_cmpPath + "Education", "*.less", true)
                 .Include(_viewPath + "Education/css/Index.less"));
+
+            bundles.Add(new BabelBundle("~/education/schooldetails/js")
+                .Include(_viewPath + "Education/js/SchoolDetails.jsx"));
+            bundles.Add(new LessBundle("~/education/schooldetails/css")
+                .Include(_viewPath + "Education/css/SchoolDetails.less"));
             #endregion
         }
     }

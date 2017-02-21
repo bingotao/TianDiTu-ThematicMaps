@@ -273,6 +273,7 @@
     <Content Include="Extends\Components\Education\EduClearButton\EduClearButton.less" />
     <Content Include="Views\Education\SchoolDetails.cshtml" />
     <Content Include="Views\Education\css\SchoolDetails.less" />
+    <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

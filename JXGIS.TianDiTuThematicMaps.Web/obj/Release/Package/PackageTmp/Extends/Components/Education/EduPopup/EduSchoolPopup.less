@@ -1,0 +1,56 @@
+﻿@import '~/Extends/default.less';
+
+.schoolpopup {
+    width: 300px;
+
+    h3 {
+        color: @primary-color;
+        padding-bottom: 2px;
+        margin-bottom: 5px;
+        font-size: 16px;
+        position: relative;
+        border-bottom: 2px solid;
+
+        span {
+            display: inline-block !important;
+            transform: translateY(-2px);
+            margin-right: 5px;
+        }
+    }
+
+    > div {
+        font-size: 14px;
+        display: flex;
+        line-height: 22px;
+
+        i {
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            color: #888;
+        }
+
+        span {
+
+
+            a {
+                color: @primary-color;
+            }
+        }
+    }
+
+    > div:last-child {
+        text-align: center;
+        border-top: 1px solid @primary-color;
+        margin-top: 5px;
+        line-height: 10px;
+        padding-top: 8px;
+        width: 100%;
+        display: block;
+
+        button {
+            margin: 0 5px;
+            letter-spacing: 2px;
+        }
+    }
+}

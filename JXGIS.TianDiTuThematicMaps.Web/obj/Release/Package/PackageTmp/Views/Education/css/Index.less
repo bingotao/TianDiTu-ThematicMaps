@@ -1,0 +1,85 @@
+﻿@import "~/Extends/default.less";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+.edu-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    @header-height: 70px;
+
+    .edu-header {
+        height: @header-height;
+        background: url("@{_bl_}/Reference/images/education-header.jpg");
+        box-shadow: @box-shadow-base;
+        z-index: 999;
+        position: relative;
+        border-bottom: 1px solid @border-color-split;
+    }
+
+    .edu-map {
+        position: relative;
+        width: 100%;
+        height: calc(~"100% - @{header-height}");
+        overflow: hidden;
+    }
+}
+
+.leaflet-popup-content {
+    font-family: @font-family;
+}
+
+.edu-explain {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 900;
+    font-size: 14px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    color: black;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.thematicmaps {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+
+    .thematicmap {
+        width: 230px;
+        margin: auto;
+        font-size: 14px;
+        display: flex;
+        margin-top: 10px;
+        padding: 3px 10px;
+        border-bottom: 1px solid tint(@primary-color,60%);
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: #eee;
+            border-bottom-color: @primary-color;
+        }
+
+        span {
+            margin-right: 10px;
+            color: @primary-color;
+        }
+
+        a {
+            color: #444;
+        }
+    }
+}

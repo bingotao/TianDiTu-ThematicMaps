@@ -28,7 +28,9 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             EduSchool school = null;
             try
             {
-                school = SystemUtils.SQLEFDbContext.EduSchool.Where(p => p.ID == ID).FirstOrDefault();
+                var s = SystemUtils.SQLEFDbContext.EduSchool.Where(p => p.ID == ID).FirstOrDefault();
+
+                school = s == null ? new EduSchool() : s;
             }
             catch (Exception ex)
             {
@@ -45,6 +47,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 var layers = new List<Layer>();
                 var schoolLayers = LayerUtils.GetSchoolLayers();
                 var schoolAreaLayers = LayerUtils.GetSchoolAreaLayers();
+
                 layers.AddRange(schoolLayers);
                 layers.AddRange(schoolAreaLayers);
                 ro = new ReturnObject(layers);
@@ -113,16 +116,16 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                          select sa).ToList();
                 }
 
-
                 if (schoolAreas.Count == 0)
                 {
-                    ro = new ReturnObject("未找到所属学区");
+                    ro = new ReturnObject("未找到所属学区", false);
                 }
                 else
                 {
                     var fts = EntityUtils.EntitiesToFeatureCollection(schoolAreas);
                     ro = new ReturnObject(fts);
                 }
+
             }
             catch (Exception ex)
             {

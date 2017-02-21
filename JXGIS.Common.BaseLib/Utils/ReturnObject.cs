@@ -101,10 +101,14 @@ namespace JXGIS.Common.BaseLib
         {
             get
             {
-                if (_showDefaultErrorMessage)
-                    return _defaultErrorMessage;
-                else
-                    return _errorMessage;
+                if (!string.IsNullOrEmpty(_errorMessage))
+                {
+                    if (_showDefaultErrorMessage)
+                        return _defaultErrorMessage;
+                    else
+                        return _errorMessage;
+                }
+                return null;
             }
         }
         public ReturnObject()

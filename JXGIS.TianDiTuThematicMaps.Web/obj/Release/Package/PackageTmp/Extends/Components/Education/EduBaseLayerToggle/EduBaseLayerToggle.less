@@ -1,0 +1,43 @@
+﻿@import "~/Extends/default.less";
+
+.baselayertoggle {
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    background-color: white;
+    z-index: 999;
+    top: 92px;
+    right: 10px;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    cursor: pointer;
+
+    .iconfont {
+        text-align: center;
+        color: #444;
+    }
+
+    .icon-iconweixing {
+        font-size: 20px;
+        line-height: 38px;
+    }
+
+    .icon-ditu2 {
+        font-size: 26px;
+        line-height: 32px;
+    }
+}
+
+.img-tooltip {
+
+    @img-tooltip-color: rgba(255,255,255,.85);
+
+    .ant-tooltip-arrow {
+        border-left-color: @img-tooltip-color;
+    }
+
+    .ant-tooltip-inner {
+        background-color: @img-tooltip-color;
+        color: #444;
+    }
+}

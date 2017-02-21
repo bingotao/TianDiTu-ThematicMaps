@@ -15,3 +15,6 @@ E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.Bas
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\obj\Release\JXGIS.Common.BaseLib.csprojResolveAssemblyReference.cache
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\obj\Release\JXGIS.Common.BaseLib.dll
 E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\obj\Release\JXGIS.Common.BaseLib.pdb
+E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\bin\Release\GeoJSON4EntityFramework.dll
+E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\bin\Release\MySql.Data.dll
+E:\工作\Code\10 天地图·智慧应用\TianDiTu-ThematicMaps\JXGIS.Common.BaseLib\bin\Release\mysql.data.entity.EF6.dll

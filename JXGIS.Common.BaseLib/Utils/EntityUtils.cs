@@ -112,10 +112,19 @@ namespace JXGIS.Common.BaseLib
                 DbGeography geography = geoProperty.GetValue(entity) as DbGeography;
                 feature = new Feature(geography);
             }
-            else
+            else if (geoProperty.PropertyType.Equals(typeof(DbGeometry)))
             {
                 DbGeometry geometry = geoProperty.GetValue(entity) as DbGeometry;
                 feature = new Feature(geometry);
+            }
+            else if (geoProperty.PropertyType.Equals(typeof(string)))
+            {
+                string wkt = geoProperty.GetValue(entity) as string;
+                feature = new Feature(wkt);
+            }
+            else
+            {
+                return null;
             }
 
             var propertyInfos = entity.GetType().GetProperties();
@@ -160,6 +169,42 @@ namespace JXGIS.Common.BaseLib
                 dic[dc.ColumnName] = oValue;
             }
             return dic;
+        }
+
+        public static T DataRowToEntity<T>(DataRow dataRow, PropertyInfo[] props = null) where T : new()
+        {
+            T entity = default(T);
+            if (dataRow == null) return entity; else entity = new T();
+            props = props == null ? typeof(T).GetProperties() : props;
+            var columns = dataRow.Table.Columns;
+            foreach (var prop in props)
+            {
+                var column = columns[prop.Name];
+                if (column != null)
+                {
+                    var value = dataRow[column];
+                    if (value != DBNull.Value)
+                    {
+                        prop.SetValue(entity, Convert.ChangeType(value, prop.PropertyType));
+                    }
+                }
+            }
+            return entity;
+        }
+
+
+        public static List<T> DataTableToEntities<T>(DataTable dataTable, PropertyInfo[] props = null) where T : new()
+        {
+            List<T> list = new List<T>();
+            if (dataTable == null) return list;
+            var rows = dataTable.Rows;
+            props = props == null ? typeof(T).GetProperties() : props;
+            foreach (DataRow row in rows)
+            {
+                var entity = DataRowToEntity<T>(row, props);
+                list.Add(entity);
+            }
+            return list;
         }
     }
 }

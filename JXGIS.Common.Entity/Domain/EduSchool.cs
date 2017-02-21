@@ -79,4 +79,49 @@ namespace JXGIS.Common.Entity
         public double Lng { get { return Geometry == null ? 0 : (Geometry.Longitude ?? 0); } }
 
     }
+
+    public class EduSchool2
+    {
+        public string ID { get; set; }
+
+        public string SchoolID { get; set; }
+
+        public string Name { get; set; }
+
+        public string ShortName { get; set; }
+
+        public string SchoolType { get; set; }
+
+        public string County { get; set; }
+
+        public string Street { get; set; }
+
+        public string Address { get; set; }
+
+        public string Postcode { get; set; }
+
+        public string Telephone { get; set; }
+
+        public string ComplaintsHotline { get; set; }
+
+        public string Website { get; set; }
+
+        public string Email { get; set; }
+
+        public string SchoolNature { get; set; }
+
+        public string SchoolDistrict { get; set; }
+
+        public string WorkTime { get; set; }
+
+        public string Abstract { get; set; }
+
+        public string SType { get; set; }
+
+        public string Geometry { get; set; }
+
+        public double Lng { get; set; }
+
+        public double Lat { get; set; }
+    }
 }

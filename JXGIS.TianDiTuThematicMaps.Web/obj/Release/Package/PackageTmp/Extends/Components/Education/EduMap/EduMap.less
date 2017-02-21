@@ -1,0 +1,114 @@
+﻿@import "~/Extends/default.less";
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+
+    .leaflet-tooltip {
+        background-color: rgba(0,0,0,0);
+        border: 0;
+        box-shadow: none;
+
+        .schoolname-tip {
+            display: block;
+            padding: 0 10px;
+            font-family: @font-family;
+            color: white;
+            font-size: 14px;
+            background-color: @primary-color;
+            border-radius: 3px;
+            opacity: 0;
+        }
+    }
+
+    .leaflet-tooltip:before {
+        border: 0;
+    }
+}
+
+#map.schooltip-on.y-on .leaflet-tooltip .schoolname-tip.y-tip-on,
+#map.schooltip-on.x-on .leaflet-tooltip .schoolname-tip.x-tip-on,
+#map.schooltip-on.c-on .leaflet-tooltip .schoolname-tip.c-tip-on,
+#map.schooltip-on.g-on .leaflet-tooltip .schoolname-tip.g-tip-on,
+#map.schooltip-on.z-on .leaflet-tooltip .schoolname-tip.z-tip-on,
+#map.schooltip-on.t-on .leaflet-tooltip .schoolname-tip.t-tip-on,
+#map.schooltip-on.d-on .leaflet-tooltip .schoolname-tip.d-tip-on {
+    opacity: 1;
+}
+
+.school-icon {
+    display: block;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+    border-radius: 50%;
+    border: 2px solid;
+    color: white;
+    text-indent: 2px;
+    font-family: @font-family;
+    text-indent: 0;
+}
+
+#map .always.school-icon {
+    display: block !important;
+}
+
+@y: rgb(168,168,0);
+@x: rgb(255,85,0);
+@c: rgb(168,0,133);
+@g: rgb(0,77,168);
+@z: rgb(77,116,0);
+@t: rgb(197,0,255);
+@d: rgb(133,0,168);
+
+
+.school-icon-fun(@color,@text) {
+    background-color: @color;
+    border-color: tint(@color,50%);
+
+    &::after {
+        content: @text;
+    }
+}
+
+.school-icon.y {
+    .school-icon-fun(@y,'幼');
+}
+
+.school-icon.x {
+    .school-icon-fun(@x,'小');
+}
+
+.school-icon.c {
+    .school-icon-fun(@c,'初');
+}
+
+.school-icon.g {
+    .school-icon-fun(@g,'高');
+}
+
+.school-icon.z {
+    .school-icon-fun(@z,'职');
+}
+
+.school-icon.t {
+    .school-icon-fun(@t,'特');
+}
+
+.school-icon.d {
+    .school-icon-fun(@d,'大');
+}
+
+.residence-icon {
+    @color: #fe2020;
+
+    background-color: @color;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid tint(@color,50%);
+}

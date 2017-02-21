@@ -1,0 +1,109 @@
+﻿/* 全局样式 */
+.clearfix {
+    *zoom: 1;
+}
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+/* 重定义webkit 下滚动条样式*/
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    /*background-color: rgba(29, 128, 211, 0.6);*/
+    background-color: rgba(170, 170, 170, 0.8);
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        /*background-color: #1D80D3;*/
+        background-color: rgba(170, 170, 170, 1);
+    }
+
+/* 滚动条样式重置 */
+.mCS-dark-blue .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+    margin-right: 0;
+}
+
+.mCS-dark-blue.mCSB_inside > .mCSB_container {
+    margin-right: 15px;
+}
+
+.mCS-dark-blue .mCSB_draggerRail {
+    background-color: #d9d9d9;
+}
+
+.mCS-dark-blue .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #1D80D3;
+    width: 4px;
+    border-radius: 0;
+}
+
+
+/*其他自定义样式*/
+.ct-input {
+    resize: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    transition: 0.3s all ease;
+}
+
+    .ct-input:focus {
+        border-color: rgba(45, 183, 245, 0.80);
+        animation: ct-input-boxshadow infinite alternate-reverse 1s linear;
+    }
+
+@keyframes ct-input-boxshadow {
+    from {
+        box-shadow: 0 0 0 #2db7f5;
+    }
+
+    to {
+        box-shadow: 0 0 10px #2db7f5;
+    }
+}
+
+/* leaflet */
+.leaflet-bar .leaflet-control-zoom-in,
+.leaflet-bar .leaflet-control-zoom-in:hover,
+.leaflet-bar .leaflet-control-zoom-out,
+.leaflet-bar .leaflet-control-zoom-out:hover {
+    height: 36px !important;
+    width: 36px !important;
+    line-height: 34px !important;
+    font-size: 22px !important;
+}
+
+.leaflet-control-zoom {
+    border: 0 !important;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65) !important;
+}
+
+.leaflet-bar .leaflet-control-zoom-out,
+.leaflet-bar .leaflet-control-zoom-out:hover {
+    text-indent: 0 !important;
+    line-height: 36px !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 3px !important;
+}
+
+.leaflet-popup-content {
+    margin: 20px 10px 10px 10px !important;
+}
