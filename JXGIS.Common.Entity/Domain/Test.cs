@@ -37,5 +37,8 @@ namespace JXGIS.Common.Entity
 
         [Column("GeometryWKT")]
         public string GeometryWKT { get; set; }
+
+        [NotMapped]
+        public string GeoJSON { get; set; }
     }
 }

@@ -32,7 +32,15 @@ namespace JXGIS.Common.BaseLib
             }
         }
 
-        private static string configPath = AppDomain.CurrentDomain.BaseDirectory + "Config\\SystemParameters.json";
+        private static string configPath
+        {
+            get
+            {
+                string path = System.Configuration.ConfigurationManager.AppSettings["SysParFilePath"];
+                return AppDomain.CurrentDomain.BaseDirectory + (string.IsNullOrEmpty(path) ? "Config\\SystemParameters.json" : path);
+            }
+        }
+
         public static dynamic Config
         {
             get

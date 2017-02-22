@@ -76,12 +76,8 @@ namespace JXGIS.Common.BaseLib
         /// <returns></returns>
         private static string GetInitDefaultErrorMessage()
         {
-            string errorMessage = System.Configuration.ConfigurationManager.AppSettings["errorMessage"];
-            if (string.IsNullOrEmpty(errorMessage))
-            {
-                errorMessage = "当前操作发生了错误，请联系系统管理员。";
-            }
-            return errorMessage;
+            string errorMessage = System.Configuration.ConfigurationManager.AppSettings["ErrorMessage"];
+            return string.IsNullOrEmpty(errorMessage) ? "当前操作发生了错误，请联系系统管理员。" : errorMessage;
         }
 
         /// <summary>
@@ -94,7 +90,7 @@ namespace JXGIS.Common.BaseLib
 #if DEBUG
             return false;
 #endif
-            return true;
+            return System.Configuration.ConfigurationManager.AppSettings["ShowOrginalErrorMessage"] != "1";
         }
 
         public string ErrorMessage
