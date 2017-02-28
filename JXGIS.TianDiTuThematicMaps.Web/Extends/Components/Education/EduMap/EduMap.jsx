@@ -217,12 +217,25 @@
 
     turnLayerOn(type) {
         this.$map.addClass(type + '-on');
-        eduMap.opts.eduConfig.Layers[type].layer.addTo(this.map);
+        this.opts.eduConfig.Layers[type].layer.addTo(this.map);
+    }
+
+    toggleAllLayers(on) {
+        for (var type in this.opts.eduConfig.Layers) {
+            var layer = this.opts.eduConfig.Layers[type];
+            if (on) {
+                this.$map.addClass(type + '-on');
+                this.opts.eduConfig.Layers[type].layer.addTo(this.map);
+            } else {
+                this.$map.removeClass(type + '-on');
+                this.opts.eduConfig.Layers[type].layer.remove();
+            }
+        }
     }
 
     turnLayerOff(type) {
         this.$map.removeClass(type + '-on');
-        eduMap.opts.eduConfig.Layers[type].layer.remove();
+        this.opts.eduConfig.Layers[type].layer.remove();
     }
 
     componentDidMount() {

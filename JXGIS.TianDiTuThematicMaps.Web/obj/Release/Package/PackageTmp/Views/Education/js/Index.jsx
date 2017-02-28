@@ -26,6 +26,10 @@ class EduIndex extends React.Component {
             eduMap.turnLayer(e.data.layerType, e.data.visible);
         });
 
+        eduNav.on('onToggleAllLayers', function (e) {
+            eduMap.toggleAllLayers(e.data.on);
+        });
+
         eduNav.on('schoolItemClick', function (e) {
             eduMap.showSchoolPopup(e.data);
         });
@@ -38,8 +42,22 @@ class EduIndex extends React.Component {
             eduMap.showSchoolArea(e.data.ID);
         });
 
+        EduSchoolPopup.getPopupContent().on('onShowResidenceClick', function (e) {
+            eduNav.select('cxq');
+            eduNav.searchResidenceByID(null, e.data.schoolID);
+        });
+
         ResidencePopup.getPopupContent().on('onShowSchoolAreaClick', function (e) {
-            eduMap.showSchoolArea(null, e.data.residence.y, e.data.residence.x, e.data.type);
+            eduMap.showSchoolArea(null, e.data.residence.Y, e.data.residence.X, e.data.type);
+        });
+
+        EduSchoolAreaPopup.getPopupContent().on('onShowResidenceClick', function (e) {
+            eduNav.select('cxq');
+            eduNav.searchResidenceByID(e.data.schoolAreaID, null);
+        });
+
+        eduNav.on('onResidenceLoaded', function (e) {
+            eduMap.addResidence(e.data.rows.features);
         });
     }
 

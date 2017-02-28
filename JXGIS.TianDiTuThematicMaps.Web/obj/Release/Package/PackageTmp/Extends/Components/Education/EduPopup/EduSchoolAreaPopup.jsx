@@ -2,6 +2,11 @@
     constructor(props) {
         super(props);
         this.state = {};
+        this.onShowResidenceClick = this.onShowResidenceClick.bind(this);
+    }
+
+    onShowResidenceClick() {
+        this.fire('onShowResidenceClick', { schoolAreaID: this.state.ID2 });
     }
 
     render() {
@@ -13,6 +18,9 @@
             <div className="schooldistrictpopup-area">{s.Area}</div>
             <span>社区</span>
             <div className="schooldistrictpopup-districts">{s.Districts}</div>
+            <div className="schooldistrictpopup-btns">
+                <antd.Button type="primary" size="small" onClick={this.onShowResidenceClick}>查看学区内小区</antd.Button>
+            </div>
         </div>);
     }
 }

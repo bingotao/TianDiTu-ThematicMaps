@@ -26,6 +26,10 @@ class EduIndex extends React.Component {
             eduMap.turnLayer(e.data.layerType, e.data.visible);
         });
 
+        eduNav.on('onToggleAllLayers', function (e) {
+            eduMap.toggleAllLayers(e.data.on);
+        });
+
         eduNav.on('schoolItemClick', function (e) {
             eduMap.showSchoolPopup(e.data);
         });

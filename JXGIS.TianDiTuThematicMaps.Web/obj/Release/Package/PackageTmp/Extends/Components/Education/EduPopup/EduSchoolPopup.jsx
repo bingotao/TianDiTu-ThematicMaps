@@ -5,6 +5,7 @@
 
         this.showSchoolDetail = this.showSchoolDetail.bind(this);
         this.onShowSchoolAreaClick = this.onShowSchoolAreaClick.bind(this);
+        this.onShowResidenceClick = this.onShowResidenceClick.bind(this);
     }
 
     setContent(content) {
@@ -19,9 +20,13 @@
         this.fire('onShowSchoolAreaClick', this.state, false);
     }
 
+    onShowResidenceClick() {
+        this.fire('onShowResidenceClick', { schoolID: this.state.SchoolID });
+    }
+
     render() {
         var s = this.state;
-        var p = s.SType === 'x' || s.SType === 'c' ? <antd.Button onClick={this.onShowSchoolAreaClick} type="primary" size="small">查看学区</antd.Button> : null;
+        var p = s.SType === 'x' || s.SType === 'c' ? <span><antd.Button onClick={this.onShowSchoolAreaClick} type="primary" size="small">查看学区</antd.Button><antd.Button type="primary" size="small" onClick={this.onShowResidenceClick }>查看施教小区</antd.Button></span> : null;
         return (
             <div className="schoolpopup">
                 <h3>

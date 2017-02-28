@@ -20,6 +20,8 @@
         this.state = {
             kdt: {
                 on: false,
+                allOn: true,
+                allText: '关闭',
                 layers: props.eduConfig.Layers
             },
             sxx: {
@@ -219,6 +221,17 @@
         }.bind(this), 'json');
     }
 
+    toggleAllLayers(e) {
+        var s = this.state;
+        s.kdt.allOn = e;
+        s.kdt.allText = e ? '关闭' : '打开';
+        for (var n in s.kdt.layers) {
+            s.kdt.layers[n].on = e;
+        }
+        this.setState(s);
+        this.fire('onToggleAllLayers', { on: e, text: s.kdt.allText });
+    }
+
     render() {
         var aCls = "active";
         var ept = "";
@@ -292,9 +305,13 @@
             <div className="edu-nav-panel">
                 <div className={s.kdt.on ? aCls : ept}>
                     <antd.Icon onClick={this.hiddenPanel.bind(this)} type="close-square" />
-                    <h3 className="edu-nav-panel-header">看地图</h3>
+                    <h3 className="edu-nav-panel-header">
+                        看地图
+                    </h3>
                     <div className="edu-nav-panel-container">
                         <div className="edu-layers">
+
+                            <span className="edu-nav-allcontrol"><antd.Switch size="small" checked={s.kdt.allOn} onChange={e=> { this.toggleAllLayers(e) }} />&emsp;<span className="edu-layer-title">全部{s.kdt.allText}</span></span>
                             <div className="edu-layergroup">
                                 <h3>学校</h3>
                                 <div><span className="edu-icon y">幼</span><span className="edu-layer-title">幼 儿 园</span><antd.Switch size="small" checked={sLayers.y.on} onChange={e=>this.setLayerVisibility('y',e)} /></div>
@@ -311,6 +328,7 @@
                                 <div><span className="edu-icon x-xq"></span><span className="edu-layer-title">小学学区</span><antd.Switch size="small" checked={sLayers.x_xq.on} onChange={e=>this.setLayerVisibility('x_xq', e)} /></div>
                                 <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" checked={sLayers.c_xq.on} onChange={e=>this.setLayerVisibility('c_xq', e)} /></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
