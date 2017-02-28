@@ -18,6 +18,10 @@ namespace JXGIS.Common.Entity
         [Column("ID")]
         public int ID { get; set; }
 
+        [Column("ID2")]
+        public string ID2 { get; set; }
+
+
         [Column("Name")]
         public string Name { get; set; }
 

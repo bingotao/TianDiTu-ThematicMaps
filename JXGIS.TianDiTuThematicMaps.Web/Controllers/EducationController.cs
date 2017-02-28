@@ -79,14 +79,22 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         }
 
 
-        public ActionResult GetResidence(string searchText, int pageNumber, int pageSize)
+        public ActionResult GetResidence(string searchText, int pageNumber, int pageSize, string schoolAreaID, string schoolID)
         {
             ReturnObject ro = null;
             try
             {
-                string s = POIUtils.GetPOI(new POICondition() { Key = searchText, Type = "100202", PageIndex = pageNumber, PageStep = pageSize });
+                //string s = POIUtils.GetPOI(new POICondition() { Key = searchText, Type = "100202", PageIndex = pageNumber, PageStep = pageSize });
+
+                var rs = ResidenceSearchUtils.GetResidence(searchText, pageNumber, pageSize, schoolAreaID, schoolID);
+                var fts = EntityUtils.EntitiesToFeatureCollection(rs.rows);
+
                 ro = new ReturnObject();
-                ro.Data = s;
+                ro.Data = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    count = rs.count,
+                    rows = fts
+                });
             }
             catch (Exception ex)
             {

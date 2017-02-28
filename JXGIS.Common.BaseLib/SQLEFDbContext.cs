@@ -9,7 +9,7 @@ using MySql.Data.Entity;
 
 namespace JXGIS.Common.BaseLib
 {
-   
+
     public class SQLEFDbContext : DbContext
     {
         public SQLEFDbContext() : base((string)SystemUtils.Config.SQLDbConStr)
@@ -27,5 +27,6 @@ namespace JXGIS.Common.BaseLib
 
         public DbSet<EduSchoolArea> EduSchoolArea { get; set; }
 
+        public DbSet<EduResidence> EduResidence { get; set; }
     }
 }

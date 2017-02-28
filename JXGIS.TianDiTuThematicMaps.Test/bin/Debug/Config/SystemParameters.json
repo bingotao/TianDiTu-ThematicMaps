@@ -1,6 +1,6 @@
 ﻿{
   "Title": "天地图·专题应用",
-  "DbConStr": "Server=127.0.0.1;Database=BroadcastDB;User Id=broadcast;Password=@abcd1234;",
+  "SQLDbConStr": "Server=127.0.0.1;Database=BroadcastDB;User Id=broadcast;Password=@abcd1234;",
   "MySQLDbConStr": "Server=127.0.0.1;Database=mydb;Uid=mydb;Pwd=zdww1402;",
   "Map": {
     "InitPosition": {

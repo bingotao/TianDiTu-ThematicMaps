@@ -12,7 +12,9 @@
         this.residenceSearch = {
             pageNumber: 1,
             pageSize: 20,
-            searchText: ''
+            searchText: '',
+            schoolID: null,
+            schoolAreaID: null
         };
 
         this.state = {
@@ -56,7 +58,9 @@
                 on: false,
                 current: 1,
                 total: 3,
-                searchResults: []
+                searchResults: {
+                    features: []
+                }
             },
             qtzt: {
                 on: false
@@ -165,6 +169,9 @@
     residenceSearchTextChange(text) {
         this.residenceSearch.searchText = text;
         this.residenceSearch.pageNumber = 1;
+
+        this.residenceSearch.schoolID = null;
+        this.residenceSearch.schoolAreaID = null;
         var s = this.state;
         s.cxq.current = 1;
         this.setState(s, this.searchResidence.bind(this));
@@ -181,20 +188,33 @@
         this.fire('residenceItemClick', residence, false);
     }
 
+    searchResidenceByID(schoolAreaID, schoolID) {
+        this.residenceSearch.searchText = '';
+        this.refs.schoolSearchArea.input.refs.input.value = '';
+        this.residenceSearch.schoolID = schoolID;
+        this.residenceSearch.schoolAreaID = schoolAreaID;
+
+        this.residenceSearch.pageNumber = 1;
+        var s = this.state;
+        s.cxq.current = 1;
+        this.setState(s, this.searchResidence.bind(this));
+    }
+
     searchResidence() {
         $.post('GetResidence', this.residenceSearch, function (rt) {
             if (rt.ErrorMessage) {
                 antd.message.error(rt.ErrorMessage);
             } else {
                 var data = JSON.parse(rt.Data);
-                var records = data.records;
-                var total = parseInt(data.counts);
+                var records = data.rows;
+                var total = data.count;
 
                 var s = this.state;
                 s.cxq.total = total;
                 s.cxq.searchResults = records;
                 this.setState(s);
                 this.refs.residencePanel.scrollTop = 0;
+                this.fire('onResidenceLoaded', data, false);
             }
         }.bind(this), 'json');
     }
@@ -212,10 +232,10 @@
             return <EduSchoolItem school={school} onClick={this.schoolItemClick.bind(this) } />;
         }.bind(this));
 
-        var residences = s.cxq.searchResults;
+        var residences = s.cxq.searchResults.features;
 
         var cResidences = residences.map(function (residence, i) {
-            return <ResidenceItem index={i + 1} residence={residence} onClick={this.residenceItemClick.bind(this) } />;
+            return <ResidenceItem index={i + 1} residence={residence.properties} onClick={this.residenceItemClick.bind(this) } />;
         }.bind(this));
 
         var cThematicMaps = this.props.mapConfig.ThematicMaps.map(function (map) {
@@ -317,7 +337,7 @@
                                     {cSchools}
                                 </div>
                                 <div className="edu-results-pagination">
-                                    <antd.Pagination current={s.sxx.current} onChange={e=>this.schoolPaginationChange(e)} simple defaultCurrent={1} total={s.sxx.total} />
+                                    <antd.Pagination defaultPageSize={20} current={s.sxx.current} onChange={e=>this.schoolPaginationChange(e)} simple defaultCurrent={1} total={s.sxx.total} />
                                 </div>
                             </div>
                         </div>
@@ -336,7 +356,7 @@
                                       {cResidences}
                                   </div>
                                   <div className="edu-results-pagination">
-                                      <antd.Pagination current={s.cxq.current} onChange={e=>this.residencePaginationChange(e)} simple defaultCurrent={1} total={s.cxq.total} />
+                                      <antd.Pagination defaultPageSize={20} current={s.cxq.current} onChange={e=>this.residencePaginationChange(e)} simple defaultCurrent={1} total={s.cxq.total} />
                                   </div>
                               </div>
                          </div>
@@ -395,9 +415,9 @@ class ResidenceItem extends React.Component {
         var r = p.residence;
         return (
         <div className="residence" onClick={e=>p.onClick(r)}>
-            <div className="residence-name"><span className="residence-index">{p.index}</span>{r.name}</div>
+            <div className="residence-name"><span className="residence-index">{p.index}</span>{r.Name}</div>
             <div className="residence-address">
-                <antd.Icon type="environment-o" /><span>{r.address}</span>
+                <antd.Icon type="environment-o" /><span>{r.Address}</span>
             </div>
         </div>);
     }

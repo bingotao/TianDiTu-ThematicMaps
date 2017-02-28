@@ -10,6 +10,8 @@
     }
 
     initMap() {
+        var cThis = this;
+
         var opts = this.opts;
         var mapConfig = opts.mapConfig;
 
@@ -81,6 +83,30 @@
             }.bind(this)
         }).addTo(map);
         this.graphicsLayer = graphicsLayer;
+
+        var residenceLayer = L.geoJSON(null, {
+            onEachFeature: function (feature, layer) {
+                layer.setIcon(cThis.icons.residence);
+                layer.bindPopup(ResidencePopup.getPopup()).on('popupopen', function (e) {
+                    var props = e.target.feature.properties
+                    ResidencePopup.setContent(props);
+                }.bind(this));
+            }
+        }).addTo(map);
+        this.residenceLayer = residenceLayer;
+    }
+
+    addResidence(features) {
+        this.cleareResidenceLayer();
+        this.residenceLayer.addData(features);
+        this.map.closePopup();
+        var bounds = this.residenceLayer.getBounds();
+        if (bounds)
+            this.map.fitBounds(bounds, { paddingTopLeft: [100, 0] });
+    }
+
+    cleareResidenceLayer() {
+        this.residenceLayer.clearLayers();
     }
 
     changeSchoolTip(e) {
@@ -216,10 +242,10 @@
 
     clearMap() {
         this.map.closePopup();
-
         EduSchoolPopup.clearMarker();
         ResidencePopup.clearMarker();
         this.graphicsLayer.clearLayers();
+        this.cleareResidenceLayer();
     }
 
     showSchoolPopup(school) {
@@ -236,7 +262,7 @@
 
     showResidencePopup(residence) {
         var map = this.map,
-            center = [parseFloat(residence.y), parseFloat(residence.x)];
+            center = [parseFloat(residence.Y), parseFloat(residence.X)];
         map.setView(center);
         var marker = L.marker(center, { icon: this.icons.residence, zIndexOffset: 999999 }).addTo(map);
         !ResidencePopup.marker || ResidencePopup.marker.remove();

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="LayerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResidenceSearchUtils.cs" />
     <Compile Include="SchoolSearchUtils.cs" />
   </ItemGroup>
   <ItemGroup>

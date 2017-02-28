@@ -11,8 +11,8 @@
         var s = this.state;
         return (
         <div className='residencepopup'>
-            <div className='residencepopup-name'>{s.name}</div>
-            <div className='residencepopup-address'><antd.Icon type="environment-o" /><span>{s.address}</span></div>
+            <div className='residencepopup-name'>{s.Name}</div>
+            <div className='residencepopup-address'><antd.Icon type="environment-o" /><span>{s.Address}</span></div>
             <div>
                 <antd.Button size='small' onClick={e=>this.showSchoolArea('x_xq')} type="primary">小学学区</antd.Button>
                 <antd.Button size='small' onClick={e=>this.showSchoolArea('c_xq')} type="primary">初中学区</antd.Button>
