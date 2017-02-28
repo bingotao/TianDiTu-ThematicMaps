@@ -259,74 +259,74 @@
         <div className="edu-nav">
             <div className="edu-navs">
                 <div onClick={e=>this.select("sxx", function () {
-                        this.refs.schoolSearch.input.focus();
-                        if (!s.sxx.first) {
-                            s.sxx.first = true;
-                            this.searchSchool();
-                        }
-                    }.bind(this))} className={s.sxx.on ? aCls : ept}>
-                    <span className="iconfont icon-sousuo-sousuo"></span>
-                    搜学校
-                </div>
-                <div className="ct-split"></div>
-                <div onClick={e=>this.select("cxq", function () {
-                        this.refs.schoolSearchArea.input.focus();
-                        if (!s.cxq.first) {
-                            s.cxq.first = true;
-                            this.searchResidence();
-                        }
-                    }.bind(this))} className={s.cxq.on ? aCls : ept}>
-                    <span className="iconfont icon-xuequ"></span>
-                    查学区
-                </div>
-                <div className="ct-split"></div>
-                <div onClick={e=>this.select("kdt")} className={s.kdt.on ? aCls : ept}>
-                    <span className="iconfont icon-ditu"></span>
-                    看地图
-                </div>
-                <div className="ct-split"></div>
-                <div onClick={e=>this.select("qtzt")} className={s.qtzt.on ? aCls : ept}>
-                    <span className="iconfont icon-qita"></span>
-                    览专题
-                </div>
-            </div>
-            <div className="edu-nav-quicksearch">
-                <input type="text" onFocus={e=> {
-                        this.select('sxx', function () {
-                            this.refs.schoolSearch.input.focus();
-                            if (!s.sxx.first) {
-                                s.sxx.first = true;
-                                this.searchSchool();
-                            }
-                        }.bind(this));
-                    }} placeholder="请输入学校名称..." />
-                <antd.Icon type="search" />
-            </div>
-            <div className="edu-nav-panel">
-                <div className={s.kdt.on ? aCls : ept}>
-                    <antd.Icon onClick={this.hiddenPanel.bind(this)} type="close-square" />
-                    <h3 className="edu-nav-panel-header">
-                        看地图
-                    </h3>
-                    <div className="edu-nav-panel-container">
-                        <div className="edu-layers">
+                    this.refs.schoolSearch.input.focus();
+                    if (!s.sxx.first) {
+                        s.sxx.first = true;
+                        this.searchSchool();
+                    }
+                }.bind(this))} className={s.sxx.on ? aCls : ept}>
+                <span className="iconfont icon-sousuo-sousuo"></span>
+        搜学校
+    </div>
+    <div className="ct-split"></div>
+    <div onClick={e=>this.select("cxq", function () {
+        this.refs.schoolSearchArea.input.focus();
+        if (!s.cxq.first) {
+            s.cxq.first = true;
+            this.searchResidence();
+        }
+    }.bind(this))} className={s.cxq.on ? aCls : ept}>
+    <span className="iconfont icon-xuequ"></span>
+        查学区
+    </div>
+    <div className="ct-split"></div>
+    <div onClick={e=>this.select("kdt")} className={s.kdt.on ? aCls : ept}>
+        <span className="iconfont icon-ditu"></span>
+        看地图
+    </div>
+    <div className="ct-split"></div>
+    <div onClick={e=>this.select("qtzt")} className={s.qtzt.on ? aCls : ept}>
+        <span className="iconfont icon-qita"></span>
+        览专题
+    </div>
+</div>
+<div className="edu-nav-quicksearch">
+    <input type="text" onFocus={e=> {
+        this.select('sxx', function () {
+            this.refs.schoolSearch.input.focus();
+            if (!s.sxx.first) {
+                s.sxx.first = true;
+                this.searchSchool();
+            }
+        }.bind(this));
+    }} placeholder="请输入学校名称..." />
+<antd.Icon type="search" />
+</div>
+<div className="edu-nav-panel">
+    <div className={s.kdt.on ? aCls : ept}>
+        <antd.Icon onClick={this.hiddenPanel.bind(this)} type="close-square" />
+        <h3 className="edu-nav-panel-header">
+            看地图
+        </h3>
+        <div className="edu-nav-panel-container">
+            <div className="edu-layers">
 
-                            <span className="edu-nav-allcontrol"><antd.Switch size="small" checked={s.kdt.allOn} onChange={e=> { this.toggleAllLayers(e) }} />&emsp;<span className="edu-layer-title">全部{s.kdt.allText}</span></span>
-                            <div className="edu-layergroup">
-                                <h3>学校</h3>
-                                <div><span className="edu-icon y">幼</span><span className="edu-layer-title">幼 儿 园</span><antd.Switch size="small" checked={sLayers.y.on} onChange={e=>this.setLayerVisibility('y',e)} /></div>
-                                <div><span className="edu-icon x">小</span><span className="edu-layer-title">小 学</span><antd.Switch size="small" checked={sLayers.x.on} onChange={e=>this.setLayerVisibility('x', e)} /></div>
-                                <div><span className="edu-icon c">初</span><span className="edu-layer-title">初 中</span><antd.Switch size="small" checked={sLayers.c.on} onChange={e=>this.setLayerVisibility('c', e)} /></div>
-                                <div><span className="edu-icon g">高</span><span className="edu-layer-title">普通高中</span><antd.Switch size="small" checked={sLayers.g.on} onChange={e=>this.setLayerVisibility('g', e)} /></div>
-                                <div><span className="edu-icon z">职</span><span className="edu-layer-title">职业高中</span><antd.Switch size="small" checked={sLayers.z.on} onChange={e=>this.setLayerVisibility('z', e)} /></div>
-                                <div><span className="edu-icon t">特</span><span className="edu-layer-title">特殊教育</span><antd.Switch size="small" checked={sLayers.t.on} onChange={e=>this.setLayerVisibility('t', e)} /></div>
-                                <div><span className="edu-icon d">大</span><span className="edu-layer-title">高等院校</span><antd.Switch size="small" checked={sLayers.d.on} onChange={e=>this.setLayerVisibility('d', e)} /></div>
+                <span className="edu-nav-allcontrol"><antd.Switch size="small" checked={s.kdt.allOn} onChange={e=> { this.toggleAllLayers(e) }} />&emsp;<span className="edu-layer-title">全部{s.kdt.allText}</span></span>
+                <div className="edu-layergroup">
+                    <h3>学校</h3>
+                    <div><span className="edu-icon y">幼</span><span className="edu-layer-title">幼 儿 园</span><antd.Switch size="small" checked={sLayers.y.on} onChange={e=>this.setLayerVisibility('y',e)} /></div>
+                    <div><span className="edu-icon x">小</span><span className="edu-layer-title">小 学</span><antd.Switch size="small" checked={sLayers.x.on} onChange={e=>this.setLayerVisibility('x', e)} /></div>
+                    <div><span className="edu-icon c">初</span><span className="edu-layer-title">初 中</span><antd.Switch size="small" checked={sLayers.c.on} onChange={e=>this.setLayerVisibility('c', e)} /></div>
+                    <div><span className="edu-icon g">高</span><span className="edu-layer-title">普通高中</span><antd.Switch size="small" checked={sLayers.g.on} onChange={e=>this.setLayerVisibility('g', e)} /></div>
+                    <div><span className="edu-icon z">职</span><span className="edu-layer-title">职业高中</span><antd.Switch size="small" checked={sLayers.z.on} onChange={e=>this.setLayerVisibility('z', e)} /></div>
+                    <div><span className="edu-icon t">特</span><span className="edu-layer-title">特殊教育</span><antd.Switch size="small" checked={sLayers.t.on} onChange={e=>this.setLayerVisibility('t', e)} /></div>
+                    <div><span className="edu-icon d">大</span><span className="edu-layer-title">高等院校</span><antd.Switch size="small" checked={sLayers.d.on} onChange={e=>this.setLayerVisibility('d', e)} /></div>
                             </div>
 
-                            <div className="edu-layergroup">
+                <div className="edu-layergroup">
                                 <h3>学区</h3>
-                                <div><span className="edu-icon x-xq"></span><span className="edu-layer-title">小学学区</span><antd.Switch size="small" checked={sLayers.x_xq.on} onChange={e=>this.setLayerVisibility('x_xq', e)} /></div>
-                                <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" checked={sLayers.c_xq.on} onChange={e=>this.setLayerVisibility('c_xq', e)} /></div>
+                                <div><span className="edu-icon x-xq"></span><span className="edu-layer-title">小学学区</span><antd.Switch size="small" checked={sLayers.x_xq.on} onChange={e=> {if(e){ this.toggleAllLayers(false);this.setLayerVisibility('x',true);} this.setLayerVisibility('x_xq', e); }} /></div>
+                                <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" checked={sLayers.c_xq.on} onChange={e=> {if(e){ this.toggleAllLayers(false);this.setLayerVisibility('c',true);} this.setLayerVisibility('c_xq', e); }} /></div>
                             </div>
 
                         </div>
@@ -338,8 +338,8 @@
                         搜学校
                     </h3>
                     <div className="edu-nav-panel-container">
-                        <div className="edu-search-school">
-                            <antd.Input.Search onSearch={value => this.schoolSearchTextChange(value)} ref="schoolSearch" size="large" className="edu-search-group" placeholder="请输入学校名称..." />
+<div className="edu-search-school">
+    <antd.Input.Search onSearch={value => this.schoolSearchTextChange(value)} ref="schoolSearch" size="large" className="edu-search-group" placeholder="请输入学校名称..." />
                             <div className="edu-search-filter">
                                 <div className={s.sxx.filters.all.on?aCls:ept} onClick={e=>this.schoolFilter('all')}>全部</div>
                                 <div className={s.sxx.filters.y.on ? aCls : ept} onClick={e=>this.schoolFilter('y')}>幼儿园</div>
@@ -352,9 +352,9 @@
                             </div>
                             <div className="edu-search-results">
                                 <div ref="schoolPanel" className="edu-results-rows">
-                                    {cSchools}
-                                </div>
-                                <div className="edu-results-pagination">
+{cSchools}
+</div>
+<div className="edu-results-pagination">
                                     <antd.Pagination defaultPageSize={20} current={s.sxx.current} onChange={e=>this.schoolPaginationChange(e)} simple defaultCurrent={1} total={s.sxx.total} />
                                 </div>
                             </div>
@@ -371,9 +371,9 @@
                               <antd.Input.Search onSearch={value => this.residenceSearchTextChange(value)} ref="schoolSearchArea" size="large" className="edu-search-group" placeholder="请输入小区名称..." />
                               <div className="edu-search-results">
                                   <div ref="residencePanel" className="edu-results-rows">
-                                      {cResidences}
-                                  </div>
-                                  <div className="edu-results-pagination">
+{cResidences}
+</div>
+<div className="edu-results-pagination">
                                       <antd.Pagination defaultPageSize={20} current={s.cxq.current} onChange={e=>this.residencePaginationChange(e)} simple defaultCurrent={1} total={s.cxq.total} />
                                   </div>
                               </div>
@@ -386,22 +386,22 @@
                         览专题
                     </h3>
                     <div className="edu-nav-panel-container">
-                        <div className="thematicmaps">{cThematicMaps}</div>
+<div className="thematicmaps">{cThematicMaps}</div>
                     </div>
                 </div>
             </div>
         </div>);
-    }
-}
+                }
+                }
 
 class EduSchoolItem extends React.Component {
     constructor(props) {
         super(props);
-    }
+        }
 
-    //onClick() {
-    //    this.fire('click', this.props.school, false);
-    //}
+        //onClick() {
+        //    this.fire('click', this.props.school, false);
+        //}
 
     render() {
         var p = this.props;
@@ -410,9 +410,9 @@ class EduSchoolItem extends React.Component {
         var cLink;
         if (sch.Website) {
             cLink = <a href={sch.Website.startsWith('http') ? sch.Website : ('http://' + sch.Website)} target="_blank">{sch.Website}</a>;
-        } else {
+            } else {
             cLink = '暂无';
-        }
+            }
         return (
         <div className="edu-school" onClick={e=>p.onClick(sch)}>
             <div className="edu-school-header"><span className={'school-icon '+sch.SType}></span>{sch.Name}</div>
@@ -420,13 +420,13 @@ class EduSchoolItem extends React.Component {
                 <div className="edu-school-content"><antd.Icon type="phone" /><span>{sch.Telephone}</span></div>
             <div className="edu-school-content"><antd.Icon type="link" /><span>{cLink}</span></div>
         </div>);
-    }
-}
+            }
+            }
 
 class ResidenceItem extends React.Component {
     constructor(props) {
         super(props);
-    }
+        }
 
     render() {
         var p = this.props;
@@ -438,5 +438,5 @@ class ResidenceItem extends React.Component {
                 <antd.Icon type="environment-o" /><span>{r.Address}</span>
             </div>
         </div>);
-    }
-}
+            }
+            }
