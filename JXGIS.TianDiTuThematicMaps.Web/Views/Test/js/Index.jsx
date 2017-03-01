@@ -22,66 +22,66 @@
 //    }
 //}
 
-class L extends React.Component {
-    constructor(props) {
-        super(props);
+//class L extends React.Component {
+//    constructor(props) {
+//        super(props);
 
-        this.events = props.events;
-    }
+//        this.events = props.events;
+//    }
 
-    render() {
-        var e = this.events;
-        var p = this.props;
-        var data = p.data;
-        return (
-            <li onClick={e.onClick && e.onClick.bind(this, data) }>{data.name}:{data.value}</li>
-            );
-    }
-}
+//    render() {
+//        var e = this.events;
+//        var p = this.props;
+//        var data = p.data;
+//        return (
+//            <li onClick={e.onClick && e.onClick.bind(this, data) }>{data.name}:{data.value}</li>
+//            );
+//    }
+//}
 
-class A extends React.Component {
-    constructor(props) {
-        super(props);
+//class A extends React.Component {
+//    constructor(props) {
+//        super(props);
 
-        this.state = {
-            item: {
-                name: 'ct',
-                age: 18
-            },
-            classList: [
-                { name: '语文', value: 99 },
-                { name: '数学', value: 98 },
-                { name: '外语', value: 97 }
-            ]
-        };
+//        this.state = {
+//            item: {
+//                name: 'ct',
+//                age: 18
+//            },
+//            classList: [
+//                { name: '语文', value: 99 },
+//                { name: '数学', value: 98 },
+//                { name: '外语', value: 97 }
+//            ]
+//        };
 
-        this.events = props.events;
+//        this.events = props.events;
 
 
-    }
+//    }
 
-    render() {
-        var s = this.state;
-        var e = this.events;
+//    render() {
+//        var s = this.state;
+//        var e = this.events;
 
-        var cClassList = this.state.classList.map(function (c, i) {
-            var cL = <L data={c} events={
-                    {
-                        onClick: e.onItemClick
-                    }
-            } />;
-            return cL;
-        });
+//        var cClassList = this.state.classList.map(function (c, i) {
+//            var cL = <L data={c} events={
+//                    {
+//                        onClick: e.onItemClick
+//                    }
+//            } />;
+//            return cL;
+//        });
 
-        return (
-            <div onClick={e.onClick && e.onClick.bind(this, s)}>
-                <h3>列表</h3>
-                <ul>{cClassList}</ul>
-                <button onClick={e.onBtnClick && e.onBtnClick.bind(this, s)}>按钮</button>
-            </div>
-            );
-    }
-}
+//        return (
+//            <div onClick={e.onClick && e.onClick.bind(this, s)}>
+//                <h3>列表</h3>
+//                <ul>{cClassList}</ul>
+//                <button onClick={e.onBtnClick && e.onBtnClick.bind(this, s)}>按钮</button>
+//            </div>
+//            );
+//    }
+//}
 
 //ReactDOM.render(<A events={{
 //        onClick: function (data, e) {
@@ -98,28 +98,85 @@ class A extends React.Component {
 //} />, document.getElementById('app'));
 
 
-class C extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: 'chentao',
-            schools: {
-                xx: 'ds',
-                highSchool: 'guangde'
+//class C extends React.Component {
+//    constructor(props) {
+//        super(props);
+//        this.state = {
+//            name: 'chentao',
+//            schools: {
+//                xx: 'ds',
+//                highSchool: 'guangde'
+//            }
+//        };
+//    }
+
+//    render() {
+//        var s = this.state;
+//        return (
+//        <div>
+//            {s.name}<br />
+//            {s.schools.xx}<br />
+//            {s.schools.highSchool}
+//        </div>
+//        );
+//    }
+//}
+
+//c = ReactDOM.render(<C />, document.getElementById('app'));
+
+
+class Map extends React.Component {
+    constructor() {
+        super();
+
+    }
+
+    initMap() {
+        var subdomains = ['0', '1', '2', '3', '4', '5', '6', '7'];
+        var baseLayers = {
+            vec: {
+                anno: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}", { subdomains: subdomains }),
+                base: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}", { subdomains: subdomains })
+            },
+            img: {
+                anno: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=cia_w&X={x}&Y={y}&L={z}", { subdomains: subdomains }),
+                base: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=img_w&X={x}&Y={y}&L={z}", { subdomains: subdomains })
             }
         };
+
+        var lat = 30.76366907304589;
+        var lng = 120.75013160705568;
+        this.center = [lat, lng];
+        this.radius = 1000;
+
+        this.map = L.map('map', {
+            attributionControl: false,
+            zoomControl: false,
+            center: this.center,
+            layers: [
+                baseLayers.vec.base,
+                baseLayers.vec.anno
+            ],
+            zoom: 14
+        });
+
+        var geoJSON = L.circle(this.center, this.radius).toGeoJSON(10);
+
+        L.geoJSON(geoJSON).addTo(this.map);
+
+    }
+
+    componentDidMount() {
+        this.initMap();
     }
 
     render() {
-        var s = this.state;
         return (
-        <div>
-            {s.name}<br />
-            {s.schools.xx}<br />
-            {s.schools.highSchool}
+        <div id="map">
+
         </div>
         );
     }
 }
 
-c = ReactDOM.render(<C />, document.getElementById('app'));
+map = ReactDOM.render(<Map />, document.getElementById('app'));

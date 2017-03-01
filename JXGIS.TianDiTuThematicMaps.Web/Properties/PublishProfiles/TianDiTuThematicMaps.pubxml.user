@@ -52,7 +52,7 @@
       <publishTime>02/28/2017 08:42:14</publishTime>
     </File>
     <File Include="bin/JXGIS.TianDiTuThematicMaps.Web.dll">
-      <publishTime>02/28/2017 09:35:53</publishTime>
+      <publishTime>02/28/2017 09:54:41</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -190,7 +190,7 @@
       <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="Config/SystemParameters.json">
-      <publishTime>02/20/2017 14:11:53</publishTime>
+      <publishTime>02/28/2017 10:54:58</publishTime>
     </File>
     <File Include="Extends/Base/LPopup.jsx">
       <publishTime>02/16/2017 10:10:42</publishTime>
@@ -226,7 +226,7 @@
       <publishTime>02/16/2017 14:38:17</publishTime>
     </File>
     <File Include="Extends/Components/Education/EduNav/EduNav.jsx">
-      <publishTime>02/28/2017 09:42:38</publishTime>
+      <publishTime>02/28/2017 09:52:49</publishTime>
     </File>
     <File Include="Extends/Components/Education/EduNav/EduNav.less">
       <publishTime>02/28/2017 09:35:27</publishTime>
@@ -293,6 +293,9 @@
     </File>
     <File Include="Reference/images/education-header.jpg">
       <publishTime>01/11/2017 14:03:11</publishTime>
+    </File>
+    <File Include="Reference/images/education-ico.ico">
+      <publishTime>02/28/2017 09:53:42</publishTime>
     </File>
     <File Include="Reference/images/travel-header.jpg">
       <publishTime>01/11/2017 14:03:11</publishTime>

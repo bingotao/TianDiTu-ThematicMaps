@@ -202,9 +202,19 @@
     <Content Include="Reference\ctfont\iconfont.css" />
     <Content Include="Reference\ctfont\iconfont.js" />
     <Content Include="Reference\ctfont\iconfont.svg" />
+    <Content Include="Reference\geodesy\dms.js" />
+    <Content Include="Reference\geodesy\latlon-ellipsoidal.js" />
+    <Content Include="Reference\geodesy\latlon-spherical.js" />
+    <Content Include="Reference\geodesy\latlon-vectors.js" />
+    <Content Include="Reference\geodesy\latlon-vincenty.js" />
+    <Content Include="Reference\geodesy\mgrs.js" />
+    <Content Include="Reference\geodesy\osgridref.js" />
+    <Content Include="Reference\geodesy\utm.js" />
+    <Content Include="Reference\geodesy\vector3d.js" />
     <Content Include="Reference\html2canvas.min.js" />
     <Content Include="Reference\images\education-header.jpg" />
     <Content Include="Reference\images\travel-header.jpg" />
+    <Content Include="Reference\images\education-ico.ico" />
     <Content Include="Reference\jquery-1.12.4.min.js" />
     <Content Include="Reference\jquery-3.1.1.min.js" />
     <Content Include="Reference\leaflet-plugins\contextmenu\leaflet.contextmenu.min.css" />
@@ -273,6 +283,7 @@
     <Content Include="Extends\Components\Education\EduClearButton\EduClearButton.less" />
     <Content Include="Views\Education\SchoolDetails.cshtml" />
     <Content Include="Views\Education\css\SchoolDetails.less" />
+    <Content Include="Extends\CommonJS\__leafletExtends__.js" />
     <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

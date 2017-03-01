@@ -35,8 +35,10 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 _refPath + "antd/antd.min.js",
                 _refPath + "leaflet/leaflet.js",
                 _refPath + "leaflet-plugins/esri/esri-leaflet.js",
+                _refPath + "geodesy/latlon-spherical.js",
                 _refPath + "mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js",
                 "~/Extends/CommonJS/__Events__.js",
+                "~/Extends/CommonJS/__leafletExtends__.js",
                 "~/Extends/CommonJS/commonTool.js",
                 "~/Extends/CommonJS/geoLocation.js"
                 ));
