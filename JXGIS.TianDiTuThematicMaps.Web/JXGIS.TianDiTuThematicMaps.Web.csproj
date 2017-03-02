@@ -246,6 +246,7 @@
     <Content Include="Views\Education\js\Index.jsx" />
     <Content Include="Views\Education\js\SchoolDetails.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
+    <Content Include="Views\Test\js\TestWmts.jsx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +286,8 @@
     <Content Include="Views\Education\css\SchoolDetails.less" />
     <Content Include="Extends\CommonJS\__leafletExtends__.js" />
     <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
+    <Content Include="Views\Test\TestWmts.cshtml" />
+    <Content Include="Views\Test\css\TestWmts.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

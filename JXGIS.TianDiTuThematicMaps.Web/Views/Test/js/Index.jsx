@@ -150,6 +150,7 @@ class Map extends React.Component {
         this.radius = 1000;
 
         this.map = L.map('map', {
+            //crs: L.CRS.EPSG4326,
             attributionControl: false,
             zoomControl: false,
             center: this.center,
@@ -159,10 +160,16 @@ class Map extends React.Component {
             ],
             zoom: 14
         });
+        var circle = L.circle(this.center, this.radius);
+        this.circle = circle;
+        var geoJSON = circle.toGeoJSON2(10);
 
-        var geoJSON = L.circle(this.center, this.radius).toGeoJSON(10);
+        this.layer = L.geoJSON(geoJSON).addTo(this.map);
 
-        L.geoJSON(geoJSON).addTo(this.map);
+
+        var url = 'http://127.0.0.1:6080/arcgis/rest/services/gyyd/wx_gyyd_4236/MapServer';
+        var token = 'Cd0YVWaT3VjdTKFuuUacC6TYVyfJ2U86Q-TJ95FLyxmjXs6PgtKtwey_f2_tv7Tf';
+        var layer = L.esri.dynamicMapLayer({ url: url, token: token }).addTo(this.map);
 
     }
 

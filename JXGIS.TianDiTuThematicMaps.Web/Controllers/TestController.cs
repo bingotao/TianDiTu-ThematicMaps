@@ -14,5 +14,11 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         {
             return View();
         }
+
+
+        public ActionResult TestWmts()
+        {
+            return View();
+        }
     }
 }
