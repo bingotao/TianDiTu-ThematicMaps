@@ -149,6 +149,8 @@
             },
             initialize: function (options) {
                 this.type = options.type;
+                this.options.maxZoom = 20;
+                this.options.minZoom = 2;
                 var titleSize = 256;
                 var baseOption = {
                     width: titleSize,
@@ -242,7 +244,9 @@
             transformation: new L.Transformation(1 / 360, 0.5, -1 / 360, 0.5)
         });
 
-        //扩展Draw组件
+        /*
+        扩展Draw
+        组件*/
         if (L.Draw) {
             L.Draw.Feature.include({
                 _fireCreatedEvent: function (layer) {
@@ -267,29 +271,126 @@
                            },this);
                 draw.enable();
             */
-            L.Draw.include({
-                initDraw: function (map, type, options) {
-                    var constructor = L.Draw.Marker;
-                    type = type.toLowerCase();
-                    switch (type) {
-                        case 'circle':
-                            constructor = L.Draw.Circle;
-                            break;
-                        case 'polyline':
-                            constructor = L.Draw.Polyline;
-                            break;
-                        case 'polygon':
-                            constructor = L.Draw.Polygon;
-                            break;
-                        case 'rectangle':
-                            constructor = L.Draw.Rectangle;
-                            break;
-                        default:
-                            constructor = L.Draw.Marker;
-                    }
-                    return new constructor(map, options);
+            L.Draw.initDraw = function (map, type, options) {
+                var constructor = L.Draw.Marker;
+                type = (type && type.toLowerCase) ? type.toLowerCase() : null;
+                switch (type) {
+                    case 'circle':
+                        constructor = L.Draw.Circle;
+                        break;
+                    case 'polyline':
+                        constructor = L.Draw.Polyline;
+                        break;
+                    case 'polygon':
+                        constructor = L.Draw.Polygon;
+                        break;
+                    case 'rectangle':
+                        constructor = L.Draw.Rectangle;
+                        break;
+                    default:
+                        constructor = L.Draw.Marker;
                 }
-            });
+                return new constructor(map, options);
+            };
+
+            //修改默认提示为中文
+            L.drawLocal = {
+                draw: {
+                    toolbar: {
+                        actions: {
+                            title: '取消',
+                            text: '取消'
+                        },
+                        finish: {
+                            title: '完成',
+                            text: '完成'
+                        },
+                        undo: {
+                            title: '删除最后一个点',
+                            text: '删除最后一个点'
+                        },
+                        buttons: {
+                            polyline: '线',
+                            polygon: '多边形',
+                            rectangle: '矩形',
+                            circle: '圆',
+                            marker: '点'
+                        }
+                    },
+                    handlers: {
+                        circle: {
+                            tooltip: {
+                                start: '点击并拖动以绘制圆'
+                            },
+                            radius: '半径'
+                        },
+                        marker: {
+                            tooltip: {
+                                start: '点击放置点'
+                            }
+                        },
+                        polygon: {
+                            tooltip: {
+                                start: '点击开始绘制',
+                                cont: '点击继续绘制',
+                                end: '双击结束绘制'
+                            }
+                        },
+                        polyline: {
+                            error: '<strong>错误:</strong>图形边界不能相交!',
+                            tooltip: {
+                                start: '点击开始绘制线',
+                                cont: '点击继续绘制',
+                                end: '双击结束绘制'
+                            }
+                        },
+                        rectangle: {
+                            tooltip: {
+                                start: '点击并拖动以绘制矩形'
+                            }
+                        },
+                        simpleshape: {
+                            tooltip: {
+                                end: '释放鼠标以完成绘制'
+                            }
+                        }
+                    }
+                },
+                edit: {
+                    toolbar: {
+                        actions: {
+                            save: {
+                                title: '保存更改',
+                                text: '保存'
+                            },
+                            cancel: {
+                                title: '放弃编辑，放弃所有的更改。',
+                                text: '取消'
+                            }
+                        },
+                        buttons: {
+                            edit: '编辑图层',
+                            editDisabled: '停止编辑',
+                            remove: '删除图层',
+                            removeDisabled: '没有可以删除的图层'
+                        }
+                    },
+                    handlers: {
+                        edit: {
+                            tooltip: {
+                                text: '拖动节点进行编辑',
+                                subtext: '点击取消以放弃更改'
+                            }
+                        },
+                        remove: {
+                            tooltip: {
+                                text: '点击要素进行平移'
+                            }
+                        }
+                    }
+                }
+            };
+
         }
     }
 };

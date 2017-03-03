@@ -1,4 +1,6 @@
-﻿var map;
+﻿__leafletExtends__();
+
+var map;
 $(window).load(function () {
     var vec = L.tileLayer.TDTJX({ type: 'vec' });
     var vec_anno = L.tileLayer.TDTJX({ type: 'vec_anno' });
@@ -14,4 +16,10 @@ $(window).load(function () {
     map.on('click', function (e) {
         console.log(e.latlng);
     });
+
+    drawPolygon = L.Draw.initDraw(map, 'polygon');
+    drawPolyline = L.Draw.initDraw(map, 'polyline');
+    drawRectangle = L.Draw.initDraw(map, 'rectangle');
+    drawMarker = L.Draw.initDraw(map);
+    drawCircle = L.Draw.initDraw(map,'circle');
 }); 

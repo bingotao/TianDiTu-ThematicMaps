@@ -212,6 +212,7 @@
     <Content Include="Reference\geodesy\utm.js" />
     <Content Include="Reference\geodesy\vector3d.js" />
     <Content Include="Reference\html2canvas.min.js" />
+    <Content Include="Reference\images\bg-test.jpg" />
     <Content Include="Reference\images\education-header.jpg" />
     <Content Include="Reference\images\travel-header.jpg" />
     <Content Include="Reference\images\education-ico.ico" />
