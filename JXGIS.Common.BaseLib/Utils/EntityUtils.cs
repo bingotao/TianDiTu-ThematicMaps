@@ -206,5 +206,31 @@ namespace JXGIS.Common.BaseLib
             }
             return list;
         }
+
+        public static Dictionary<string, string> GetFieldsAlias<T, A>(string propName) where A : class
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+
+            Type t = typeof(T);
+            Type a = typeof(A);
+            PropertyInfo prop = a.GetProperty(propName);
+
+            var attrs = from p in t.GetProperties().Where(p => p.GetCustomAttribute(a, false) != null)
+                        select new
+                        {
+                            Name = p.Name,
+                            Alias = prop.GetValue(p.GetCustomAttribute(a, false)).ToString()
+                        };
+            foreach (var attr in attrs)
+            {
+                dic[attr.Name] = attr.Alias;
+            }
+            return dic;
+        }
+
+        public static Dictionary<string, string> GetFieldsAlias<T>()
+        {
+            return GetFieldsAlias<T, DisplayAttribute>("Name");
+        }
     }
 }

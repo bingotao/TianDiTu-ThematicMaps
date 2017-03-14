@@ -61,10 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayerUtils.cs" />
+    <Compile Include="Education\EduLayerUtils.cs" />
+    <Compile Include="GovSubmit\GSLayerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResidenceSearchUtils.cs" />
-    <Compile Include="SchoolSearchUtils.cs" />
+    <Compile Include="Education\EduResidenceSearchUtils.cs" />
+    <Compile Include="Education\EduSchoolSearchUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JXGIS.Common.BaseLib\JXGIS.Common.BaseLib.csproj">

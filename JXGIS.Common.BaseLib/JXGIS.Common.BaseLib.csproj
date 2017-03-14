@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ColumnAlias.cs" />
     <Compile Include="Bundles\BabelBundle.cs" />
     <Compile Include="Bundles\BabelTransform.cs" />
     <Compile Include="Bundles\ImportedFilePathResolver.cs" />

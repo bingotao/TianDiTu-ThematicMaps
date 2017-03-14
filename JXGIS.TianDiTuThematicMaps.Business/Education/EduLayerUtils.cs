@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JXGIS.TianDiTuThematicMaps.Business
 {
-    public class LayerUtils
+    public class EduLayerUtils
     {
         public static List<Layer> GetSchoolLayers()
         {

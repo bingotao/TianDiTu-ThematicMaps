@@ -15,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using JXGIS.Common.Entity;
 
 namespace JXGIS.Common.Test
 {
@@ -86,8 +87,11 @@ namespace JXGIS.Common.Test
             //var geometry = DbGeometry.FromText(txt, 4326);
             //var geo = SystemUtils.MySQLEFDbContext.Database.SqlQuery<JXGIS.Common.Entity.Test>("select st_asgeojson(geometry) GeoJSON from edu_schoolarea").First();
 
-            var s = ResidenceSearchUtils.GetResidence(null, 0, 10, "E0108977-E929-4206-AB11-DF4E73073CFF");
+            // var s = EduResidenceSearchUtils.GetResidence(null, 0, 10, "E0108977-E929-4206-AB11-DF4E73073CFF");
 
+            //var dic = EntityUtils.GetFieldsAlias<GovSubmit>();
+
+            var layer = GSLayerUtils.GetLayer("公交站");
         }
     }
 }

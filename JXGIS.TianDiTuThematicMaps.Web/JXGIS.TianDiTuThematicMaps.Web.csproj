@@ -191,6 +191,9 @@
     <Content Include="Extends\Components\Education\EduPopup\EduSchoolPopup.jsx" />
     <Content Include="Extends\Base\LPopup.jsx" />
     <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.jsx" />
+    <Content Include="Extends\Components\GovSubmit\Catalog\Catalog.jsx" />
+    <Content Include="Extends\Components\GovSubmit\ContentPopup\ContentPopup.jsx" />
+    <Content Include="Extends\Components\GovSubmit\Map\Map.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
@@ -202,6 +205,7 @@
     <Content Include="Reference\ctfont\iconfont.css" />
     <Content Include="Reference\ctfont\iconfont.js" />
     <Content Include="Reference\ctfont\iconfont.svg" />
+    <Content Include="Reference\doT.min.js" />
     <Content Include="Reference\geodesy\dms.js" />
     <Content Include="Reference\geodesy\latlon-ellipsoidal.js" />
     <Content Include="Reference\geodesy\latlon-spherical.js" />
@@ -214,8 +218,10 @@
     <Content Include="Reference\html2canvas.min.js" />
     <Content Include="Reference\images\bg-test.jpg" />
     <Content Include="Reference\images\education-header.jpg" />
+    <Content Include="Reference\images\markers.png" />
     <Content Include="Reference\images\travel-header.jpg" />
     <Content Include="Reference\images\education-ico.ico" />
+    <Content Include="Reference\D.min.js.js" />
     <Content Include="Reference\jquery-1.12.4.min.js" />
     <Content Include="Reference\jquery-3.1.1.min.js" />
     <Content Include="Reference\leaflet-plugins\contextmenu\leaflet.contextmenu.min.css" />
@@ -241,13 +247,20 @@
     <Content Include="Reference\mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Reference\mCustomScrollbar\jquery.mCustomScrollbar.min.css" />
     <Content Include="Reference\mCustomScrollbar\mCSB_buttons.png" />
+    <Content Include="Reference\PhotoSphereViewer\photo-sphere-viewer.min.css" />
+    <Content Include="Reference\PhotoSphereViewer\photo-sphere-viewer.min.js" />
     <Content Include="Reference\react\react-dom.min.js" />
     <Content Include="Reference\react\react.min.js" />
     <Content Include="Reference\store.min.js" />
+    <Content Include="Reference\three.min.js" />
+    <Content Include="Reference\uevent.min.js" />
     <Content Include="Views\Education\js\Index.jsx" />
     <Content Include="Views\Education\js\SchoolDetails.jsx" />
+    <Content Include="Views\GovSubmit\js\Index.jsx" />
+    <Content Include="Views\GovSubmit\js\TreeData.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
     <Content Include="Views\Test\js\TestWmts.jsx" />
+    <Content Include="Views\Test\js\treeData.jsx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +270,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\ConfigActionFilter.cs" />
     <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\GovSubmitController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -286,9 +300,15 @@
     <Content Include="Views\Education\SchoolDetails.cshtml" />
     <Content Include="Views\Education\css\SchoolDetails.less" />
     <Content Include="Extends\CommonJS\__leafletExtends__.js" />
+    <Content Include="Extends\Components\GovSubmit\ContentPopup\ContentPopup.less" />
+    <Content Include="Extends\Components\GovSubmit\Catalog\Catalog.less" />
+    <Content Include="Extends\Components\GovSubmit\Map\Map.less" />
     <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
     <Content Include="Views\Test\TestWmts.cshtml" />
     <Content Include="Views\Test\css\TestWmts.less" />
+    <Content Include="Views\Test\FullScreen.cshtml" />
+    <Content Include="Views\GovSubmit\Index.cshtml" />
+    <Content Include="Views\GovSubmit\css\Index.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

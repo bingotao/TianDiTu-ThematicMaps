@@ -1,4 +1,5 @@
 ﻿using JXGIS.Common.BaseLib;
+using JXGIS.TianDiTuThematicMaps.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,18 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         public ActionResult TestWmts()
         {
             return View();
+        }
+
+        public ActionResult FullScreen()
+        {
+            return View();
+        }
+
+        public ActionResult GetLayer(string layerName)
+        {
+            var layer = GSLayerUtils.GetLayer(layerName);
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(layer);
+            return Content(s);
         }
     }
 }

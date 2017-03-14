@@ -28,5 +28,9 @@ namespace JXGIS.Common.BaseLib
         public DbSet<EduSchoolArea> EduSchoolArea { get; set; }
 
         public DbSet<EduResidence> EduResidence { get; set; }
+
+        public DbSet<GovSubmit> GovSubmit { get; set; }
+
+        public DbSet<GSSymbol> GSSymbol { get; set; }
     }
 }

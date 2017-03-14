@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JXGIS.TianDiTuThematicMaps.Business
 {
-    public class ResidenceSearchUtils
+    public class EduResidenceSearchUtils
     {
         public static Results<EduResidence> GetResidence(string keyWord, int pageNumber, int pageSize, string schoolAreaID = null, string schoolID = null)
         {

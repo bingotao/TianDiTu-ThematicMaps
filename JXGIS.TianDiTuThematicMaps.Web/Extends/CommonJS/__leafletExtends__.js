@@ -1,37 +1,71 @@
 ﻿; function __leafletExtends__() {
     if (L) {
-        if (LatLon) {
-            L.Circle.include({
-                toGeoJSON2: function (multi) {
-                    var pointCount = (multi || 1) * 36;
+        /*
+            扩展circle
+            添加toGeoJSON2方法
+            将circle简化为polygon
+        */
 
-                    var lat = this._latlng.lat;
-                    var lng = this._latlng.lng;
-                    var radius = this.options.radius;
-                    var center = LatLon(lat, lng);
-
-                    var latlng = [];
-
-                    var bearing = 360 / pointCount;
-                    for (var i = 0; i <= 360 ; i += bearing) {
-                        var p = center.destinationPoint(radius, i);
-                        latlng.push([p.lon, p.lat]);
-                    }
-
-                    return L.GeoJSON.getFeature(this, {
-                        type: 'Polygon',
-                        coordinates: [latlng]
-                    });
-                }
-            });
+        if (Number.prototype.toRadians === undefined) {
+            Number.prototype.toRadians = function () { return this * Math.PI / 180; };
         }
+
+        if (Number.prototype.toDegrees === undefined) {
+            Number.prototype.toDegrees = function () { return this * 180 / Math.PI; };
+        }
+
+        L.extend(L.CRS.Earth, {
+            destinationPoint: function (pntStart, distance, bearing, radius) {
+                radius = (radius === undefined) ? this.R : Number(radius);
+
+                var δ = Number(distance) / radius;
+                var θ = Number(bearing).toRadians();
+
+                var φ1 = pntStart.lat.toRadians();
+                var λ1 = pntStart.lng.toRadians();
+
+                var sinφ1 = Math.sin(φ1), cosφ1 = Math.cos(φ1);
+                var sinδ = Math.sin(δ), cosδ = Math.cos(δ);
+                var sinθ = Math.sin(θ), cosθ = Math.cos(θ);
+
+                var sinφ2 = sinφ1 * cosδ + cosφ1 * sinδ * cosθ;
+                var φ2 = Math.asin(sinφ2);
+                var y = sinθ * sinδ * cosφ1;
+                var x = cosδ - sinφ1 * sinφ2;
+                var λ2 = λ1 + Math.atan2(y, x);
+
+                return L.latLng(φ2.toDegrees(), (λ2.toDegrees() + 540) % 360 - 180);
+            }
+        });
+
+        L.Circle.include({
+            toGeoJSON2: function (multi) {
+                var pointCount = (multi || 1) * 36;
+
+                var radius = this.options.radius;
+                var center = this._latlng;
+
+                var latlng = [];
+
+                var bearing = 360 / pointCount;
+                for (var i = 0; i <= 360 ; i += bearing) {
+                    var p = L.CRS.Earth.destinationPoint(center, radius, i);
+                    latlng.push([p.lng, p.lat]);
+                }
+
+                return L.GeoJSON.getFeature(this, {
+                    type: 'Polygon',
+                    coordinates: [latlng]
+                });
+            }
+        });
         /*
         嘉兴天地图扩展
         使用：
             var vec = L.tileLayer.TDTJX({type: 'vec'});
             var vec_anno = L.tileLayer.TDTJX({type: 'vec_anno'});
             map = L.map('map', {
-                crs: L.CRS.TDT_EPSG4326,
+                crs: L.CRS.EPSG4490,
                 center: [30.75, 120.75],
                 zoom: 19
             })
@@ -237,16 +271,20 @@
             return new L.TileLayer.TDTJX(options);
         };
 
-        L.CRS.TDT_EPSG4326 = L.extend({
-        }, L.CRS.Earth, {
-            code: 'EPSG:4326',
-            projection: L.Projection.LonLat,
-            transformation: new L.Transformation(1 / 360, 0.5, -1 / 360, 0.5)
-        });
+        L.CRS.EPSG4490 = L.extend(
+            {},
+            L.CRS.Earth,
+            {
+                code: 'EPSG:4490',
+                projection: L.Projection.LonLat,
+                transformation: new L.Transformation(1 / 360, 0.5, -1 / 360, 0.5)
+            }
+        );
 
         /*
-        扩展Draw
-        组件*/
+            扩展Draw
+            组件
+        */
         if (L.Draw) {
             L.Draw.Feature.include({
                 _fireCreatedEvent: function (layer) {
@@ -254,7 +292,7 @@
                         layer: layer, layerType: this.type
                     };
 
-                    //创建要素后触发
+                    //  创建要素后触发
                     this.fire(L.Draw.Event.CREATED, data);
 
                     this._map.fire(L.Draw.Event.CREATED, data);
@@ -264,8 +302,8 @@
                 }
             });
             /*
-            创建绘制工具
-            使用方法：
+                创建绘制工具
+                使用方法：
                 var draw = L.Draw.initDraw('polygon').on(L.Draw.Event.CREATED, function (e) {
                                 e.layer.addTo(map);
                            },this);

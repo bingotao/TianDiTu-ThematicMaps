@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JXGIS.TianDiTuThematicMaps.Business
 {
-    public class SchoolSearchUtils
+    public class EduSchoolSearchUtils
     {
         public static EduSchool2 GetSchoolByID2(string id)
         {

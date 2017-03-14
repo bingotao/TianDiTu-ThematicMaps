@@ -45,8 +45,8 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             try
             {
                 var layers = new List<Layer>();
-                var schoolLayers = LayerUtils.GetSchoolLayers();
-                var schoolAreaLayers = LayerUtils.GetSchoolAreaLayers();
+                var schoolLayers = EduLayerUtils.GetSchoolLayers();
+                var schoolAreaLayers = EduLayerUtils.GetSchoolAreaLayers();
 
                 layers.AddRange(schoolLayers);
                 layers.AddRange(schoolAreaLayers);
@@ -66,7 +66,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             ReturnObject ro = null;
             try
             {
-                var result = SchoolSearchUtils.GetSchools(condition.SearchText, condition.SType, condition.PageSize, condition.PageNumber);
+                var result = EduSchoolSearchUtils.GetSchools(condition.SearchText, condition.SType, condition.PageSize, condition.PageNumber);
                 ro = new ReturnObject(result);
             }
             catch (Exception ex)
@@ -84,9 +84,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             ReturnObject ro = null;
             try
             {
-                //string s = POIUtils.GetPOI(new POICondition() { Key = searchText, Type = "100202", PageIndex = pageNumber, PageStep = pageSize });
-
-                var rs = ResidenceSearchUtils.GetResidence(searchText, pageNumber, pageSize, schoolAreaID, schoolID);
+                var rs = EduResidenceSearchUtils.GetResidence(searchText, pageNumber, pageSize, schoolAreaID, schoolID);
                 var fts = EntityUtils.EntitiesToFeatureCollection(rs.rows);
 
                 ro = new ReturnObject();

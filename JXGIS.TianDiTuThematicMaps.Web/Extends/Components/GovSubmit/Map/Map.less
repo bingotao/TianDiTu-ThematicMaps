@@ -1,0 +1,34 @@
+﻿@import '~/Extends/default.less';
+
+#map {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.layer-icon-circle {
+    border-radius: 50%;
+    border: 2px solid;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layer-icon-default {
+    margin-top: -36px !important;
+    background: url('@{_bl_}/Reference/images/markers.png');
+    background-position: -199px -188px;
+
+    &:hover {
+        background-position: -199px -224px;
+    }
+}
+
+.zzyh {
+    @zzyh: #f24242;
+    background-color: @zzyh;
+    border-color: lighten(@zzyh,20%);
+    font-size: 12px;
+    line-height: 25px;
+}

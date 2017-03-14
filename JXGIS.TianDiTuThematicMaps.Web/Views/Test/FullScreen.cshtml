@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "FullScreen";
+    Layout = "~/Views/Shared/_MasterBlank.cshtml";
+}
+
+<style>
+    .main1 {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+@*<script src="~/Reference/three.min.js"></script>
+<script src="~/Reference/uevent.min.js"></script>
+<script src="~/Reference/doT.min.js"></script>
+<script src="~/Reference/D.min.js.js"></script>*@
+
+@*<script src="//api.html5media.info/1.2.2/html5media.min.js"></script>*@
+
+@*<script src="~/Reference/PhotoSphereViewer/photo-sphere-viewer.min.js"></script>
+<link href="~/Reference/PhotoSphereViewer/photo-sphere-viewer.min.css" rel="stylesheet" />*@
+<video style="width:100%" autoplay controls>
+    <source src="~/Reference/video/cx.webm" type="video/webm">  
+</video>
+<div id="v" class="main1">
+
+</div>
+
+<script>
+    //$(function () {
+    //    var viewer = PhotoSphereViewer(
+    //        {
+    //            container: 'v',
+    //            panorama: '/Reference/images/P70308-123922(1).jpg',
+    //            sphere_segments: 32
+    //        }
+    //        );
+    //});
+</script>

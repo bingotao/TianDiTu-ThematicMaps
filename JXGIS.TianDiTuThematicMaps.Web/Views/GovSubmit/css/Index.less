@@ -1,0 +1,147 @@
+﻿@import '~/Extends//default.less';
+
+html, body, #main, .govsubmit {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+@box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+@box-shadow-primary: 0 1px 5px rgba(16, 142, 233, 0.65);
+
+.govsubmit {
+    @header-height: 70px;
+    @catalog-padding: 8px;
+    @catalog-width: 320px;
+
+    &-header {
+        position: relative;
+        height: @header-height;
+        box-shadow: @box-shadow;
+        z-index: 999;
+        background-color: rgba(16, 142, 233, 0.65);
+    }
+
+    &-catalog {
+        position: absolute;
+        top: @header-height+@catalog-padding;
+        left: -( @catalog-width+@catalog-padding);
+        bottom: @catalog-padding;
+        width: @catalog-width;
+        transition: 0.3s ease left;
+        border-radius: 3px;
+        box-shadow: @box-shadow;
+        background-color: white;
+        padding: 5px 10px;
+        z-index: 999;
+
+        &-header {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            color: @primary-color;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            border-bottom: 2px solid @primary-color;
+
+            i {
+                font-size: 18px;
+                transform: translateY(1px);
+                margin-right: 5px;
+            }
+        }
+
+        &-body {
+            position: relative;
+            height: calc(~'100% - 40px');
+            overflow: hidden;
+        }
+    }
+
+    &-catalog.active {
+        left: @catalog-padding;
+    }
+
+    .catalog-btn-close {
+        position: absolute;
+        cursor: pointer;
+        top: 5px;
+        right: 5px;
+        font-size: 20px;
+        color: #808080;
+        transition: 0.2s ease color;
+        padding: 0 5px;
+        border-radius: 50%;
+
+        &:hover {
+            color: @primary-color;
+        }
+    }
+
+    .catalog-btn-toggle {
+        position: absolute;
+        display: flex;
+        z-index: 999;
+        top: 133px;
+        right: 10px;
+        background-color: white;
+        border-radius: 3px;
+        height: 36px;
+        width: 36px;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        box-shadow: @box-shadow;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            color: white;
+            background-color: lighten(@primary-color,15%);
+            box-shadow: @box-shadow-primary;
+        }
+
+        &.active {
+            color: white;
+            background-color: @primary-color;
+            box-shadow: @box-shadow-primary;
+        }
+    }
+
+
+    &-map {
+        position: absolute;
+        top: @header-height;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .basemap-btn-toggle {
+        position: absolute;
+        display: flex;
+        z-index: 999;
+        top: 90px;
+        right: 10px;
+        background-color: white;
+        border-radius: 3px;
+        height: 36px;
+        width: 36px;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        box-shadow: @box-shadow;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            color: white;
+            background-color: @primary-color;
+            box-shadow: @box-shadow-primary;
+        }
+    }
+}

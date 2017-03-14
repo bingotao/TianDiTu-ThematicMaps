@@ -60,9 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\EduResidence.cs" />
-    <Compile Include="Domain\EduSchool.cs" />
-    <Compile Include="Domain\EduSchoolArea.cs" />
+    <Compile Include="Domain\Education\EduResidence.cs" />
+    <Compile Include="Domain\Education\EduSchool.cs" />
+    <Compile Include="Domain\Education\EduSchoolArea.cs" />
+    <Compile Include="Domain\GovSubmit\GovSubmit.cs" />
+    <Compile Include="Domain\GovSubmit\GSSymbol.cs" />
     <Compile Include="Domain\Test.cs" />
     <Compile Include="Extend\Layer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
