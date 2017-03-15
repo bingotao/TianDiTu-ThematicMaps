@@ -4,7 +4,8 @@
         this.state = {
             expandedKeys: [],
             treeData: props.treeData,
-            autoExpandParent: true
+            autoExpandParent: true,
+            showItemList: false
         };
         this.getCheckedLayers = this.getCheckedLayers.bind(this);
         this.filterTree = this.filterTree.bind(this);
@@ -71,7 +72,12 @@
         });
     }
 
+    showItemDetailClick(layerName) {
+        this.fire('showItemDetailClick', { layerName: layerName }, false);
+    }
+
     render() {
+        var cThis = this;
         function loop(data) {
             var cNodes = [];
             for (var i = 0, l = data.length; i < l; i++) {
@@ -89,7 +95,14 @@
                         </antd.Tree.TreeNode>
                     );
                 }
-                cNodes.push(<antd.Tree.TreeNode className={cls} layerName={layerName} isLeaf={true} key={key} title={displayName } />);
+                var cDisplay =
+                <span>
+                    {displayName}
+                    <antd.Tooltip placement="right" title="查看明细">
+                        <antd.Icon onClick={cThis.showItemDetailClick.bind(cThis, layerName)} type="file-text" />
+                    </antd.Tooltip>
+                </span>;
+                cNodes.push(<antd.Tree.TreeNode className={cls} layerName={layerName} isLeaf={true} key={key} title={cDisplay } />);
             }
             return cNodes;
         }
@@ -103,11 +116,11 @@
                 <div className="catalog-search">
                     <antd.Input.Search placeholder="请输入关键字..." onChange={e=>this.filterTree(e.target.value)} />
                 </div>
-                    <div className="catalog-tree">
-                        <antd.Tree ref='tree' onExpand={this.onExpand} autoExpandParent={s.autoExpandParent} checkable onCheck={this.getCheckedLayers} expandedKeys={expandKeys}>
-                            {loop(treeData)}
-                        </antd.Tree>
-                    </div>
+                <div className="catalog-tree">
+                    <antd.Tree ref='tree' onExpand={this.onExpand} autoExpandParent={s.autoExpandParent} checkable onCheck={this.getCheckedLayers} expandedKeys={expandKeys}>
+                        {loop(treeData)}
+                    </antd.Tree>
+                </div>
             </div>
         );
     }

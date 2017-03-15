@@ -130,6 +130,30 @@
         this.initMap();
     }
 
+    centerMap(latlng) {
+        this.map.setView(latlng);
+    }
+
+    showFeature(feature) {
+        var pnt = feature.geometry.coordinates;
+        this.centerMap([pnt[1], pnt[0]]);
+        var defaultIcon = this.getIcon();
+        var layer = L.geoJSON(feature, {
+            onEachFeature: function (feature, layer) {
+                layer.setIcon(defaultIcon);
+                layer.setZIndexOffset(9999999);
+            }
+        }).addTo(this.map);
+        layer.bindPopup(ContentPopup.getPopup());
+        ContentPopup.clearLayer();
+        ContentPopup.setLayer(layer);
+        ContentPopup.setContent({
+            props: feature.properties,
+            alias: alias
+        });
+        layer.openPopup();
+    }
+
     render() {
         return (
         <div id="map">

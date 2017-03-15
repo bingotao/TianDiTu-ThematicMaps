@@ -193,6 +193,7 @@
     <Content Include="Extends\Components\Education\EduPopup\ResidencePopup.jsx" />
     <Content Include="Extends\Components\GovSubmit\Catalog\Catalog.jsx" />
     <Content Include="Extends\Components\GovSubmit\ContentPopup\ContentPopup.jsx" />
+    <Content Include="Extends\Components\GovSubmit\ItemList\ItemList.jsx" />
     <Content Include="Extends\Components\GovSubmit\Map\Map.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
@@ -218,6 +219,7 @@
     <Content Include="Reference\html2canvas.min.js" />
     <Content Include="Reference\images\bg-test.jpg" />
     <Content Include="Reference\images\education-header.jpg" />
+    <Content Include="Reference\images\govsubmit-header.jpg" />
     <Content Include="Reference\images\markers.png" />
     <Content Include="Reference\images\travel-header.jpg" />
     <Content Include="Reference\images\education-ico.ico" />
@@ -303,6 +305,7 @@
     <Content Include="Extends\Components\GovSubmit\ContentPopup\ContentPopup.less" />
     <Content Include="Extends\Components\GovSubmit\Catalog\Catalog.less" />
     <Content Include="Extends\Components\GovSubmit\Map\Map.less" />
+    <Content Include="Extends\Components\GovSubmit\ItemList\ItemList.less" />
     <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
     <Content Include="Views\Test\TestWmts.cshtml" />
     <Content Include="Views\Test\css\TestWmts.less" />

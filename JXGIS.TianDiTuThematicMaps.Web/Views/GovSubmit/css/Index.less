@@ -22,10 +22,13 @@ html, body, #main, .govsubmit {
         height: @header-height;
         box-shadow: @box-shadow;
         z-index: 999;
-        background-color: rgba(16, 142, 233, 0.65);
+        background-image: url('@{_bl_}/Reference/images/govsubmit-header.jpg');
+        background-color: rgb(25, 166, 238);
+        background-repeat: no-repeat;
     }
 
-    &-catalog {
+
+    &-catalog, &-itemlist {
         position: absolute;
         top: @header-height+@catalog-padding;
         left: -( @catalog-width+@catalog-padding);
@@ -37,6 +40,8 @@ html, body, #main, .govsubmit {
         background-color: white;
         padding: 5px 10px;
         z-index: 999;
+        overflow: hidden;
+        opacity: 0;
 
         &-header {
             height: 40px;
@@ -62,8 +67,9 @@ html, body, #main, .govsubmit {
         }
     }
 
-    &-catalog.active {
+    &-catalog.active, &-itemlist.active {
         left: @catalog-padding;
+        opacity: 1;
     }
 
     .catalog-btn-close {
@@ -143,5 +149,22 @@ html, body, #main, .govsubmit {
             background-color: @primary-color;
             box-shadow: @box-shadow-primary;
         }
+    }
+
+    .itemlist-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        height: 24px;
+        width: 24px;
+        background: @primary-color;
+        color: white;
+        z-index: 999;
+        cursor: pointer;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
     }
 }

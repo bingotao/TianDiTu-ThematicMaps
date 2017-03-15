@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
+using Newtonsoft.Json;
 
 namespace JXGIS.Common.Entity
 {
@@ -175,6 +176,13 @@ namespace JXGIS.Common.Entity
         public string PutInTime { get; set; }
 
         [Column("Geometry"), Display(Name = "几何图形")]
+        //[JsonIgnore]
         public DbGeography Geometry { get; set; }
+
+        //[NotMapped]
+        //public double? X { get { return Geometry.Longitude; } }
+
+        //[NotMapped]
+        //public double? Y { get { return Geometry.Latitude; } }
     }
 }
