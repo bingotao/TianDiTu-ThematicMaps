@@ -40,7 +40,7 @@
 
         map.createPane('GovLayersPane');
 
-        L.control.zoom({ position: 'topright', zoomInTitle: '方大', zoomOutTitle: '缩小' }).addTo(map);
+        L.control.zoom({ position: 'topright', zoomInTitle: '放大', zoomOutTitle: '缩小' }).addTo(map);
         L.control.scale({ position: 'bottomright' }).addTo(map);
         this.map = map;
     }
@@ -89,7 +89,7 @@
         }
         else {
             $.post('GetLayer', { layerName: layerName }, function (rt) {
-                var obj = JSON.parse(rt);
+                var obj = rt.indexOf ? JSON.parse(rt) : rt;
                 if (obj.ErrorMessage) {
                     antd.message.error(obj.ErrorMessage);
                 } else {
@@ -151,7 +151,7 @@
             props: feature.properties,
             alias: alias
         });
-        layer.openPopup();
+        setTimeout(layer.openPopup.bind(layer), 500);
     }
 
     render() {

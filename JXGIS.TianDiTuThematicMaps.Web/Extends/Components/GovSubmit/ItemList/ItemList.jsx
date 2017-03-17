@@ -88,12 +88,12 @@
         var cItems = [];
         for (var i = 0, l = s.rows.length; i < l ; i++) {
             var item = s.rows[i];
-            cItems.push(<ListItem onItemClick={this.itemClick} feature={item } />);
+            cItems.push(<ListItem index={i + 1} onItemClick={this.itemClick} feature={item } />);
         }
 
         return (
             <div className={"itemlist " + (s.showItemList ? 'active':'' )}>
-                <div className="itemlist-header"><antd.Icon type="bars" />{s.layerName}</div>
+                <div className="itemlist-header"><antd.Icon type="appstore-o" />{s.layerName}</div>
                 <div className="itemlist-search">
                     <antd.Input.Search value={s.keyword} placeholder="请输入关键字..."
                                        onChange={e => { s.keyword = e.target.value; this.setState(s) }}
@@ -116,6 +116,7 @@ class ListItem extends React.Component {
 
     render() {
         var ft = this.props.feature;
+        var ps = this.props;
         var props = ft.properties;
         var name = props.ShortName || props.Name;
         var location = props.Address || '暂无';
@@ -124,7 +125,7 @@ class ListItem extends React.Component {
 
         return (
                 <div className="item" onClick={e=>this.props.onItemClick(this.props.feature)}>
-                    <div className="item-name"><span>{name}</span></div>
+                    <div className="item-name"><span className="item-index">{ps.index}</span><span>{name}</span></div>
                     <div className="item-loc"><antd.Icon type="environment-o" /><span>{location}</span></div>
                     <div className="item-tel"><antd.Icon type="phone" /><span>{telephone}</span></div>
                     <div className="item-web"><antd.Icon type="cloud-o" /><span>{website}</span></div>

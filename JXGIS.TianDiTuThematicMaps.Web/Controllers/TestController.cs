@@ -33,5 +33,10 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             string s = Newtonsoft.Json.JsonConvert.SerializeObject(layer);
             return Content(s);
         }
+
+        public ActionResult Cesium()
+        {
+            return View();
+        }
     }
 }

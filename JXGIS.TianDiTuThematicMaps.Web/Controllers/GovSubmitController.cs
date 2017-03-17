@@ -33,7 +33,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 ro = new ReturnObject(ex);
             }
             string rt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
-            return Json(rt);
+            return Content(rt);
         }
 
         public ActionResult GetItems(string layerName, string keyword, int pageNumber, int pageSize)

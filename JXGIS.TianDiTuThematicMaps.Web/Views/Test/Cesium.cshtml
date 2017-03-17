@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterBlank.cshtml";
+    string UrlPath = "http://192.168.95.4/";
+}
+
+<div class="main">
+    <div id="cesiumContainer"></div>
+</div>
+
+@Styles.Render(@UrlPath + "/Cesium/Build/Cesium/Widgets/widgets.css")
+@Scripts.Render(@UrlPath + "/Cesium/Build/Cesium/Cesium.js")
+<style>
+    .main, #cesiumContainer {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+</style>
+<script>
+    var url_vec = 'http://t{s}.tianditu.cn/DataServer?T=img_w&X={TileCol}&Y={TileRow}&L={TileMatrix}';
+    var url_vecanno = 'http://t{s}.tianditu.cn/DataServer?T=cia_w&X={TileCol}&Y={TileRow}&L={TileMatrix}';
+
+    var subdomains = ['0', '1', '2', '3', '4', '5', '6', '7'];
+    var tianditu_vec = new Cesium.WebMapTileServiceImageryProvider({
+        url: url_vec,
+        subdomains: subdomains,
+        maximumLevel:18
+    });
+
+    var tianditu_vecanno = new Cesium.WebMapTileServiceImageryProvider({
+        url: url_vecanno,
+        subdomains: subdomains,
+        maximumLevel: 18
+    });
+
+    var viewer = new Cesium.Viewer('cesiumContainer', {
+        imageryProvider: tianditu_vec,
+        baseLayerPicker: false
+    });
+
+    var layers = viewer.scene.imageryLayers;
+    layers.addImageryProvider(tianditu_vecanno);
+
+    var entity = viewer.entities.add({
+        position: Cesium.Cartesian3.fromDegrees(120.75013160705568, 30.76366907304589),
+        model: {
+            uri: '@Html.Raw(UrlPath)/Cesium/Apps/SampleData/models/ct/2.gltf'
+        }
+    });
+    viewer.flyTo(entity);
+</script>

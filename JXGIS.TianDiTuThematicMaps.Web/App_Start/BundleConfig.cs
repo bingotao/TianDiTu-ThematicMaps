@@ -59,7 +59,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web
             #region 政务报送专题
             bundles.Add(new BabelBundle("~/govsubmit/index/js")
                    .IncludeDirectory(_cmpPath + "GovSubmit", "*.jsx", true)
-                   .Include(_viewPath + "GovSubmit/js/TreeData.jsx")
+                   .Include(_viewPath + "GovSubmit/js/Config.jsx")
                    .Include(_viewPath + "GovSubmit/js/Index.jsx"));
             bundles.Add(new LessBundle("~/govsubmit/index/css")
                    .IncludeDirectory(_cmpPath + "GovSubmit", "*.less", true)

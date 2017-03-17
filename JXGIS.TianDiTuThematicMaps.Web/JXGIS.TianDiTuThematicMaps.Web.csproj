@@ -259,7 +259,7 @@
     <Content Include="Views\Education\js\Index.jsx" />
     <Content Include="Views\Education\js\SchoolDetails.jsx" />
     <Content Include="Views\GovSubmit\js\Index.jsx" />
-    <Content Include="Views\GovSubmit\js\TreeData.jsx" />
+    <Content Include="Views\GovSubmit\js\Config.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
     <Content Include="Views\Test\js\TestWmts.jsx" />
     <Content Include="Views\Test\js\treeData.jsx" />
@@ -312,6 +312,7 @@
     <Content Include="Views\Test\FullScreen.cshtml" />
     <Content Include="Views\GovSubmit\Index.cshtml" />
     <Content Include="Views\GovSubmit\css\Index.less" />
+    <Content Include="Views\Test\Cesium.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
