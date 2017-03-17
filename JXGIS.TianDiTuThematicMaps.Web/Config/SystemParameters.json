@@ -31,6 +31,7 @@
     "Description": "",
     "Favicon": "/Reference/images/education-ico.ico",
     "SchoolTipLevel": 16,
+    "Govs": [ "嘉兴市教育局", "嘉兴市体育局", "嘉兴市秀洲区教育文化体育局", "嘉兴市南湖区教育文化体育局" ],
     "Layers": {
       "y": {
         "on": true,
@@ -61,7 +62,8 @@
         "text": "大"
       },
       "x_xq": { "on": false },
-      "c_xq": { "on": false }
+      "c_xq": { "on": false },
+      "gov": { "on": false }
     }
   },
   "Driving": {

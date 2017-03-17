@@ -27,20 +27,22 @@
     render() {
         var s = this.state;
         var p = s.SType === 'x' || s.SType === 'c' ? <span><antd.Button onClick={this.onShowSchoolAreaClick} type="primary" size="small">查看学区</antd.Button><antd.Button type="primary" size="small" onClick={this.onShowResidenceClick }>查看施教小区</antd.Button></span> : null;
+
         return (
             <div className="schoolpopup">
                 <h3>
-                    <span className={'school-icon ' + s.SType }></span>
+                    <span className={'school-icon ' + (s.SType || 'gov') }></span>
                     {s.Name}
                 </h3>
                 <div><antd.Icon type="environment-o" /><span>{s.Address}</span></div>
                 <div><antd.Icon type="phone" /><span>{s.Telephone}</span></div>
                 <div><antd.Icon type="link" /><span>{s.Website ? <a href={s.Website.startsWith('http') ? s.Website : ('http://' + s.Website)} target="_blank">{s.Website}</a> : '暂无'}</span></div>
                 <div><antd.Icon type="mail" /><span>{s.Email || '暂无'}</span></div>
-                <div>
-                    <antd.Button type="primary" onClick={this.showSchoolDetail} size="small">查看详情</antd.Button>
-                    {p}
-                </div>
+                {!s.SType? <div></div> :
+                    (<div>
+                        <antd.Button type="primary" onClick={this.showSchoolDetail} size="small">查看详情</antd.Button>{p}
+                    </div>)
+                }
             </div>);
     }
 }

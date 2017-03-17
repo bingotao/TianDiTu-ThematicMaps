@@ -10,6 +10,7 @@
 @d: rgb(133,0,168);
 @x-xq: #ff5500;
 @c-xq: #a80085;
+@gov: #fb3a3a;
 
 .edu-trans {
     transition: 0.3s ease;
@@ -156,7 +157,7 @@
             margin: 0 auto;
 
             .edu-layergroup {
-                margin-bottom: 30px;
+                margin-bottom: 10px;
 
                 h3 {
                     width: calc(~'100% - 20px');
@@ -247,6 +248,11 @@
                     border-radius: 0;
                     background-color: tint(@c-xq,50%);
                     border-color: @c-xq;
+                }
+
+                .edu-icon.gov {
+                    background-color: @gov;
+                    border-color: tint(@gov,50%);
                 }
             }
         }

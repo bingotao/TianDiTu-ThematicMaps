@@ -34,7 +34,8 @@
 #map.schooltip-on.g-on .leaflet-tooltip .schoolname-tip.g-tip-on,
 #map.schooltip-on.z-on .leaflet-tooltip .schoolname-tip.z-tip-on,
 #map.schooltip-on.t-on .leaflet-tooltip .schoolname-tip.t-tip-on,
-#map.schooltip-on.d-on .leaflet-tooltip .schoolname-tip.d-tip-on {
+#map.schooltip-on.d-on .leaflet-tooltip .schoolname-tip.d-tip-on,
+#map.schooltip-on.gov-on .leaflet-tooltip .schoolname-tip.gov-tip-on {
     opacity: 1;
 }
 
@@ -64,6 +65,7 @@
 @z: rgb(77,116,0);
 @t: rgb(197,0,255);
 @d: rgb(133,0,168);
+@gov: #fb3a3a;
 
 
 .school-icon-fun(@color,@text) {
@@ -101,6 +103,10 @@
 
 .school-icon.d {
     .school-icon-fun(@d,'大');
+}
+
+.school-icon.gov {
+    .school-icon-fun(@gov,'政');
 }
 
 .residence-icon {

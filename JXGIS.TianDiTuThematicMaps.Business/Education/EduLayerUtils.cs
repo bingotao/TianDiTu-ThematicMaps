@@ -68,5 +68,18 @@ namespace JXGIS.TianDiTuThematicMaps.Business
                           }).ToList();
             return layers;
         }
+
+        public static Layer GetEduGovSystemLayer()
+        {
+            List<string> govsName = new List<string>();
+
+            foreach (var j in SystemUtils.Config.Education.Govs as Newtonsoft.Json.Linq.JArray) {
+                govsName.Add(j.ToString());
+            }
+            var govs = (from g in SystemUtils.SQLEFDbContext.GovSubmit
+                        where govsName.Contains(g.Name)
+                        select g).ToList();
+            return new Layer { Type = "gov", Features = EntityUtils.EntitiesToFeatureCollection(govs) };
+        }
     }
 }

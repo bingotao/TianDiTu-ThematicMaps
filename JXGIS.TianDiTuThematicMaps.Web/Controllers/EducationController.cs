@@ -47,9 +47,12 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
                 var layers = new List<Layer>();
                 var schoolLayers = EduLayerUtils.GetSchoolLayers();
                 var schoolAreaLayers = EduLayerUtils.GetSchoolAreaLayers();
+                var govLayer = EduLayerUtils.GetEduGovSystemLayer();
 
                 layers.AddRange(schoolLayers);
                 layers.AddRange(schoolAreaLayers);
+                layers.Add(govLayer);
+
                 ro = new ReturnObject(layers);
             }
             catch (Exception ex)
