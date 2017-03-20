@@ -81,6 +81,10 @@
         this.fire('itemClick', { feature: feature }, false);
     }
 
+    focusInput() {
+        this.refs.searchInput.input.refs.input.focus();
+    }
+
     render() {
         var s = this.state;
         var ps = this.props;
@@ -93,9 +97,9 @@
 
         return (
             <div className={"itemlist " + (s.showItemList ? 'active':'' )}>
-                <div className="itemlist-header"><antd.Icon type="appstore-o" />{s.layerName}</div>
+                <div className="itemlist-header"><antd.Icon type="appstore-o" />{s.layerName || '政务报送资源'}</div>
                 <div className="itemlist-search">
-                    <antd.Input.Search value={s.keyword} placeholder="请输入关键字..."
+                    <antd.Input.Search ref="searchInput" value={s.keyword} placeholder="请输入关键字..."
                                        onChange={e => { s.keyword = e.target.value; this.setState(s) }}
                                        onSearch={e=>{this.search(e)}} />
                 </div>
@@ -122,10 +126,11 @@ class ListItem extends React.Component {
         var location = props.Address || '暂无';
         var telephone = props.Telephone || '暂无';
         var website = props.Website || '暂无';
-
+        var layerName = props.LayerName || '';
         return (
                 <div className="item" onClick={e=>this.props.onItemClick(this.props.feature)}>
                     <div className="item-name"><span className="item-index">{ps.index}</span><span>{name}</span></div>
+                    <div className="item-layername"><antd.Icon type="right" /><span>{layerName}</span></div>
                     <div className="item-loc"><antd.Icon type="environment-o" /><span>{location}</span></div>
                     <div className="item-tel"><antd.Icon type="phone" /><span>{telephone}</span></div>
                     <div className="item-web"><antd.Icon type="cloud-o" /><span>{website}</span></div>

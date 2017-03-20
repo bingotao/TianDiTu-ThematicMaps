@@ -42,10 +42,10 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             try
             {
                 var query = (from c in _dbContext.GovSubmit
-                             where c.LayerName == layerName
                              select c);
-                if (!string.IsNullOrEmpty(keyword))
-                    query = query.Where(p => p.Name.Contains(keyword));
+                if (!string.IsNullOrEmpty(layerName)) query = query.Where(p => p.LayerName == layerName);
+                if (!string.IsNullOrEmpty(keyword)) query = query.Where(p => p.Name.Contains(keyword));
+
                 var rows = query.OrderBy(p => p.Name).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
                 var count = query.Count();
                 var ftCol = EntityUtils.EntitiesToFeatureCollection(rows);

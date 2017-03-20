@@ -85,6 +85,7 @@
     showItemList() {
         this.state.itemlist.open = true;
         this.setState(this.state);
+        this.refs.itemlist.focusInput();
     }
 
     hiddenItemList() {
@@ -108,6 +109,17 @@
             <div className="govsubmit">
                 <div className="govsubmit-header"></div>
                 <div className="govsubmit-map">
+                    <div className="govsubmit-quicksearch">
+                        <antd.Input onFocus={e=> {
+                                var itemlist = this.refs.itemlist;
+                                this.showItemList();
+                                itemlist.setTitle(null,
+                                    function () {
+                                        itemlist.search();
+                                    });
+                            }} placeholder="请输入关键字..." />
+                        <antd.Icon type="search" />
+                    </div>
                     <antd.Tooltip placement="right" title={'资源目录'}>
                         <antd.Icon onClick={this.setCatalogOpenState.bind(this,undefined)} className={"catalog-btn-toggle " + (c.open ? 'active' : '')} type="book" />
                     </antd.Tooltip>
