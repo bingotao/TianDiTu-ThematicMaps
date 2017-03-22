@@ -236,3 +236,17 @@ catalog = ReactDOM.render(<Catalog treeData={treeData } />, document.getElementB
 catalog.on('checkedStateChange', function (e) {
     console.log(e.data);
 });
+
+
+_routePlanning_ = {
+    url: "http://map.tianditu.com/query.shtml",
+    getRoute: function (start, end, middle, planningType, tripMode) {
+
+
+
+
+    }
+
+}
+
+_rp_ = _routePlanning_;

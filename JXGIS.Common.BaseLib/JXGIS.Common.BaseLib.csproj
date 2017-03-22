@@ -84,6 +84,7 @@
     <Compile Include="Bundles\BabelBundle.cs" />
     <Compile Include="Bundles\BabelTransform.cs" />
     <Compile Include="Bundles\ImportedFilePathResolver.cs" />
+    <Compile Include="RoutePlanningUtils.cs" />
     <Compile Include="SQLComDbContext.cs" />
     <Compile Include="MySQLComDbContext.cs" />
     <Compile Include="SQLEFDbContext.cs" />
