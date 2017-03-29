@@ -242,7 +242,7 @@
         var schools = s.sxx.searchResults;
 
         var cSchools = schools.map(function (school) {
-            return <EduSchoolItem school={school} onClick={this.schoolItemClick.bind(this) } />;
+return <EduSchoolItem school={school} onClick={this.schoolItemClick.bind(this) } />;
         }.bind(this));
 
         var residences = s.cxq.searchResults.features;
@@ -329,6 +329,11 @@
                          <div><span className="edu-icon c-xq"></span><span className="edu-layer-title">初中学区</span><antd.Switch size="small" checked={sLayers.c_xq.on} onChange={e=> {if(e){ this.toggleAllLayers(false);this.setLayerVisibility('c',true);} this.setLayerVisibility('c_xq', e); }} /></div>
                     </div>
 
+
+                    <div className="edu-layergroup">
+                         <h3>教育部门</h3>
+                         <div><span className="edu-icon gov">政</span><span className="edu-layer-title">教育部门</span><antd.Switch size="small" checked={sLayers.gov.on} onChange={e=>  this.setLayerVisibility('gov', e)} /></div>
+                    </div>
                 </div>
             </div>
              </div>

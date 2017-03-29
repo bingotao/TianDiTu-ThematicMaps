@@ -26,11 +26,12 @@
     ]
   },
   "Education": {
-    "Title": "天地图·嘉兴·教育专题",
+    "Title": "嘉兴教育一张图",
     "KeyWords": "天地图,嘉兴,教育",
     "Description": "",
     "Favicon": "/Reference/images/education-ico.ico",
     "SchoolTipLevel": 16,
+    "Govs": [ "嘉兴市教育局", "嘉兴市体育局", "嘉兴市秀洲区教育文化体育局", "嘉兴市南湖区教育文化体育局" ],
     "Layers": {
       "y": {
         "on": true,
@@ -61,12 +62,19 @@
         "text": "大"
       },
       "x_xq": { "on": false },
-      "c_xq": { "on": false }
+      "c_xq": { "on": false },
+      "gov": { "on": false }
     }
   },
   "Driving": {
     "Title": "天地图·嘉兴·自驾专题",
     "KeyWords": "天地图,嘉兴,自驾,出行",
+    "Description": "",
+    "Favicon": ""
+  },
+  "PublicService": {
+    "Title": "天地图·嘉兴·办事地图",
+    "KeyWords": "天地图,嘉兴,办事,证件办理",
     "Description": "",
     "Favicon": ""
   }

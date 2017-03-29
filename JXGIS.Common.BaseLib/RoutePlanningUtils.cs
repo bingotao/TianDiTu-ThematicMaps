@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JXGIS.Common.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,8 @@ namespace JXGIS.Common.BaseLib
             var routeString = string.Empty;
             var semicolon = ';';
 
-            string start = GetCorStr(ro.Start);
-            string end = GetCorStr(ro.End);
+            string start = GetCorStr(ro.Start.Point);
+            string end = GetCorStr(ro.End.Point);
 
             if (ro.PlanningType == PlanningType.Bus)
             {
@@ -54,52 +55,44 @@ namespace JXGIS.Common.BaseLib
 
     }
 
-    public interface IPoint
-    {
-        double X { get; set; }
-
-        double Y { get; set; }
-
-    }
-
     /// <summary>
     /// 线路优选类型
     /// </summary>
-    public class TripMode
+    public enum TripMode
     {
         // 较便捷
-        public const int LessTime = 1;
+        LessTime = 1,
 
         // 少换乘
-        public const int LessTransfer = 2;
+        LessTransfer = 2,
 
         // 少步行
-        public const int LessWalk = 4;
+        LessWalk = 4,
 
         // 不坐地铁
-        public const int NoSubway = 8;
+        NoSubway = 8,
 
         // 最快线路
-        public const int LessTime2 = 0;
+        LessTime2 = 0,
 
         // 最短线路
-        public const int LessDistance = 1;
+        LessDistance = 1,
 
         // 少走高速
-        public const int LessHighway = 2;
+        LessHighway = 2,
 
         // 步行
-        public const int OnlyWalk = 3;
+        OnlyWalk = 3
     }
 
     /// <summary>
     /// 线路规划类型
     /// </summary>
-    public class PlanningType
+    public enum PlanningType
     {
-        public const int Bus = 0;
-        public const int Drive = 1;
-        public const int Walk = 2;
+        Bus = 0,
+        Drive = 1,
+        Walk = 2
     }
 
     /// <summary>
@@ -107,14 +100,19 @@ namespace JXGIS.Common.BaseLib
     /// </summary>
     public class RouteOptions
     {
-        public IPoint Start { get; set; }
+        public Postion Start { get; set; }
 
-        public IPoint End { get; set; }
+        public Postion End { get; set; }
 
-        public IEnumerable<IPoint> Middle { get; set; }
+        public IEnumerable<Point> Middle { get; set; }
 
-        public int TripMode { get; set; }
+        public TripMode TripMode { get; set; }
 
-        public int PlanningType { get; set; }
+        public PlanningType PlanningType { get; set; }
+    }
+
+    public class Postion {
+        public string Name { get; set; }
+        public Point Point { get; set; }
     }
 }

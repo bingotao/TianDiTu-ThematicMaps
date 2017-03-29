@@ -68,7 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Others\Class.cs" />
     <Compile Include="Others\ScoreAnalyze.cs" />
+    <Compile Include="Others\Student.cs" />
+    <Compile Include="Others\Subject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

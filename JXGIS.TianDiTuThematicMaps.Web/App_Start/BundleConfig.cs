@@ -26,20 +26,26 @@ namespace JXGIS.TianDiTuThematicMaps.Web
 
             //全局script
             bundles.Add(new Bundle("~/gScripts").Include(
+                "~/Extends/CommonJS/jsExtends.js",
                 _refPath + "jquery-1.12.4.min.js",
                 _refPath + "react/react.min.js",
                 _refPath + "react/react-dom.min.js",
                 _refPath + "antd/antd.min.js",
                 _refPath + "leaflet/leaflet.js",
                 _refPath + "leaflet-plugins/esri/esri-leaflet.js",
-                "~/Extends/CommonJS/__Events__.js",
+                "~/Extends/CommonJS/__Extends__.js",
                 "~/Extends/CommonJS/__leafletExtends__.js",
                 "~/Extends/CommonJS/commonTool.js",
                 "~/Extends/CommonJS/geoLocation.js"
                 ));
 
             bundles.Add(new BabelBundle("~/gBabels")
-                   .IncludeDirectory("~/Extends/Base", "*.jsx", true));
+                   .IncludeDirectory("~/Extends/Base", "*.jsx", true)
+                   .IncludeDirectory(_cmpPath + "Common", "*.jsx", true));
+
+            bundles.Add(new LessBundle("~/gLess")
+                .IncludeDirectory("~/Extends/Base", "*.less", true)
+                .IncludeDirectory(_cmpPath + "Common", "*.less", true));
             #endregion
 
             #region 教育专题

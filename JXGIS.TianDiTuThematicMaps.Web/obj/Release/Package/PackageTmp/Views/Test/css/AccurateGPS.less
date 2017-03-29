@@ -1,0 +1,111 @@
+﻿@import '~/Extends/default.less';
+
+body, html, #main, #map, .container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+}
+
+@a-color: #42acfc;
+@o-color: #fe5a5a;
+
+@keyframes o {
+    from {
+        box-shadow: 0 0 0 0 fadeout(@o-color,99%);
+    }
+
+    to {
+        box-shadow: 0 0 0 10pxfadeout(@o-color,80%);
+    }
+}
+
+@keyframes a {
+    from {
+        box-shadow: 0 0 0 0 fadeout(@a-color,99%);
+    }
+
+    to {
+        box-shadow: 0 0 0 10px fadeout(@a-color,80%);
+    }
+}
+
+#main {
+    .origin, .accurate {
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+        border: 2px solid lighten(@o-color,10%);
+        background-color: @o-color;
+    }
+
+    .accurate {
+        border-color: lighten(@a-color,10%);
+        background-color: @a-color;
+    }
+
+
+
+    #map {
+        position: relative;
+
+        .accurate {
+            animation: a 1s alternate-reverse infinite;
+        }
+
+        .origin {
+            animation: o 1s alternate-reverse infinite;
+            animation-delay: 1s;
+        }
+    }
+
+    .coords {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        right: 5px;
+        background-color: white;
+        border-radius: 3px;
+        box-shadow: @box-shadow-base;
+        z-index: 999;
+        padding: 5px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+
+            td, th {
+                width: 33%;
+                border: 1px solid @border-color-split;
+                padding: 5px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.location {
+    position: absolute;
+    text-align: center;
+    line-height: 36px;
+    z-index: 999;
+    height: 36px;
+    width: 36px;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    background-color: white;
+    top: 93px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #808080;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #eee;
+        color: @primary-color;
+    }
+}

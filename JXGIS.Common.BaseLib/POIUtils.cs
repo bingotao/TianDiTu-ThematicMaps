@@ -15,7 +15,7 @@ namespace JXGIS.Common.BaseLib
         public static string GetPOI(POICondition condition)
         {
             var c = condition;
-            string POIUrl = string.Format(_POIUrl, c.Key, c.AreaCode, c.Type, c.Fields, c.PageIndex, c.PageStep, c.TagHead, c.TagTail);
+            string POIUrl = string.Format(_POIUrl, c.Keywords, c.AreaCode, c.Type, c.Fields, c.PageIndex, c.PageStep, c.TagHead, c.TagTail);
             return ServiceUtils.Get(POIUrl, Encoding.UTF8);
         }
 
@@ -26,7 +26,7 @@ namespace JXGIS.Common.BaseLib
         /// <summary>
         /// 关键字
         /// </summary>
-        public string Key { get; set; } = string.Empty;
+        public string Keywords { get; set; } = string.Empty;
 
         /// <summary>
         /// 区域代码（默认嘉兴市本级）

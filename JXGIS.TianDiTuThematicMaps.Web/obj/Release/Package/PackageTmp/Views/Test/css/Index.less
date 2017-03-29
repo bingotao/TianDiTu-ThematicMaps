@@ -1,10 +1,8 @@
 ﻿@import "~/Extends/default.less";
 
 #app {
-    height: 200px;
-    width: 360px;
-    padding: 5px;
-    border: 1px solid red;
+    height: 100%;
+    width: 100%;
 }
 
 .mCS-dark-blue .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
@@ -23,4 +21,110 @@
 .mCS-dark-blue .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
     background-color: @primary-color;
     width: 4px;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.gs-gjz {
+    @c: #00700d;
+    color: white;
+    background-color: @c;
+    border: 2px solid lighten(@c,10%);
+    border-radius: 50%;
+    line-height: 18px;
+    font-size: 16px;
+    text-align: center;
+    /*&:after {
+        content: '自';
+    }*/
+}
+
+
+.content-popup {
+    width: 300px;
+
+    &-title {
+        color: @primary-color;
+        border-bottom: 2px solid @primary-color;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+
+    &-content {
+        height: 200px;
+        overflow: auto;
+        border: 1px solid #f7f7f7;
+        /*border-top: 2px solid @border-color-base;*/
+        table {
+            border-collapse: collapse;
+
+            tr:nth-child(2n+1) {
+                background-color: #f7f7f7;
+
+                td {
+                    border-left: 1px solid white;
+                }
+            }
+
+            tr:nth-child(2n) {
+                td {
+                    border-left: 1px solid #f7f7f7;
+                }
+            }
+
+            th {
+                width: 40%;
+                text-align: center;
+                font-weight: normal;
+                color: @primary-color;
+                padding: 5px;
+            }
+
+            td {
+                width: 60%;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+
+.layer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*.ant-tree-node-content-wrapper, .ant-tree-switcher {
+    margin-top: 2px !important;
+}*/
+
+
+.catalog {
+    height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.catalog-search {
+    padding: 10px;
+    border-bottom: 1px solid @border-color-base;
+    margin: 0 5px;
+}
+
+.catalog-tree {
+    height: calc(~'100% - 60px');
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 5px 10px;
+}
+
+.display-none {
+    display: none;
 }

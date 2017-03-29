@@ -32,5 +32,9 @@ namespace JXGIS.Common.BaseLib
         public DbSet<GovSubmit> GovSubmit { get; set; }
 
         public DbSet<GSSymbol> GSSymbol { get; set; }
+
+        public DbSet<AdministrativeRegion> AdministrativeRegion { get; set; }
+
+        public DbSet<PoliceOffice> PoliceOffice { get; set; }
     }
 }

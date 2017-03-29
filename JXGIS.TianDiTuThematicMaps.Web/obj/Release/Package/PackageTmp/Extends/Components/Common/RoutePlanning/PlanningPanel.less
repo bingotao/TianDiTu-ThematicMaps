@@ -1,0 +1,162 @@
+﻿@import '~/Extends/default.less';
+
+
+.planningpanel {
+    position: relative;
+    width: 340px;
+
+    .pp-type {
+        display: flex;
+
+
+        li {
+            width: 33.3%;
+            text-align: center;
+            padding: 5px;
+            cursor: pointer;
+            border: 1px solid @border-color-split;
+            position: relative;
+            letter-spacing: 5px;
+
+            &:not(:last-child) {
+                border-right: 0;
+            }
+
+            &.active {
+                color: white;
+                font-weight: 700;
+                background-color: @primary-color;
+                border-color: @primary-color;
+            }
+        }
+    }
+
+    .pp-inputs {
+        display: flex;
+        align-items: center;
+        padding: 10px 0 10px 20px;
+
+        .anticon-swap {
+            width: 30px;
+            height: 30px;
+            /*margin: 10px;*/
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            transform: rotate(90deg);
+            cursor: pointer;
+        }
+
+        > div {
+            width: calc(~'100% - 50px');
+
+            > div {
+                padding: 5px;
+                position: relative;
+
+                i {
+                    position: absolute;
+                    right: 12px;
+                    top: 12px;
+                    cursor: pointer;
+                    color: @border-color-base;
+                    font-size: 14px;
+                    opacity: 0;
+                }
+
+                i:hover {
+                    color: #666;
+                }
+
+                i.active {
+                    opacity: 1;
+                }
+
+                .ant-input {
+                    border-radius: 0;
+                    padding-left: 25px;
+                }
+
+                &:after {
+                    position: absolute;
+                    content: '';
+                    height: 10px;
+                    width: 10px;
+                    border: 2px solid;
+                    border-radius: 5px;
+                    top: 14px;
+                    left: 12px;
+                }
+
+                &:first-child:after {
+                    border-color: #1eb739;
+                }
+
+                &:last-child:after {
+                    border-color: #f26161;
+                }
+            }
+        }
+    }
+
+    .pp-quicksearchpanel {
+        max-height: 200px;
+        display: none;
+        background-color: white;
+        position: absolute;
+        top: 125px;
+        z-index: 2;
+        width: 100%;
+        overflow: auto;
+        /*border-top: 1px solid @border-color-base;
+        border-bottom: 1px solid @border-color-base;*/
+        box-shadow: @box-shadow-base;
+
+        &.active {
+            display: block;
+        }
+
+        .quicksearchresultitem {
+            padding: 5px 5px 5px 20px;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:hover {
+                background-color: #eee;
+            }
+
+            i {
+                color: #aaa;
+                margin-right: 5px;
+                font-size: 12px;
+            }
+
+            span {
+                display: inline-block;
+                margin-left: 10px;
+                font-size: 12px;
+                color: #aaa;
+            }
+        }
+        /*.quicksearchresultitem:not(:first-child) {
+            border-top: 1px solid @border-color-split;
+        }*/
+        .quicksearchresultnotfound {
+            text-align: center;
+            color: #ff6a00;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px;
+        }
+    }
+
+    .pp-resultpanel {
+        height: 200px;
+        display: none;
+        background-color: red;
+
+        &.active {
+            display: block;
+        }
+    }
+}

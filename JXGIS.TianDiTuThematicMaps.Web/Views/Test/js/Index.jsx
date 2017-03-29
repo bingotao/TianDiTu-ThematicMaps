@@ -115,7 +115,7 @@ map = ReactDOM.render(<Map />, document.getElementById('app'));*/
 
 
 
-
+/*
 class Catalog extends React.Component {
     constructor(props) {
         super(props);
@@ -236,17 +236,6 @@ catalog = ReactDOM.render(<Catalog treeData={treeData } />, document.getElementB
 catalog.on('checkedStateChange', function (e) {
     console.log(e.data);
 });
+*/
 
-
-_routePlanning_ = {
-    url: "http://map.tianditu.com/query.shtml",
-    getRoute: function (start, end, middle, planningType, tripMode) {
-
-
-
-
-    }
-
-}
-
-_rp_ = _routePlanning_;
+routePlanning = ReactDOM.render(<PlanningPanel />, document.getElementById('app'));

@@ -38,5 +38,22 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
         {
             return View();
         }
+
+
+
+        public ActionResult AccurateGPS()
+        {
+            return View();
+        }
+
+        public ActionResult GetAccurateGPS(decimal lat, decimal lng)
+        {
+            var rt = new AccurateGPSServiceRef.AccurateGPSSoapClient().Accurate(lat, lng);
+
+            var _lat = rt.Split('|')[0];
+            var _lng = rt.Split('|')[1];
+
+            return Json(new { lat = _lat, lng = _lng });
+        }
     }
 }

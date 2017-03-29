@@ -165,6 +165,17 @@
                     onEachFeature: function (ft, layer) {
                         var sType = ft.properties.SType;
 
+                        if (!sType) {
+                            var icon = this.getSchoolIcon("gov");
+                            layer.setIcon(icon).bindTooltip(
+                                '<span class="schoolname-tip gov-tip-on">' + (ft.properties.ShortName || ft.properties.Name) + '</span>',
+                                {
+                                    direction: "right",
+                                    permanent: true
+                                });
+                            return;
+                        }
+
                         switch (sType) {
                             case "x_xq":
                             case "c_xq":
@@ -183,7 +194,7 @@
                     }.bind(this)
                 });
 
-                if (layer.Type === "x_xq" || layer.Type === "c_xq") {
+                if (layer.Type === "x_xq" || layer.Type === "c_xq" ) {
                     //绑定学区popup
                     var popup = EduSchoolAreaPopup.getPopup();
                     cfg.layer
@@ -198,6 +209,7 @@
                     cfg.layer
                        .bindPopup(popup)
                        .on('popupopen', function (e) {
+                           
                            this.setSchoolPopupContent(e.layer.feature.properties);
                        }.bind(this));
                 }
@@ -208,6 +220,7 @@
     }
 
     setSchoolPopupContent(content) {
+        EduSchoolPopup.getPopupContent().state.SType = null;
         EduSchoolPopup.getPopupContent().setContent(content);
     }
 

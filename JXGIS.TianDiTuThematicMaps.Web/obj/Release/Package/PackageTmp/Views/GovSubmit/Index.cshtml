@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterBlank.cshtml";
+}
+@Styles.Render("~/govsubmit/index/css")
+<script>
+    var alias=@Html.Raw(@ViewBag.GovSubmitAlias);
+</script>
+<div id="main"></div>
+@Scripts.Render("~/govsubmit/index/js")

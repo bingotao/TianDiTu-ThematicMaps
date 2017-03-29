@@ -121,6 +121,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extends\CommonJS\jsExtends.js" />
+    <Content Include="Extends\Components\Common\RoutePlanning\PlanningPanel.jsx" />
     <Content Include="Extends\Components\Education\EduBaseLayerToggle\EduBaseLayerToggle.jsx" />
     <Content Include="Extends\Components\Education\EduClearButton\EduClearButton.jsx" />
     <Content Include="Extends\Components\Education\EduMap\EduMap.jsx" />
@@ -199,7 +202,7 @@
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
-    <Content Include="Extends\CommonJS\__Events__.js" />
+    <Content Include="Extends\CommonJS\__Extends__.js" />
     <Content Include="Global.asax" />
     <Content Include="Reference\antd\antd.min.css" />
     <Content Include="Reference\antd\antd.min.js" />
@@ -257,11 +260,22 @@
     <Content Include="Reference\store.min.js" />
     <Content Include="Reference\three.min.js" />
     <Content Include="Reference\uevent.min.js" />
+    <None Include="Service References\AccurateGPSServiceRef\AccurateGPS.disco" />
+    <None Include="Service References\AccurateGPSServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\AccurateGPSServiceRef\configuration.svcinfo" />
+    <Content Include="Service References\AccurateGPSServiceRef\JXGIS.TianDiTuThematicMaps.Web.AccurateGPSServiceRef.AccurateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\AccurateGPSServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Views\Education\js\Index.jsx" />
     <Content Include="Views\Education\js\SchoolDetails.jsx" />
     <Content Include="Views\GovSubmit\js\Index.jsx" />
     <Content Include="Views\GovSubmit\js\Config.jsx" />
     <Content Include="Views\PublicService\js\Index.jsx" />
+    <Content Include="Views\Test\js\AccurateGPS.jsx" />
     <Content Include="Views\Test\js\Index.jsx" />
     <Content Include="Views\Test\js\TestWmts.jsx" />
     <Content Include="Views\Test\js\treeData.jsx" />
@@ -281,6 +295,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AccurateGPSServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -310,6 +329,7 @@
     <Content Include="Extends\Components\GovSubmit\Map\Map.less" />
     <Content Include="Extends\Components\GovSubmit\ItemList\ItemList.less" />
     <Content Include="Extends\Components\Education\EduPopup\EduGovPopup.less" />
+    <Content Include="Extends\Components\Common\RoutePlanning\PlanningPanel.less" />
     <None Include="Properties\PublishProfiles\TianDiTuThematicMaps.pubxml" />
     <Content Include="Views\Test\TestWmts.cshtml" />
     <Content Include="Views\Test\css\TestWmts.less" />
@@ -319,6 +339,9 @@
     <Content Include="Views\Test\Cesium.cshtml" />
     <Content Include="Views\PublicService\Index.cshtml" />
     <Content Include="Views\PublicService\css\Index.less" />
+    <Content Include="Views\Test\AccurateGPS.cshtml" />
+    <Content Include="Views\Test\css\AccurateGPS.less" />
+    <None Include="Service References\AccurateGPSServiceRef\AccurateGPS.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -347,6 +370,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccurateGPSServiceRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

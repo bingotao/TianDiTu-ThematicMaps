@@ -1,4 +1,11 @@
-﻿// 为类型添加事件机制
+﻿// 常用变量
+const _const_ = {
+    atv: 'active',
+    tgt: 'target',
+    ept: ''
+}
+
+// 为类型扩展功能
 function __extend__(dest) {
     var i, j, len, src;
     for (j = 1, len = arguments.length; j < len; j++) {
@@ -151,7 +158,7 @@ React.Component 注册事件机制的方法
 __extend__(React.Component.prototype, __events__);
 */
 
-React.Component.prototype && __extend__(React.Component.prototype, __events__);
+React && React.Component && React.Component.prototype && __extend__(React.Component.prototype, __events__);
 
 /* 
 其他类型添加事件机制
@@ -170,3 +177,35 @@ class A extends __Events__ {
 var a = new A();
 a.on('onClick', function (e) { console.log(e); });
 */
+
+
+// React 扩展方法
+__ReactExtends__ = {
+    // 函数绑定作用域
+    _funsBind: function (funNames) {
+        for (var i = 0, l = funNames.length; i < l ; i++) {
+            var funName = funNames[i];
+            if (this[funName]) {
+                this[funName] = this[funName].bind(this);
+            }
+        }
+    },
+    // 获取更新函数
+    _getUpdateStateFun: function (state) {
+        return function (prevState, props) {
+            return state;
+        };
+    },
+    // 根据表达式返回常量 active 或者 空字符串
+    _getClass: function (express) {
+        if (typeof (express) === 'function') {
+            return !!express() ? _const_.atv : _const_.ept;
+        }
+        else {
+            return !!express ? _const_.atv : _const_.ept;
+        }
+    }
+};
+
+React && React.Component && React.Component.prototype && __extend__(React.Component.prototype, __ReactExtends__);
+

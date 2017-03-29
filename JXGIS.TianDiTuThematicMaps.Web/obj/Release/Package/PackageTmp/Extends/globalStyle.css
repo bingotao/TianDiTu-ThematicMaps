@@ -17,6 +17,7 @@
 /* 重定义webkit 下滚动条样式*/
 ::-webkit-scrollbar {
     width: 6px;
+    height:6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -106,4 +107,25 @@
 
 .leaflet-popup-content {
     margin: 20px 10px 10px 10px !important;
+}
+
+.leaflet-bottom.leaflet-right .leaflet-control-scale {
+    bottom: 5px;
+}
+
+.leaflet-control-scale-line {
+    background-color: rgba(0,0,0,0);
+    color: black !important;
+    border-color: black !important;
+    font-weight: 700;
+    height: 10px;
+    overflow: visible;
+}
+
+    .leaflet-control-scale-line:first-child {
+        line-height: 0px;
+    }
+
+.display-none {
+    display: none !important;
 }

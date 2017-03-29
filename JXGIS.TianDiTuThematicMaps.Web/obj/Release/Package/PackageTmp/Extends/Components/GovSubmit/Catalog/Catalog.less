@@ -1,0 +1,32 @@
+﻿@import '~/Extends/default.less';
+
+.catalog {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &-search {
+        padding: 10px 0;
+        margin: 0 5px;
+        border-bottom: 1px solid @border-color-base;
+    }
+
+    &-tree {
+        position: absolute;
+        top: 55px;
+        left: 0;
+        right: 0;
+        bottom: 5px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-right: 5px;
+    }
+}
+
+.ant-tree-title .anticon-file-text {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.ant-tree-title span:hover .anticon-file-text {
+    color: @primary-color;
+}
