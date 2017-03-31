@@ -26,7 +26,7 @@ namespace JXGIS.Common.BaseLib
 
             if (ro.PlanningType == PlanningType.Bus)
             {
-                url = string.Format(_busUrl, start, end, ro.TripMode);
+                url = string.Format(_busUrl, start, end, (int)ro.TripMode);
                 routeString = ServiceUtils.Get(url, Encoding.UTF8);
             }
             else
@@ -40,7 +40,7 @@ namespace JXGIS.Common.BaseLib
                     }
                     mid = mid.Trim(semicolon);
                 }
-                url = string.Format(_drivingUrl, start, end, mid, ro.TripMode);
+                url = string.Format(_drivingUrl, start, end, mid, (int)ro.TripMode);
                 url = _transUrl + System.Web.HttpUtility.UrlEncode(url);
                 routeString = ServiceUtils.Get(url, Encoding.UTF8);
                 routeString = routeString.Substring(routeString.IndexOf("{")).Trim(semicolon);

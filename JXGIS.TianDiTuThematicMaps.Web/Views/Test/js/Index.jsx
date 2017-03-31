@@ -238,4 +238,69 @@ catalog.on('checkedStateChange', function (e) {
 });
 */
 
-routePlanning = ReactDOM.render(<PlanningPanel />, document.getElementById('app'));
+
+
+class Map extends React.Component {
+    constructor() {
+        super();
+    }
+
+    initMap() {
+        var subdomains = ['0', '1', '2', '3', '4', '5', '6', '7'];
+        var baseLayers = {
+            vec: {
+                anno: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}", { subdomains: subdomains }),
+                base: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}", { subdomains: subdomains })
+            },
+            img: {
+                anno: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=cia_w&X={x}&Y={y}&L={z}", { subdomains: subdomains }),
+                base: L.tileLayer("http://t{s}.tianditu.cn/DataServer?T=img_w&X={x}&Y={y}&L={z}", { subdomains: subdomains })
+            }
+        };
+
+        this.map = L.map('map', {
+            attributionControl: false,
+            zoomControl: false,
+            center: [30, 120],
+            layers: [
+                baseLayers.vec.base,
+                baseLayers.vec.anno
+            ],
+            zoom: 14
+        });
+    }
+
+    componentDidMount() {
+        this.initMap();
+    }
+
+    render() {
+        return (
+        <div id="map">
+
+        </div>
+        );
+    }
+}
+
+class Test extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.refs.planning.setMap(this.refs.map.map);
+    }
+
+    render() {
+        return (
+        <div>
+            <div className="panel1">
+                <PlanningPanel ref="planning"/>
+            </div>
+            <Map ref="map"/>
+        </div>);
+    }
+}
+
+routePlanning = ReactDOM.render(<Test />, document.getElementById('app'));

@@ -4,10 +4,13 @@
 .planningpanel {
     position: relative;
     width: 340px;
+    background-color: white;
+
+    @start-color: #1eb739;
+    @end-color: #f26161;
 
     .pp-type {
         display: flex;
-
 
         li {
             width: 33.3%;
@@ -18,6 +21,11 @@
             position: relative;
             letter-spacing: 5px;
 
+            .iconfont {
+                color: #aaa;
+                font-size: 14px;
+            }
+
             &:not(:last-child) {
                 border-right: 0;
             }
@@ -27,6 +35,10 @@
                 font-weight: 700;
                 background-color: @primary-color;
                 border-color: @primary-color;
+
+                .iconfont {
+                    color: white;
+                }
             }
         }
     }
@@ -91,11 +103,11 @@
                 }
 
                 &:first-child:after {
-                    border-color: #1eb739;
+                    border-color: @start-color;
                 }
 
                 &:last-child:after {
-                    border-color: #f26161;
+                    border-color: @end-color;
                 }
             }
         }
@@ -153,7 +165,6 @@
     }
 
     .pp-resultpanel {
-        height: 200px;
         display: none;
         background-color: white;
 
@@ -189,5 +200,189 @@
                 font-weight: 700;
             }
         }
+
+        .driveorwalkresult {
+            > div {
+                display: flex;
+                margin: 0 5px;
+                padding: 5px 10px;
+            }
+
+            .rt-item {
+                border-radius: 3px;
+                transition: 0.3s;
+                cursor: pointer;
+
+
+                &:hover {
+                    background-color: #eee;
+                    color: @primary-color;
+                }
+
+                span {
+                    margin-right: 10px;
+                    color: @primary-color;
+                }
+            }
+
+            .rt-start, .rt-end {
+                align-items: baseline;
+                font-size: 14px;
+                color: @primary-color;
+            }
+
+            .rt-start {
+                border-bottom: 1px solid @border-color-split;
+            }
+
+            .rt-end {
+                border-top: 1px solid @border-color-split;
+            }
+
+            .rt-start::before, .rt-end::before {
+                content: '';
+                height: 12px;
+                width: 12px;
+                border-radius: 50%;
+                border: 2px solid;
+                margin-right: 10px;
+            }
+
+            .rt-start::before {
+                border-color: @start-color;
+            }
+
+            .rt-end::before {
+                border-color: @end-color;
+            }
+        }
+
+        .pp-routeresults {
+            padding: 5px 0;
+
+            .busline {
+                margin: 5px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                border: 1px solid @border-color-split;
+
+                &.active {
+                    border-color: @primary-color;
+                    box-shadow: 0 0 5px 0 @primary-color;
+
+                    i {
+                        color: @primary-color;
+                    }
+
+                    .busline-details {
+                        border-top-color: @primary-color;
+                    }
+                }
+
+                .busline-name {
+                    position: relative;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+
+                    i {
+                        position: absolute;
+                        top: 8px;
+                        right: 10px;
+                    }
+
+                    > span {
+                        font-size: 12px;
+                        color: @primary-color;
+                        margin-right: 10px;
+                    }
+
+                    > div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 14px;
+
+                        > span:after {
+                            content: '->';
+                            margin: 0 3px;
+                        }
+
+                        > span:nth-last-child(1):after, > span:nth-last-child(2):after {
+                            content: '';
+                            margin: 0;
+                        }
+                    }
+                }
+
+                .busline-details {
+                    overflow: hidden;
+                    max-height: 0;
+                    /*display: none;*/
+                    transition: 0.5s max-height;
+
+                    .busline-details-item {
+                        display: flex;
+                        margin: 5px 0;
+                        align-items: baseline;
+                        border-radius: 3px;
+                        transition: 0.2s;
+                        cursor: pointer;
+
+                        .iconfont {
+                            color: #aaa;
+                            font-size: 14px;
+                            margin: 0 5px;
+                        }
+
+                        > div > span {
+                            display: inline-block;
+                            border: 1px solid @primary-color;
+                            color: @primary-color;
+                            padding: 0 5px;
+                            margin: 2px 5px;
+                        }
+
+                        &:hover {
+                            background-color: #eee;
+                        }
+                    }
+                }
+
+                .busline-details.active {
+                    /*display: block;*/
+                    max-height: 500px;
+                    border-top: 1px solid @border-color-split;
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+}
+
+.rt-icons-start {
+    background: url('@{_bl_}/Reference/images/markers.png');
+    background-position: -199px -138px;
+}
+
+.rt-icons-end {
+    background: url('@{_bl_}/Reference/images/markers.png');
+    background-position: -225px -138px;
+}
+
+.rt-icons-station {
+    background: url('@{_bl_}/Reference/images/trans_icons.png');
+    background-position: 0 -55px;
+}
+
+.rt-popup-name {
+    a.leaflet-popup-close-button {
+        top: 8px;
+        right: 3px;
+    }
+
+    .leaflet-popup-content {
+        font-size: 14px;
+        margin: 10px 25px 10px 10px !important;
     }
 }
