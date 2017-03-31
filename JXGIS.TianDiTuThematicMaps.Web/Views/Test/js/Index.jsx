@@ -296,9 +296,9 @@ class Test extends React.Component {
         return (
         <div>
             <div className="panel1">
-                <PlanningPanel ref="planning"/>
+                <PlanningPanel ref="planning" />
             </div>
-            <Map ref="map"/>
+            <Map ref="map" />
         </div>);
     }
 }

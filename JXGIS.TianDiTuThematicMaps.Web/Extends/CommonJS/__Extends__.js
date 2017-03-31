@@ -207,6 +207,10 @@ __ReactExtends__ = {
         else {
             return !!express ? _const_.atv : _const_.ept;
         }
+    },
+    _eventStop: function (e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
     }
 };
 
