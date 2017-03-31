@@ -261,6 +261,7 @@
     <Content Include="Reference\store.min.js" />
     <Content Include="Reference\three.min.js" />
     <Content Include="Reference\uevent.min.js" />
+    <Content Include="Reference\is.min.js" />
     <None Include="Service References\AccurateGPSServiceRef\AccurateGPS.disco" />
     <None Include="Service References\AccurateGPSServiceRef\configuration91.svcinfo" />
     <None Include="Service References\AccurateGPSServiceRef\configuration.svcinfo" />

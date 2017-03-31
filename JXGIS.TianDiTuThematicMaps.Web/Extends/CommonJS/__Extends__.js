@@ -20,14 +20,17 @@ function __extend__(dest) {
 // 事件机制对象
 var __events__ = {
     on: function (types, fn, context) {
-        if (typeof types === 'object') {
-            for (var type in types) {
-                this._on(type, types[type], fn);
-            }
-        } else {
-            types = types.replace(/^\s+|\s+$/g, '').split(/\s+/);
+        var isArray = is.array(types);
+        var isString = is.string(types);
+
+        if (isArray || isString) {
+            types = isString ? types.replace(/^\s+|\s+$/g, '').split(/\s+/) : types;
             for (var i = 0, len = types.length; i < len; i++) {
                 this._on(types[i], fn, context);
+            }
+        } else {
+            for (var type in types) {
+                this._on(type, types[type], fn);
             }
         }
         return this;

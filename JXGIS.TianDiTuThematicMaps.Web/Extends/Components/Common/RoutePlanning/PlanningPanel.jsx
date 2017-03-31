@@ -574,7 +574,7 @@
             evts.startPointSetted,
             evts.endPointSetted,
             evts.planningTypeSelected,
-            evts.tripModeSelected].join(' '), this.getRoutePlanning);
+            evts.tripModeSelected], this.getRoutePlanning);
 
         this.on(evts.startPointSetted, e=> {
             var pnt = [e.data.point.y, e.data.point.x];
@@ -593,7 +593,7 @@
             this.setMapEnd([e.data.end.point.y, e.data.end.point.x], e.data.end.name);
         });
 
-        this.on([evts.routeResultSetted, evts.buslineClick].join(' '), e=> {
+        this.on([evts.routeResultSetted, evts.buslineClick], e=> {
             var start = this.condition.start.point;
             var end = this.condition.end.point;
 

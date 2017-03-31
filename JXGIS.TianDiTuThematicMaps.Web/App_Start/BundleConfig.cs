@@ -33,6 +33,7 @@ namespace JXGIS.TianDiTuThematicMaps.Web
                 _refPath + "antd/antd.min.js",
                 _refPath + "leaflet/leaflet.js",
                 _refPath + "leaflet-plugins/esri/esri-leaflet.js",
+                _refPath + "is.min.js",
                 "~/Extends/CommonJS/__Extends__.js",
                 "~/Extends/CommonJS/__leafletExtends__.js",
                 "~/Extends/CommonJS/commonTool.js",
