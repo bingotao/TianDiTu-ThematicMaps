@@ -67,7 +67,6 @@
     <Compile Include="Domain\GovSubmit\GSSymbol.cs" />
     <Compile Include="Domain\PublicService\AdministrativeRegion.cs" />
     <Compile Include="Domain\PublicService\PoliceOffice.cs" />
-    <Compile Include="Domain\Test.cs" />
     <Compile Include="Extend\AdminRegionLevel.cs" />
     <Compile Include="Extend\IPoint.cs" />
     <Compile Include="Extend\Layer.cs" />
