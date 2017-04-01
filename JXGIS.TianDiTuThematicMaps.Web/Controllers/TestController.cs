@@ -55,5 +55,13 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
 
             return Json(new { lat = _lat, lng = _lng });
         }
+
+        public ActionResult GetAdminRegions()
+        {
+            var adminRegion = SystemUtils.SQLEFDbContext.AdministrativeRegion.Where(p => p.Type == 1).ToList();
+            var ftCol = EntityUtils.EntitiesToFeatureCollection(adminRegion);
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(ftCol);
+            return Content(s);
+        }
     }
 }

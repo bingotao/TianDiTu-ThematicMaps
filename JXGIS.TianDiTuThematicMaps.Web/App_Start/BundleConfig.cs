@@ -71,6 +71,16 @@ namespace JXGIS.TianDiTuThematicMaps.Web
             bundles.Add(new LessBundle("~/govsubmit/index/css")
                    .IncludeDirectory(_cmpPath + "GovSubmit", "*.less", true)
                    .Include(_viewPath + "GovSubmit/css/Index.less"));
+            #endregion
+
+            #region 办事地图
+            bundles.Add(new BabelBundle("~/publicservice/index/js")
+                .IncludeDirectory(_cmpPath + "PublicService", "*.jsx", true)
+                .Include(_viewPath + "PublicService/js/Index.jsx"));
+
+            bundles.Add(new LessBundle("~/publicservice/index/css")
+                .IncludeDirectory(_cmpPath + "PublicService", "*.less", true)
+                .Include(_viewPath + "PublicService/css/Index.less"));
 
             #endregion
         }

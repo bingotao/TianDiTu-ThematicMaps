@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 using Newtonsoft.Json;
+using alatas.GeoJSON4EntityFramework;
 
 namespace JXGIS.Common.Entity
 {
@@ -48,6 +49,15 @@ namespace JXGIS.Common.Entity
 
         [Column("Parent")]
         public string Parent { get; set; }
+
+        [NotMapped]
+        public GeoJsonGeometry GeoJSON
+        {
+            get
+            {
+                return GeoJsonGeometry.FromDbGeography(Geometry);
+            }
+        }
 
         [NotMapped]
         public List<PoliceOffice> SubOffice { get; set; }

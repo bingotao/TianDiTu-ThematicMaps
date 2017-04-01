@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace JXGIS.TianDiTuThematicMaps.Business
 {
-
-
     public class PoliceOfficeUtils
     {
         /// <summary>
@@ -18,8 +16,6 @@ namespace JXGIS.TianDiTuThematicMaps.Business
         /// </summary>
         /// <param name="point"></param>
         /// <param name="regionLevel"></param>
-        /// <param name="neareast"></param>
-        /// <param name="inregion"></param>
         /// <returns></returns>
         public static List<PoliceOffice> GetPoliceOfficeInRegion(DbGeography point, AdminRegionLevel regionLevel)
         {

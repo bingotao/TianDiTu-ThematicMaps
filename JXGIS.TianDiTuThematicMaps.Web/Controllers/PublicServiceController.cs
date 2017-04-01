@@ -1,5 +1,6 @@
 ﻿using JXGIS.Common.BaseLib;
 using JXGIS.Common.Entity;
+using JXGIS.TianDiTuThematicMaps.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,16 +30,21 @@ namespace JXGIS.TianDiTuThematicMaps.Web.Controllers
             return View();
         }
 
-        public ActionResult GetPOI(string searchText)
+        public ActionResult GetPoliceOffices()
         {
-            var rt = POIUtils.GetPOI(new POICondition() { Keywords = searchText });
-            return Content(rt);
-        }
+            ReturnObject ro = null;
+            try
+            {
+                var rootOffice = PoliceOfficeUtils.GetOfficeTree();
+                ro = new ReturnObject(rootOffice);
+            }
+            catch (Exception ex)
+            {
+                ro = new ReturnObject(ex);
+            }
 
-        public ActionResult GetRoute(RouteOptions routeOptions)
-        {
-            var route = RoutePlanningUtils.GetRoute(routeOptions);
-            return Content(route);
+            string rt = Newtonsoft.Json.JsonConvert.SerializeObject(ro);
+            return Content(rt);
         }
     }
 }

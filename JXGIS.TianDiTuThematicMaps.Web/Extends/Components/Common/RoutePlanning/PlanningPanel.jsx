@@ -279,7 +279,7 @@
     }
 
     _getPOI(text, callback) {
-        $.post("../PublicService/GetPOI", { searchText: text }, callback.bind(this), 'json');
+        $.post("../Common/GetPOI", { searchText: text }, callback.bind(this), 'json');
     }
 
     quickSearchResultItemClick(poi) {
@@ -325,7 +325,7 @@
 
     _getRoutePlanning(condition) {
         antd.message.info('路径规划中...');
-        $.post('../PublicService/GetRoute', condition, function (rt) {
+        $.post('../Common/GetRoute', condition, function (rt) {
             this.clearMapRoutePlanning();
 
             var lines = rt.results && rt.results.length && rt.results[0].lines;

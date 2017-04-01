@@ -199,6 +199,7 @@
     <Content Include="Extends\Components\GovSubmit\ContentPopup\ContentPopup.jsx" />
     <Content Include="Extends\Components\GovSubmit\ItemList\ItemList.jsx" />
     <Content Include="Extends\Components\GovSubmit\Map\Map.jsx" />
+    <Content Include="Extends\Components\PublicService\PoliceOfficeSearch\PoliceOfficeSearch.jsx" />
     <Content Include="Extends\globalStyle.css" />
     <Content Include="Extends\CommonJS\commonTool.js" />
     <Content Include="Extends\CommonJS\geoLocation.js" />
@@ -262,6 +263,7 @@
     <Content Include="Reference\three.min.js" />
     <Content Include="Reference\uevent.min.js" />
     <Content Include="Reference\is.min.js" />
+    <Content Include="Extends\Components\PublicService\PoliceOfficeSearch\PoliceOfficeSearch.less" />
     <None Include="Service References\AccurateGPSServiceRef\AccurateGPS.disco" />
     <None Include="Service References\AccurateGPSServiceRef\configuration91.svcinfo" />
     <None Include="Service References\AccurateGPSServiceRef\configuration.svcinfo" />
@@ -289,6 +291,7 @@
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\ConfigActionFilter.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\GovSubmitController.cs" />
     <Compile Include="Controllers\PublicServiceController.cs" />
@@ -353,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Extends\Components\PublicService\" />
     <Folder Include="Reference\leaflet-plugins\miniMap\images\" />
   </ItemGroup>
   <ItemGroup>

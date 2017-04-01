@@ -258,7 +258,8 @@ class Map extends React.Component {
             }
         };
 
-        this.map = L.map('map', {
+
+        var map = L.map('map', {
             attributionControl: false,
             zoomControl: false,
             center: [30, 120],
@@ -268,6 +269,10 @@ class Map extends React.Component {
             ],
             zoom: 14
         });
+        this.map = map;
+        //$.post('GetAdminRegions', function (rt) {
+        //    L.geoJSON(rt).addTo(map);
+        //}, 'json');
     }
 
     componentDidMount() {
@@ -290,6 +295,7 @@ class Test extends React.Component {
 
     componentDidMount() {
         this.refs.planning.setMap(this.refs.map.map);
+
     }
 
     render() {
